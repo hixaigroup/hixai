@@ -112,7 +112,7 @@ Open: `http://localhost:3131` (default smoke host port)
 Useful overrides:
 
 ```sh
-HOST_PORT=3200 PAPERCLIPAI_VERSION=latest ./scripts/docker-onboard-smoke.sh
+HOST_PORT=3200 HIXAIAI_VERSION=latest ./scripts/docker-onboard-smoke.sh
 HIXAI_DEPLOYMENT_MODE=authenticated HIXAI_DEPLOYMENT_EXPOSURE=private ./scripts/docker-onboard-smoke.sh
 ```
 

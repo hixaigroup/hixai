@@ -67,7 +67,7 @@ claude --print --output-format stream-json --verbose --dangerously-skip-permissi
 ./scripts/release-preflight.sh canary patch
 ./scripts/release.sh patch --canary --dry-run
 ./scripts/release.sh patch --canary
-PAPERCLIPAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
+HIXAIAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
 ```
 
 Users install canaries with:
@@ -212,14 +212,14 @@ Concrete example:
 Run the actual install path in Docker:
 
 ```bash
-PAPERCLIPAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
+HIXAIAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
 ```
 
 Useful isolated variants:
 
 ```bash
-HOST_PORT=3232 DATA_DIR=./data/release-smoke-canary PAPERCLIPAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
-HOST_PORT=3233 DATA_DIR=./data/release-smoke-stable PAPERCLIPAI_VERSION=latest ./scripts/docker-onboard-smoke.sh
+HOST_PORT=3232 DATA_DIR=./data/release-smoke-canary HIXAIAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
+HOST_PORT=3233 DATA_DIR=./data/release-smoke-stable HIXAIAI_VERSION=latest ./scripts/docker-onboard-smoke.sh
 ```
 
 If you want to exercise onboarding from the current committed ref instead of npm, use:
