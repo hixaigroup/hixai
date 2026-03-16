@@ -4,9 +4,9 @@ import net from "node:net";
 import { createHash, randomUUID } from "node:crypto";
 import path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
-import type { AdapterRuntimeServiceReport } from "@paperclipai/adapter-utils";
-import type { Db } from "@paperclipai/db";
-import { workspaceRuntimeServices } from "@paperclipai/db";
+import type { AdapterRuntimeServiceReport } from "@hixai/adapter-utils";
+import type { Db } from "@hixai/db";
+import { workspaceRuntimeServices } from "@hixai/db";
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { asNumber, asString, parseObject, renderTemplate } from "../adapters/utils.js";
 import { resolveHomeAwarePath } from "../home-paths.js";
@@ -194,7 +194,7 @@ function sanitizeBranchName(value: string): string {
     .replace(/[^A-Za-z0-9._/-]+/g, "-")
     .replace(/-+/g, "-")
     .replace(/^[-/.]+|[-/.]+$/g, "")
-    .slice(0, 120) || "paperclip-work";
+    .slice(0, 120) || "hixai-work";
 }
 
 function isAbsolutePath(value: string) {
@@ -246,24 +246,24 @@ function buildWorkspaceCommandEnv(input: {
   created: boolean;
 }) {
   const env: NodeJS.ProcessEnv = { ...process.env };
-  env.PAPERCLIP_WORKSPACE_CWD = input.worktreePath;
-  env.PAPERCLIP_WORKSPACE_PATH = input.worktreePath;
-  env.PAPERCLIP_WORKSPACE_WORKTREE_PATH = input.worktreePath;
-  env.PAPERCLIP_WORKSPACE_BRANCH = input.branchName;
-  env.PAPERCLIP_WORKSPACE_BASE_CWD = input.base.baseCwd;
-  env.PAPERCLIP_WORKSPACE_REPO_ROOT = input.repoRoot;
-  env.PAPERCLIP_WORKSPACE_SOURCE = input.base.source;
-  env.PAPERCLIP_WORKSPACE_REPO_REF = input.base.repoRef ?? "";
-  env.PAPERCLIP_WORKSPACE_REPO_URL = input.base.repoUrl ?? "";
-  env.PAPERCLIP_WORKSPACE_CREATED = input.created ? "true" : "false";
-  env.PAPERCLIP_PROJECT_ID = input.base.projectId ?? "";
-  env.PAPERCLIP_PROJECT_WORKSPACE_ID = input.base.workspaceId ?? "";
-  env.PAPERCLIP_AGENT_ID = input.agent.id;
-  env.PAPERCLIP_AGENT_NAME = input.agent.name;
-  env.PAPERCLIP_COMPANY_ID = input.agent.companyId;
-  env.PAPERCLIP_ISSUE_ID = input.issue?.id ?? "";
-  env.PAPERCLIP_ISSUE_IDENTIFIER = input.issue?.identifier ?? "";
-  env.PAPERCLIP_ISSUE_TITLE = input.issue?.title ?? "";
+  env.HIXAI_WORKSPACE_CWD = input.worktreePath;
+  env.HIXAI_WORKSPACE_PATH = input.worktreePath;
+  env.HIXAI_WORKSPACE_WORKTREE_PATH = input.worktreePath;
+  env.HIXAI_WORKSPACE_BRANCH = input.branchName;
+  env.HIXAI_WORKSPACE_BASE_CWD = input.base.baseCwd;
+  env.HIXAI_WORKSPACE_REPO_ROOT = input.repoRoot;
+  env.HIXAI_WORKSPACE_SOURCE = input.base.source;
+  env.HIXAI_WORKSPACE_REPO_REF = input.base.repoRef ?? "";
+  env.HIXAI_WORKSPACE_REPO_URL = input.base.repoUrl ?? "";
+  env.HIXAI_WORKSPACE_CREATED = input.created ? "true" : "false";
+  env.HIXAI_PROJECT_ID = input.base.projectId ?? "";
+  env.HIXAI_PROJECT_WORKSPACE_ID = input.base.workspaceId ?? "";
+  env.HIXAI_AGENT_ID = input.agent.id;
+  env.HIXAI_AGENT_NAME = input.agent.name;
+  env.HIXAI_COMPANY_ID = input.agent.companyId;
+  env.HIXAI_ISSUE_ID = input.issue?.id ?? "";
+  env.HIXAI_ISSUE_IDENTIFIER = input.issue?.identifier ?? "";
+  env.HIXAI_ISSUE_TITLE = input.issue?.title ?? "";
   return env;
 }
 
@@ -362,7 +362,7 @@ export async function realizeExecutionWorkspace(input: {
   const configuredParentDir = asString(rawStrategy.worktreeParentDir, "");
   const worktreeParentDir = configuredParentDir
     ? resolveConfiguredPath(configuredParentDir, repoRoot)
-    : path.join(repoRoot, ".paperclip", "worktrees");
+    : path.join(repoRoot, ".hixai", "worktrees");
   const worktreePath = path.join(worktreeParentDir, branchName);
   const baseRef = asString(rawStrategy.baseRef, input.base.repoRef ?? "HEAD");
 

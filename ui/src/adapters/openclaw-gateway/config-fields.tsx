@@ -139,14 +139,14 @@ export function OpenClawGatewayConfigFields({
               value={
                 eff(
                   "adapterConfig",
-                  "paperclipApiUrl",
-                  String(config.paperclipApiUrl ?? ""),
+                  "hixaiApiUrl",
+                  String(config.hixaiApiUrl ?? ""),
                 )
               }
-              onCommit={(v) => mark("adapterConfig", "paperclipApiUrl", v || undefined)}
+              onCommit={(v) => mark("adapterConfig", "hixaiApiUrl", v || undefined)}
               immediate
               className={inputClass}
-              placeholder="https://paperclip.example"
+              placeholder="https://hixai.example"
             />
           </Field>
 
@@ -165,11 +165,11 @@ export function OpenClawGatewayConfigFields({
           {sessionStrategy === "fixed" && (
             <Field label="Session key">
               <DraftInput
-                value={eff("adapterConfig", "sessionKey", String(config.sessionKey ?? "paperclip"))}
+                value={eff("adapterConfig", "sessionKey", String(config.sessionKey ?? "hixai"))}
                 onCommit={(v) => mark("adapterConfig", "sessionKey", v || undefined)}
                 immediate
                 className={inputClass}
-                placeholder="paperclip"
+                placeholder="hixai"
               />
             </Field>
           )}

@@ -1,13 +1,13 @@
 {
-  "name": "paperclipai",
+  "name": "hixai",
   "version": "0.3.1",
-  "description": "Paperclip CLI — orchestrate AI agent teams to run a business",
+  "description": "HixAI CLI — orchestrate AI agent teams to run a business",
   "type": "module",
   "bin": {
-    "paperclipai": "./dist/index.js"
+    "hixai": "./dist/index.js"
   },
   "keywords": [
-    "paperclip",
+    "hixai",
     "ai",
     "agents",
     "orchestration",
@@ -16,10 +16,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/paperclipai/paperclip.git",
+    "url": "https://github.com/hixaigroup/hixai.git",
     "directory": "cli"
   },
-  "homepage": "https://github.com/paperclipai/paperclip",
+  "homepage": "https://github.com/hixaigroup/hixai",
   "files": [
     "dist"
   ],
@@ -34,17 +34,17 @@
   },
   "dependencies": {
     "@clack/prompts": "^0.10.0",
-    "@paperclipai/adapter-claude-local": "workspace:*",
-    "@paperclipai/adapter-codex-local": "workspace:*",
-    "@paperclipai/adapter-cursor-local": "workspace:*",
-    "@paperclipai/adapter-gemini-local": "workspace:*",
-    "@paperclipai/adapter-opencode-local": "workspace:*",
-    "@paperclipai/adapter-pi-local": "workspace:*",
-    "@paperclipai/adapter-openclaw-gateway": "workspace:*",
-    "@paperclipai/adapter-utils": "workspace:*",
-    "@paperclipai/db": "workspace:*",
-    "@paperclipai/server": "workspace:*",
-    "@paperclipai/shared": "workspace:*",
+    "@hixai/adapter-claude-local": "workspace:*",
+    "@hixai/adapter-codex-local": "workspace:*",
+    "@hixai/adapter-cursor-local": "workspace:*",
+    "@hixai/adapter-gemini-local": "workspace:*",
+    "@hixai/adapter-opencode-local": "workspace:*",
+    "@hixai/adapter-pi-local": "workspace:*",
+    "@hixai/adapter-openclaw-gateway": "workspace:*",
+    "@hixai/adapter-utils": "workspace:*",
+    "@hixai/db": "workspace:*",
+    "@hixai/server": "workspace:*",
+    "@hixai/shared": "workspace:*",
     "drizzle-orm": "0.38.4",
     "dotenv": "^17.0.1",
     "commander": "^13.1.0",

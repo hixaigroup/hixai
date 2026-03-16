@@ -178,7 +178,7 @@ export type {
   PluginLauncherDeclaration,
   PluginMinimumHostVersion,
   PluginUiDeclaration,
-  PaperclipPluginManifestV1,
+  HixAIPluginManifestV1,
   PluginRecord,
   PluginStateRecord,
   PluginConfig,
@@ -348,7 +348,7 @@ export {
 } from "./project-mentions.js";
 
 export {
-  paperclipConfigSchema,
+  hixaiConfigSchema,
   configMetaSchema,
   llmConfigSchema,
   databaseBackupConfigSchema,
@@ -361,7 +361,7 @@ export {
   storageLocalDiskConfigSchema,
   storageS3ConfigSchema,
   secretsLocalEncryptedConfigSchema,
-  type PaperclipConfig,
+  type HixAIConfig,
   type LlmConfig,
   type DatabaseBackupConfig,
   type DatabaseConfig,

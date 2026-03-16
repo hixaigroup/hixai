@@ -22,12 +22,12 @@
  * @see PLUGIN_SPEC.md §13.10 — `executeTool`
  */
 
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@hixai/db";
 import type {
-  PaperclipPluginManifestV1,
+  HixAIPluginManifestV1,
   PluginRecord,
-} from "@paperclipai/shared";
-import type { ToolRunContext, ToolResult } from "@paperclipai/plugin-sdk";
+} from "@hixai/shared";
+import type { ToolRunContext, ToolResult } from "@hixai/plugin-sdk";
 import type { PluginWorkerManager } from "./plugin-worker-manager.js";
 import type { PluginLifecycleManager } from "./plugin-lifecycle.js";
 import {
@@ -155,7 +155,7 @@ export interface PluginToolDispatcher {
    */
   registerPluginTools(
     pluginId: string,
-    manifest: PaperclipPluginManifestV1,
+    manifest: HixAIPluginManifestV1,
   ): void;
 
   /**
@@ -428,7 +428,7 @@ export function createPluginToolDispatcher(
 
     registerPluginTools(
       pluginId: string,
-      manifest: PaperclipPluginManifestV1,
+      manifest: HixAIPluginManifestV1,
     ): void {
       registry.registerPlugin(pluginId, manifest);
     },

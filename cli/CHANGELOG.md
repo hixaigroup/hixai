@@ -1,4 +1,4 @@
-# paperclipai
+# hixai
 
 ## 0.3.1
 
@@ -6,17 +6,17 @@
 
 - Stable release preparation for 0.3.1
 - Updated dependencies
-  - @paperclipai/adapter-utils@0.3.1
-  - @paperclipai/adapter-claude-local@0.3.1
-  - @paperclipai/adapter-codex-local@0.3.1
-  - @paperclipai/adapter-cursor-local@0.3.1
-  - @paperclipai/adapter-gemini-local@0.3.1
-  - @paperclipai/adapter-openclaw-gateway@0.3.1
-  - @paperclipai/adapter-opencode-local@0.3.1
-  - @paperclipai/adapter-pi-local@0.3.1
-  - @paperclipai/db@0.3.1
-  - @paperclipai/shared@0.3.1
-  - @paperclipai/server@0.3.1
+  - @hixai/adapter-utils@0.3.1
+  - @hixai/adapter-claude-local@0.3.1
+  - @hixai/adapter-codex-local@0.3.1
+  - @hixai/adapter-cursor-local@0.3.1
+  - @hixai/adapter-gemini-local@0.3.1
+  - @hixai/adapter-openclaw-gateway@0.3.1
+  - @hixai/adapter-opencode-local@0.3.1
+  - @hixai/adapter-pi-local@0.3.1
+  - @hixai/db@0.3.1
+  - @hixai/shared@0.3.1
+  - @hixai/server@0.3.1
 
 ## 0.3.0
 
@@ -28,16 +28,16 @@
 
 - Updated dependencies [6077ae6]
 - Updated dependencies
-  - @paperclipai/shared@0.3.0
-  - @paperclipai/adapter-utils@0.3.0
-  - @paperclipai/adapter-claude-local@0.3.0
-  - @paperclipai/adapter-codex-local@0.3.0
-  - @paperclipai/adapter-cursor-local@0.3.0
-  - @paperclipai/adapter-openclaw-gateway@0.3.0
-  - @paperclipai/adapter-opencode-local@0.3.0
-  - @paperclipai/adapter-pi-local@0.3.0
-  - @paperclipai/db@0.3.0
-  - @paperclipai/server@0.3.0
+  - @hixai/shared@0.3.0
+  - @hixai/adapter-utils@0.3.0
+  - @hixai/adapter-claude-local@0.3.0
+  - @hixai/adapter-codex-local@0.3.0
+  - @hixai/adapter-cursor-local@0.3.0
+  - @hixai/adapter-openclaw-gateway@0.3.0
+  - @hixai/adapter-opencode-local@0.3.0
+  - @hixai/adapter-pi-local@0.3.0
+  - @hixai/db@0.3.0
+  - @hixai/server@0.3.0
 
 ## 0.2.7
 
@@ -45,13 +45,13 @@
 
 - Version bump (patch)
 - Updated dependencies
-  - @paperclipai/shared@0.2.7
-  - @paperclipai/adapter-utils@0.2.7
-  - @paperclipai/db@0.2.7
-  - @paperclipai/adapter-claude-local@0.2.7
-  - @paperclipai/adapter-codex-local@0.2.7
-  - @paperclipai/adapter-openclaw@0.2.7
-  - @paperclipai/server@0.2.7
+  - @hixai/shared@0.2.7
+  - @hixai/adapter-utils@0.2.7
+  - @hixai/db@0.2.7
+  - @hixai/adapter-claude-local@0.2.7
+  - @hixai/adapter-codex-local@0.2.7
+  - @hixai/adapter-openclaw@0.2.7
+  - @hixai/server@0.2.7
 
 ## 0.2.6
 
@@ -59,13 +59,13 @@
 
 - Version bump (patch)
 - Updated dependencies
-  - @paperclipai/shared@0.2.6
-  - @paperclipai/adapter-utils@0.2.6
-  - @paperclipai/db@0.2.6
-  - @paperclipai/adapter-claude-local@0.2.6
-  - @paperclipai/adapter-codex-local@0.2.6
-  - @paperclipai/adapter-openclaw@0.2.6
-  - @paperclipai/server@0.2.6
+  - @hixai/shared@0.2.6
+  - @hixai/adapter-utils@0.2.6
+  - @hixai/db@0.2.6
+  - @hixai/adapter-claude-local@0.2.6
+  - @hixai/adapter-codex-local@0.2.6
+  - @hixai/adapter-openclaw@0.2.6
+  - @hixai/server@0.2.6
 
 ## 0.2.5
 
@@ -73,13 +73,13 @@
 
 - Version bump (patch)
 - Updated dependencies
-  - @paperclipai/shared@0.2.5
-  - @paperclipai/adapter-utils@0.2.5
-  - @paperclipai/db@0.2.5
-  - @paperclipai/adapter-claude-local@0.2.5
-  - @paperclipai/adapter-codex-local@0.2.5
-  - @paperclipai/adapter-openclaw@0.2.5
-  - @paperclipai/server@0.2.5
+  - @hixai/shared@0.2.5
+  - @hixai/adapter-utils@0.2.5
+  - @hixai/db@0.2.5
+  - @hixai/adapter-claude-local@0.2.5
+  - @hixai/adapter-codex-local@0.2.5
+  - @hixai/adapter-openclaw@0.2.5
+  - @hixai/server@0.2.5
 
 ## 0.2.4
 
@@ -87,13 +87,13 @@
 
 - Version bump (patch)
 - Updated dependencies
-  - @paperclipai/shared@0.2.4
-  - @paperclipai/adapter-utils@0.2.4
-  - @paperclipai/db@0.2.4
-  - @paperclipai/adapter-claude-local@0.2.4
-  - @paperclipai/adapter-codex-local@0.2.4
-  - @paperclipai/adapter-openclaw@0.2.4
-  - @paperclipai/server@0.2.4
+  - @hixai/shared@0.2.4
+  - @hixai/adapter-utils@0.2.4
+  - @hixai/db@0.2.4
+  - @hixai/adapter-claude-local@0.2.4
+  - @hixai/adapter-codex-local@0.2.4
+  - @hixai/adapter-openclaw@0.2.4
+  - @hixai/server@0.2.4
 
 ## 0.2.3
 
@@ -101,13 +101,13 @@
 
 - Version bump (patch)
 - Updated dependencies
-  - @paperclipai/shared@0.2.3
-  - @paperclipai/adapter-utils@0.2.3
-  - @paperclipai/db@0.2.3
-  - @paperclipai/adapter-claude-local@0.2.3
-  - @paperclipai/adapter-codex-local@0.2.3
-  - @paperclipai/adapter-openclaw@0.2.3
-  - @paperclipai/server@0.2.3
+  - @hixai/shared@0.2.3
+  - @hixai/adapter-utils@0.2.3
+  - @hixai/db@0.2.3
+  - @hixai/adapter-claude-local@0.2.3
+  - @hixai/adapter-codex-local@0.2.3
+  - @hixai/adapter-openclaw@0.2.3
+  - @hixai/server@0.2.3
 
 ## 0.2.2
 
@@ -115,13 +115,13 @@
 
 - Version bump (patch)
 - Updated dependencies
-  - @paperclipai/shared@0.2.2
-  - @paperclipai/adapter-utils@0.2.2
-  - @paperclipai/db@0.2.2
-  - @paperclipai/adapter-claude-local@0.2.2
-  - @paperclipai/adapter-codex-local@0.2.2
-  - @paperclipai/adapter-openclaw@0.2.2
-  - @paperclipai/server@0.2.2
+  - @hixai/shared@0.2.2
+  - @hixai/adapter-utils@0.2.2
+  - @hixai/db@0.2.2
+  - @hixai/adapter-claude-local@0.2.2
+  - @hixai/adapter-codex-local@0.2.2
+  - @hixai/adapter-openclaw@0.2.2
+  - @hixai/server@0.2.2
 
 ## 0.2.1
 
@@ -129,10 +129,10 @@
 
 - Version bump (patch)
 - Updated dependencies
-  - @paperclipai/shared@0.2.1
-  - @paperclipai/adapter-utils@0.2.1
-  - @paperclipai/db@0.2.1
-  - @paperclipai/adapter-claude-local@0.2.1
-  - @paperclipai/adapter-codex-local@0.2.1
-  - @paperclipai/adapter-openclaw@0.2.1
-  - @paperclipai/server@0.2.1
+  - @hixai/shared@0.2.1
+  - @hixai/adapter-utils@0.2.1
+  - @hixai/db@0.2.1
+  - @hixai/adapter-claude-local@0.2.1
+  - @hixai/adapter-codex-local@0.2.1
+  - @hixai/adapter-openclaw@0.2.1
+  - @hixai/server@0.2.1

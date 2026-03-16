@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, inArray, isNull, or, sql } from "drizzle-orm";
-import type { Db } from "@paperclipai/db";
+import type { Db } from "@hixai/db";
 import {
   agents,
   assets,
@@ -17,8 +17,8 @@ import {
   labels,
   projectWorkspaces,
   projects,
-} from "@paperclipai/db";
-import { extractProjectMentionIds } from "@paperclipai/shared";
+} from "@hixai/db";
+import { extractProjectMentionIds } from "@hixai/shared";
 import { conflict, notFound, unprocessable } from "../errors.js";
 import {
   defaultIssueExecutionWorkspaceSettingsForProject,

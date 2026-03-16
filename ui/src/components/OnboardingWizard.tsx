@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import type { AdapterEnvironmentTestResult } from "@paperclipai/shared";
+import type { AdapterEnvironmentTestResult } from "@hixai/shared";
 import { useDialog } from "../context/DialogContext";
 import { useCompany } from "../context/CompanyContext";
 import { companiesApi } from "../api/companies";
@@ -27,9 +27,9 @@ import { parseOnboardingGoalInput } from "../lib/onboarding-goal";
 import {
   DEFAULT_CODEX_LOCAL_BYPASS_APPROVALS_AND_SANDBOX,
   DEFAULT_CODEX_LOCAL_MODEL
-} from "@paperclipai/adapter-codex-local";
-import { DEFAULT_CURSOR_LOCAL_MODEL } from "@paperclipai/adapter-cursor-local";
-import { DEFAULT_GEMINI_LOCAL_MODEL } from "@paperclipai/adapter-gemini-local";
+} from "@hixai/adapter-codex-local";
+import { DEFAULT_CURSOR_LOCAL_MODEL } from "@hixai/adapter-cursor-local";
+import { DEFAULT_GEMINI_LOCAL_MODEL } from "@hixai/adapter-gemini-local";
 import { AsciiArtAnimation } from "./AsciiArtAnimation";
 import { ChoosePathButton } from "./PathInstructionsModal";
 import { HintIcon } from "./agent-config-primitives";
@@ -67,7 +67,7 @@ type AdapterType =
 
 const DEFAULT_TASK_DESCRIPTION = `Setup yourself as the CEO. Use the ceo persona found here: 
 
-https://github.com/paperclipai/companies/blob/main/default/ceo/AGENTS.md
+https://github.com/hixai/companies/blob/main/default/ceo/AGENTS.md
 
 Ensure you have a folder agents/ceo and then download this AGENTS.md, and sibling HEARTBEAT.md, SOUL.md, and TOOLS.md. and set that AGENTS.md as the path to your agents instruction file
 

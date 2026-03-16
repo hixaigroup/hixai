@@ -2,7 +2,7 @@ import type {
   HeartbeatRun,
   HeartbeatRunEvent,
   InstanceSchedulerHeartbeatAgent,
-} from "@paperclipai/shared";
+} from "@hixai/shared";
 import { api } from "./client";
 
 export interface ActiveRunForIssue extends HeartbeatRun {

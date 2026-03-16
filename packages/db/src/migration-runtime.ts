@@ -82,10 +82,10 @@ async function ensureEmbeddedPostgresConnection(
 
   if (runningPid) {
     const port = runningPort ?? preferredPort;
-    const adminConnectionString = `postgres://paperclip:paperclip@127.0.0.1:${port}/postgres`;
-    await ensurePostgresDatabase(adminConnectionString, "paperclip");
+    const adminConnectionString = `postgres://hixai:hixai@127.0.0.1:${port}/postgres`;
+    await ensurePostgresDatabase(adminConnectionString, "hixai");
     return {
-      connectionString: `postgres://paperclip:paperclip@127.0.0.1:${port}/paperclip`,
+      connectionString: `postgres://hixai:hixai@127.0.0.1:${port}/hixai`,
       source: `embedded-postgres@${port}`,
       stop: async () => {},
     };
@@ -93,8 +93,8 @@ async function ensureEmbeddedPostgresConnection(
 
   const instance = new EmbeddedPostgres({
     databaseDir: dataDir,
-    user: "paperclip",
-    password: "paperclip",
+    user: "hixai",
+    password: "hixai",
     port: preferredPort,
     persistent: true,
     initdbFlags: ["--encoding=UTF8", "--locale=C"],
@@ -110,11 +110,11 @@ async function ensureEmbeddedPostgresConnection(
   }
   await instance.start();
 
-  const adminConnectionString = `postgres://paperclip:paperclip@127.0.0.1:${preferredPort}/postgres`;
-  await ensurePostgresDatabase(adminConnectionString, "paperclip");
+  const adminConnectionString = `postgres://hixai:hixai@127.0.0.1:${preferredPort}/postgres`;
+  await ensurePostgresDatabase(adminConnectionString, "hixai");
 
   return {
-    connectionString: `postgres://paperclip:paperclip@127.0.0.1:${preferredPort}/paperclip`,
+    connectionString: `postgres://hixai:hixai@127.0.0.1:${preferredPort}/hixai`,
     source: `embedded-postgres@${preferredPort}`,
     stop: async () => {
       await instance.stop();

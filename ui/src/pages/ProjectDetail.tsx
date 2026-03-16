@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import { useParams, useNavigate, useLocation, Navigate } from "@/lib/router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { PROJECT_COLORS, isUuidLike } from "@paperclipai/shared";
+import { PROJECT_COLORS, isUuidLike } from "@hixai/shared";
 import { projectsApi } from "../api/projects";
 import { issuesApi } from "../api/issues";
 import { agentsApi } from "../api/agents";
@@ -190,7 +190,7 @@ function ProjectIssuesList({ projectId, companyId }: { projectId: string; compan
       agents={agents}
       liveIssueIds={liveIssueIds}
       projectId={projectId}
-      viewStateKey={`paperclip:project-view:${projectId}`}
+      viewStateKey={`hixai:project-view:${projectId}`}
       onUpdateIssue={(id, data) => updateIssue.mutate({ id, data })}
     />
   );

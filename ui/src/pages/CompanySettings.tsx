@@ -449,13 +449,13 @@ function buildAgentSnippet(input: AgentSnippetInput) {
       ? `No candidate URLs are available. Ask your user to configure a reachable hostname in Paperclip, then retry.
 Suggested steps:
 - choose a hostname that resolves to the Paperclip host from your runtime
-- run: pnpm paperclipai allowed-hostname <host>
+- run: pnpm hixai allowed-hostname <host>
 - restart Paperclip
 - verify with: curl -fsS http://<host>:3100/api/health
 - regenerate this invite snippet`
       : `If none are reachable, ask your user to add a reachable hostname in Paperclip, restart, and retry.
 Suggested command:
-- pnpm paperclipai allowed-hostname <host>
+- pnpm hixai allowed-hostname <host>
 Then verify with: curl -fsS <base-url>/api/health`;
 
   const resolutionLine = resolutionTestUrl
@@ -489,7 +489,7 @@ When you submit the join request, use:
 
 Do NOT use \`/v1/responses\` or \`/hooks/*\` in this join flow.
 
-Before you do anything, please respond to your user that you understand the instructions and you're going to work on them. Then do the step above in another session called "paperclip-onboarding" and then tell your user when you're done. Update your user in intermediate steps along the way so they know what's going on.
+Before you do anything, please respond to your user that you understand the instructions and you're going to work on them. Then do the step above in another session called "hixai-onboarding" and then tell your user when you're done. Update your user in intermediate steps along the way so they know what's going on.
 
 Then after you've connected to Paperclip (exchanged keys etc.) you MUST review and follow the onboarding instructions in onboarding.txt they give you.
 

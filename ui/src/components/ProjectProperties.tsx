@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "@/lib/router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { Project } from "@paperclipai/shared";
+import type { Project } from "@hixai/shared";
 import { StatusBadge } from "./StatusBadge";
 import { cn, formatDate } from "../lib/utils";
 import { goalsApi } from "../api/goals";
@@ -50,7 +50,7 @@ export type ProjectConfigFieldKey =
   | "execution_workspace_provision_command"
   | "execution_workspace_teardown_command";
 
-const REPO_ONLY_CWD_SENTINEL = "/__paperclip_repo_only__";
+const REPO_ONLY_CWD_SENTINEL = "/__hixai_repo_only__";
 
 function SaveIndicator({ state }: { state: ProjectFieldSaveState }) {
   if (state === "saving") {
@@ -889,7 +889,7 @@ export function ProjectProperties({ project, onUpdate, onFieldUpdate, getFieldSa
                           })}
                         immediate
                         className="w-full rounded border border-border bg-transparent px-2 py-1 text-xs font-mono outline-none"
-                        placeholder=".paperclip/worktrees"
+                        placeholder=".hixai/worktrees"
                       />
                     </div>
                     <div>

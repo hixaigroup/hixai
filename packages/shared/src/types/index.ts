@@ -96,7 +96,7 @@ export type {
   PluginLauncherDeclaration,
   PluginMinimumHostVersion,
   PluginUiDeclaration,
-  PaperclipPluginManifestV1,
+  HixAIPluginManifestV1,
   PluginRecord,
   PluginStateRecord,
   PluginConfig,
