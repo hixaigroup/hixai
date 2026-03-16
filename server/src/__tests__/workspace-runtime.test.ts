@@ -23,7 +23,7 @@ async function createTempRepo() {
   const repoRoot = await fs.mkdtemp(path.join(os.tmpdir(), "hixai-worktree-repo-"));
   await runGit(repoRoot, ["init"]);
   await runGit(repoRoot, ["config", "user.email", "hixai@example.com"]);
-  await runGit(repoRoot, ["config", "user.name", "HixAI Test"]);
+  await runGit(repoRoot, ["config", "user.name", "HIxAI Test"]);
   await fs.writeFile(path.join(repoRoot, "README.md"), "hello\n", "utf8");
   await runGit(repoRoot, ["add", "README.md"]);
   await runGit(repoRoot, ["commit", "-m", "Initial commit"]);

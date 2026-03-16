@@ -108,9 +108,9 @@ describe("cursor execute", () => {
           "HIXAI_RUN_ID",
         ]),
       );
-      expect(capture.prompt).toContain("HixAI runtime note:");
+      expect(capture.prompt).toContain("HIxAI runtime note:");
       expect(capture.prompt).toContain("HIXAI_API_KEY");
-      expect(invocationPrompt).toContain("HixAI runtime note:");
+      expect(invocationPrompt).toContain("HIxAI runtime note:");
       expect(invocationPrompt).toContain("HIXAI_API_URL");
     } finally {
       if (previousHome === undefined) {

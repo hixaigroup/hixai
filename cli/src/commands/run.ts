@@ -6,14 +6,14 @@ import pc from "picocolors";
 import { bootstrapCeoInvite } from "./auth-bootstrap-ceo.js";
 import { onboard } from "./onboard.js";
 import { doctor } from "./doctor.js";
-import { loadHixAIEnvFile } from "../config/env.js";
+import { loadHIxAIEnvFile } from "../config/env.js";
 import { configExists, resolveConfigPath } from "../config/store.js";
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import { readConfig } from "../config/store.js";
 import {
   describeLocalInstancePaths,
-  resolveHixAIHomeDir,
-  resolveHixAIInstanceId,
+  resolveHIxAIHomeDir,
+  resolveHIxAIInstanceId,
 } from "../config/home.js";
 
 interface RunOptions {
@@ -31,10 +31,10 @@ interface StartedServer {
 }
 
 export async function runCommand(opts: RunOptions): Promise<void> {
-  const instanceId = resolveHixAIInstanceId(opts.instance);
+  const instanceId = resolveHIxAIInstanceId(opts.instance);
   process.env.HIXAI_INSTANCE_ID = instanceId;
 
-  const homeDir = resolveHixAIHomeDir();
+  const homeDir = resolveHIxAIHomeDir();
   fs.mkdirSync(homeDir, { recursive: true });
 
   const paths = describeLocalInstancePaths(instanceId);
@@ -42,7 +42,7 @@ export async function runCommand(opts: RunOptions): Promise<void> {
 
   const configPath = resolveConfigPath(opts.config);
   process.env.HIXAI_CONFIG = configPath;
-  loadHixAIEnvFile(configPath);
+  loadHIxAIEnvFile(configPath);
 
   p.intro(pc.bgCyan(pc.black(" hixai run ")));
   p.log.message(pc.dim(`Home: ${paths.homeDir}`));
@@ -78,7 +78,7 @@ export async function runCommand(opts: RunOptions): Promise<void> {
     process.exit(1);
   }
 
-  p.log.step("Starting HixAI server...");
+  p.log.step("Starting HIxAI server...");
   const startedServer = await importServerEntry();
 
   if (shouldGenerateBootstrapInviteAfterStart(config)) {
@@ -92,7 +92,7 @@ export async function runCommand(opts: RunOptions): Promise<void> {
 }
 
 function resolveBootstrapInviteBaseUrl(
-  config: HixAIConfig,
+  config: HIxAIConfig,
   startedServer: StartedServer,
 ): string {
   const explicitBaseUrl =
@@ -165,26 +165,26 @@ async function importServerEntry(): Promise<StartedServer> {
     const missingServerEntrypoint = !missingSpecifier || missingSpecifier === "@hixai/server";
     if (isModuleNotFoundError(err) && missingServerEntrypoint) {
       throw new Error(
-        `Could not locate a HixAI server entrypoint.\n` +
+        `Could not locate a HIxAI server entrypoint.\n` +
           `Tried: ${devEntry}, @hixai/server\n` +
           `${formatError(err)}`,
       );
     }
     throw new Error(
-      `HixAI server failed to start.\n` +
+      `HIxAI server failed to start.\n` +
         `${formatError(err)}`,
     );
   }
 }
 
-function shouldGenerateBootstrapInviteAfterStart(config: HixAIConfig): boolean {
+function shouldGenerateBootstrapInviteAfterStart(config: HIxAIConfig): boolean {
   return config.server.deploymentMode === "authenticated" && config.database.mode === "embedded-postgres";
 }
 
 async function startServerFromModule(mod: unknown, label: string): Promise<StartedServer> {
   const startServer = (mod as { startServer?: () => Promise<StartedServer> }).startServer;
   if (typeof startServer !== "function") {
-    throw new Error(`HixAI server entrypoint did not export startServer(): ${label}`);
+    throw new Error(`HIxAI server entrypoint did not export startServer(): ${label}`);
   }
   return await startServer();
 }

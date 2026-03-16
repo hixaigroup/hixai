@@ -1,9 +1,9 @@
 ---
 title: Local Development
-summary: Set up HixAI for local development
+summary: Set up HIxAI for local development
 ---
 
-Run HixAI locally with zero external dependencies.
+Run HIxAI locally with zero external dependencies.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ This starts:
 - **API server** at `http://localhost:3100`
 - **UI** served by the API server in dev middleware mode (same origin)
 
-No Docker or external database required. HixAI uses embedded PostgreSQL automatically.
+No Docker or external database required. HIxAI uses embedded PostgreSQL automatically.
 
 ## One-Command Bootstrap
 

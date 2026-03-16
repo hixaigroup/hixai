@@ -163,7 +163,7 @@ export const hixaiConfigSchema = z
     }
   });
 
-export type HixAIConfig = z.infer<typeof hixaiConfigSchema>;
+export type HIxAIConfig = z.infer<typeof hixaiConfigSchema>;
 export type LlmConfig = z.infer<typeof llmConfigSchema>;
 export type DatabaseConfig = z.infer<typeof databaseConfigSchema>;
 export type LoggingConfig = z.infer<typeof loggingConfigSchema>;

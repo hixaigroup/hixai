@@ -204,7 +204,7 @@ Add plain-text reflection routes:
 
 Index file includes:
 
-- installed adapter list for this HixAI instance
+- installed adapter list for this HIxAI instance
 - per-adapter doc URLs
 - brief "how to hire" API sequence links
 

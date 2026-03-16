@@ -2,7 +2,7 @@ import { readConfigFile } from "./config-file.js";
 import { existsSync, realpathSync } from "node:fs";
 import { resolve } from "node:path";
 import { config as loadDotenv } from "dotenv";
-import { resolveHixAIEnvPath } from "./paths.js";
+import { resolveHIxAIEnvPath } from "./paths.js";
 import {
   AUTH_BASE_URL_MODES,
   DEPLOYMENT_EXPOSURES,
@@ -23,7 +23,7 @@ import {
   resolveHomeAwarePath,
 } from "./home-paths.js";
 
-const HIXAI_ENV_FILE_PATH = resolveHixAIEnvPath();
+const HIXAI_ENV_FILE_PATH = resolveHIxAIEnvPath();
 if (existsSync(HIXAI_ENV_FILE_PATH)) {
   loadDotenv({ path: HIXAI_ENV_FILE_PATH, override: false, quiet: true });
 }

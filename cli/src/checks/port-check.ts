@@ -1,8 +1,8 @@
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import { checkPort } from "../utils/net.js";
 import type { CheckResult } from "./index.js";
 
-export async function portCheck(config: HixAIConfig): Promise<CheckResult> {
+export async function portCheck(config: HIxAIConfig): Promise<CheckResult> {
   const port = config.server.port;
   const result = await checkPort(port);
 

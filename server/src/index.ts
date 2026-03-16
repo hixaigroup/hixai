@@ -694,7 +694,7 @@ function isMainModule(metaUrl: string): boolean {
 
 if (isMainModule(import.meta.url)) {
   void startServer().catch((err) => {
-    logger.error({ err }, "HixAI server failed to start");
+    logger.error({ err }, "HIxAI server failed to start");
     process.exit(1);
   });
 }

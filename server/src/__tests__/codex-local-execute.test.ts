@@ -51,9 +51,9 @@ describe("codex execute", () => {
     await writeFakeCodexCommand(commandPath);
 
     const previousHome = process.env.HOME;
-    const previousHixAIHome = process.env.HIXAI_HOME;
-    const previousHixAIInstanceId = process.env.HIXAI_INSTANCE_ID;
-    const previousHixAIInWorktree = process.env.HIXAI_IN_WORKTREE;
+    const previousHIxAIHome = process.env.HIXAI_HOME;
+    const previousHIxAIInstanceId = process.env.HIXAI_INSTANCE_ID;
+    const previousHIxAIInWorktree = process.env.HIXAI_IN_WORKTREE;
     const previousCodexHome = process.env.CODEX_HOME;
     process.env.HOME = root;
     process.env.HIXAI_HOME = hixaiHome;
@@ -119,12 +119,12 @@ describe("codex execute", () => {
     } finally {
       if (previousHome === undefined) delete process.env.HOME;
       else process.env.HOME = previousHome;
-      if (previousHixAIHome === undefined) delete process.env.HIXAI_HOME;
-      else process.env.HIXAI_HOME = previousHixAIHome;
-      if (previousHixAIInstanceId === undefined) delete process.env.HIXAI_INSTANCE_ID;
-      else process.env.HIXAI_INSTANCE_ID = previousHixAIInstanceId;
-      if (previousHixAIInWorktree === undefined) delete process.env.HIXAI_IN_WORKTREE;
-      else process.env.HIXAI_IN_WORKTREE = previousHixAIInWorktree;
+      if (previousHIxAIHome === undefined) delete process.env.HIXAI_HOME;
+      else process.env.HIXAI_HOME = previousHIxAIHome;
+      if (previousHIxAIInstanceId === undefined) delete process.env.HIXAI_INSTANCE_ID;
+      else process.env.HIXAI_INSTANCE_ID = previousHIxAIInstanceId;
+      if (previousHIxAIInWorktree === undefined) delete process.env.HIXAI_IN_WORKTREE;
+      else process.env.HIXAI_IN_WORKTREE = previousHIxAIInWorktree;
       if (previousCodexHome === undefined) delete process.env.CODEX_HOME;
       else process.env.CODEX_HOME = previousCodexHome;
       await fs.rm(root, { recursive: true, force: true });
@@ -145,9 +145,9 @@ describe("codex execute", () => {
     await writeFakeCodexCommand(commandPath);
 
     const previousHome = process.env.HOME;
-    const previousHixAIHome = process.env.HIXAI_HOME;
-    const previousHixAIInstanceId = process.env.HIXAI_INSTANCE_ID;
-    const previousHixAIInWorktree = process.env.HIXAI_IN_WORKTREE;
+    const previousHIxAIHome = process.env.HIXAI_HOME;
+    const previousHIxAIInstanceId = process.env.HIXAI_INSTANCE_ID;
+    const previousHIxAIInWorktree = process.env.HIXAI_IN_WORKTREE;
     const previousCodexHome = process.env.CODEX_HOME;
     process.env.HOME = root;
     process.env.HIXAI_HOME = hixaiHome;
@@ -194,12 +194,12 @@ describe("codex execute", () => {
     } finally {
       if (previousHome === undefined) delete process.env.HOME;
       else process.env.HOME = previousHome;
-      if (previousHixAIHome === undefined) delete process.env.HIXAI_HOME;
-      else process.env.HIXAI_HOME = previousHixAIHome;
-      if (previousHixAIInstanceId === undefined) delete process.env.HIXAI_INSTANCE_ID;
-      else process.env.HIXAI_INSTANCE_ID = previousHixAIInstanceId;
-      if (previousHixAIInWorktree === undefined) delete process.env.HIXAI_IN_WORKTREE;
-      else process.env.HIXAI_IN_WORKTREE = previousHixAIInWorktree;
+      if (previousHIxAIHome === undefined) delete process.env.HIXAI_HOME;
+      else process.env.HIXAI_HOME = previousHIxAIHome;
+      if (previousHIxAIInstanceId === undefined) delete process.env.HIXAI_INSTANCE_ID;
+      else process.env.HIXAI_INSTANCE_ID = previousHIxAIInstanceId;
+      if (previousHIxAIInWorktree === undefined) delete process.env.HIXAI_IN_WORKTREE;
+      else process.env.HIXAI_IN_WORKTREE = previousHIxAIInWorktree;
       if (previousCodexHome === undefined) delete process.env.CODEX_HOME;
       else process.env.CODEX_HOME = previousCodexHome;
       await fs.rm(root, { recursive: true, force: true });

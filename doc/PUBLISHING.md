@@ -1,6 +1,6 @@
 # Publishing to npm
 
-Low-level reference for how HixAI packages are built for npm.
+Low-level reference for how HIxAI packages are built for npm.
 
 For the maintainer release workflow, use [doc/RELEASING.md](RELEASING.md). This document is only about packaging internals and the scripts that produce publishable artifacts.
 

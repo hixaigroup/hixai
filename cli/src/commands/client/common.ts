@@ -2,7 +2,7 @@ import pc from "picocolors";
 import type { Command } from "commander";
 import { readConfig } from "../../config/store.js";
 import { readContext, resolveProfile, type ClientContextProfile } from "../../client/context.js";
-import { ApiRequestError, HixAIApiClient } from "../../client/http.js";
+import { ApiRequestError, HIxAIApiClient } from "../../client/http.js";
 
 export interface BaseClientOptions {
   config?: string;
@@ -16,7 +16,7 @@ export interface BaseClientOptions {
 }
 
 export interface ResolvedClientContext {
-  api: HixAIApiClient;
+  api: HIxAIApiClient;
   companyId?: string;
   profileName: string;
   profile: ClientContextProfile;
@@ -25,11 +25,11 @@ export interface ResolvedClientContext {
 
 export function addCommonClientOptions(command: Command, opts?: { includeCompany?: boolean }): Command {
   command
-    .option("-c, --config <path>", "Path to HixAI config file")
-    .option("-d, --data-dir <path>", "HixAI data directory root (isolates state from ~/.hixai)")
+    .option("-c, --config <path>", "Path to HIxAI config file")
+    .option("-d, --data-dir <path>", "HIxAI data directory root (isolates state from ~/.hixai)")
     .option("--context <path>", "Path to CLI context file")
     .option("--profile <name>", "CLI context profile name")
-    .option("--api-base <url>", "Base URL for the HixAI API")
+    .option("--api-base <url>", "Base URL for the HIxAI API")
     .option("--api-key <token>", "Bearer token for agent-authenticated calls")
     .option("--json", "Output raw JSON");
 
@@ -69,7 +69,7 @@ export function resolveCommandContext(
     );
   }
 
-  const api = new HixAIApiClient({ apiBase, apiKey });
+  const api = new HIxAIApiClient({ apiBase, apiKey });
   return {
     api,
     companyId,

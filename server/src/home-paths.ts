@@ -11,13 +11,13 @@ function expandHomePrefix(value: string): string {
   return value;
 }
 
-export function resolveHixAIHomeDir(): string {
+export function resolveHIxAIHomeDir(): string {
   const envHome = process.env.HIXAI_HOME?.trim();
   if (envHome) return path.resolve(expandHomePrefix(envHome));
   return path.resolve(os.homedir(), ".hixai");
 }
 
-export function resolveHixAIInstanceId(): string {
+export function resolveHIxAIInstanceId(): string {
   const raw = process.env.HIXAI_INSTANCE_ID?.trim() || DEFAULT_INSTANCE_ID;
   if (!INSTANCE_ID_RE.test(raw)) {
     throw new Error(`Invalid HIXAI_INSTANCE_ID '${raw}'.`);
@@ -25,32 +25,32 @@ export function resolveHixAIInstanceId(): string {
   return raw;
 }
 
-export function resolveHixAIInstanceRoot(): string {
-  return path.resolve(resolveHixAIHomeDir(), "instances", resolveHixAIInstanceId());
+export function resolveHIxAIInstanceRoot(): string {
+  return path.resolve(resolveHIxAIHomeDir(), "instances", resolveHIxAIInstanceId());
 }
 
 export function resolveDefaultConfigPath(): string {
-  return path.resolve(resolveHixAIInstanceRoot(), "config.json");
+  return path.resolve(resolveHIxAIInstanceRoot(), "config.json");
 }
 
 export function resolveDefaultEmbeddedPostgresDir(): string {
-  return path.resolve(resolveHixAIInstanceRoot(), "db");
+  return path.resolve(resolveHIxAIInstanceRoot(), "db");
 }
 
 export function resolveDefaultLogsDir(): string {
-  return path.resolve(resolveHixAIInstanceRoot(), "logs");
+  return path.resolve(resolveHIxAIInstanceRoot(), "logs");
 }
 
 export function resolveDefaultSecretsKeyFilePath(): string {
-  return path.resolve(resolveHixAIInstanceRoot(), "secrets", "master.key");
+  return path.resolve(resolveHIxAIInstanceRoot(), "secrets", "master.key");
 }
 
 export function resolveDefaultStorageDir(): string {
-  return path.resolve(resolveHixAIInstanceRoot(), "data", "storage");
+  return path.resolve(resolveHIxAIInstanceRoot(), "data", "storage");
 }
 
 export function resolveDefaultBackupDir(): string {
-  return path.resolve(resolveHixAIInstanceRoot(), "data", "backups");
+  return path.resolve(resolveHIxAIInstanceRoot(), "data", "backups");
 }
 
 export function resolveDefaultAgentWorkspaceDir(agentId: string): string {
@@ -58,7 +58,7 @@ export function resolveDefaultAgentWorkspaceDir(agentId: string): string {
   if (!PATH_SEGMENT_RE.test(trimmed)) {
     throw new Error(`Invalid agent id for workspace path '${agentId}'.`);
   }
-  return path.resolve(resolveHixAIInstanceRoot(), "workspaces", trimmed);
+  return path.resolve(resolveHIxAIInstanceRoot(), "workspaces", trimmed);
 }
 
 export function resolveHomeAwarePath(value: string): string {

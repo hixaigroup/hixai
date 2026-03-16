@@ -1,9 +1,9 @@
 import * as p from "@clack/prompts";
 import type { StorageConfig } from "../config/schema.js";
-import { resolveDefaultStorageDir, resolveHixAIInstanceId } from "../config/home.js";
+import { resolveDefaultStorageDir, resolveHIxAIInstanceId } from "../config/home.js";
 
 function defaultStorageBaseDir(): string {
-  return resolveDefaultStorageDir(resolveHixAIInstanceId());
+  return resolveDefaultStorageDir(resolveHIxAIInstanceId());
 }
 
 export function defaultStorageConfig(): StorageConfig {

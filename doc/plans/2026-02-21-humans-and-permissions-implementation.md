@@ -142,7 +142,7 @@ Note:
 
 - use Better Auth canonical table names/types to avoid custom forks
 
-## 5.2 New HixAI tables
+## 5.2 New HIxAI tables
 
 1. `instance_user_roles`
 

@@ -14,7 +14,7 @@ import {
   type StorageProvider,
 } from "@hixai/shared";
 import { configExists, readConfig, resolveConfigPath, writeConfig } from "../config/store.js";
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import { ensureAgentJwtSecret, resolveAgentJwtEnvFile } from "../config/env.js";
 import { ensureLocalSecretsKeyFile } from "../config/secrets-key.js";
 import { promptDatabase } from "../prompts/database.js";
@@ -29,10 +29,10 @@ import {
   resolveDefaultBackupDir,
   resolveDefaultEmbeddedPostgresDir,
   resolveDefaultLogsDir,
-  resolveHixAIInstanceId,
+  resolveHIxAIInstanceId,
 } from "../config/home.js";
 import { bootstrapCeoInvite } from "./auth-bootstrap-ceo.js";
-import { printHixAICliBanner } from "../utils/banner.js";
+import { printHIxAICliBanner } from "../utils/banner.js";
 
 type SetupMode = "quickstart" | "advanced";
 
@@ -43,7 +43,7 @@ type OnboardOptions = {
   invokedByRun?: boolean;
 };
 
-type OnboardDefaults = Pick<HixAIConfig, "database" | "logging" | "server" | "auth" | "storage" | "secrets">;
+type OnboardDefaults = Pick<HIxAIConfig, "database" | "logging" | "server" | "auth" | "storage" | "secrets">;
 
 const ONBOARD_ENV_KEYS = [
   "HIXAI_PUBLIC_URL",
@@ -104,7 +104,7 @@ function quickstartDefaultsFromEnv(): {
   usedEnvKeys: string[];
   ignoredEnvKeys: Array<{ key: string; reason: string }>;
 } {
-  const instanceId = resolveHixAIInstanceId();
+  const instanceId = resolveHIxAIInstanceId();
   const defaultStorage = defaultStorageConfig();
   const defaultSecrets = defaultSecretsConfig();
   const databaseUrl = process.env.DATABASE_URL?.trim() || undefined;
@@ -229,15 +229,15 @@ function quickstartDefaultsFromEnv(): {
   return { defaults, usedEnvKeys, ignoredEnvKeys };
 }
 
-function canCreateBootstrapInviteImmediately(config: Pick<HixAIConfig, "database" | "server">): boolean {
+function canCreateBootstrapInviteImmediately(config: Pick<HIxAIConfig, "database" | "server">): boolean {
   return config.server.deploymentMode === "authenticated" && config.database.mode !== "embedded-postgres";
 }
 
 export async function onboard(opts: OnboardOptions): Promise<void> {
-  printHixAICliBanner();
+  printHIxAICliBanner();
   p.intro(pc.bgCyan(pc.black(" hixai onboard ")));
   const configPath = resolveConfigPath(opts.config);
-  const instance = describeLocalInstancePaths(resolveHixAIInstanceId());
+  const instance = describeLocalInstancePaths(resolveHIxAIInstanceId());
   p.log.message(
     pc.dim(
       `Local home: ${instance.homeDir} | instance: ${instance.instanceId} | config: ${configPath}`,
@@ -285,7 +285,7 @@ export async function onboard(opts: OnboardOptions): Promise<void> {
     setupMode = setupModeChoice as SetupMode;
   }
 
-  let llm: HixAIConfig["llm"] | undefined;
+  let llm: HIxAIConfig["llm"] | undefined;
   const { defaults: derivedDefaults, usedEnvKeys, ignoredEnvKeys } = quickstartDefaultsFromEnv();
   let {
     database,
@@ -406,7 +406,7 @@ export async function onboard(opts: OnboardOptions): Promise<void> {
     p.log.info(`Using existing ${pc.cyan("HIXAI_AGENT_JWT_SECRET")} in ${pc.dim(envFilePath)}`);
   }
 
-  const config: HixAIConfig = {
+  const config: HIxAIConfig = {
     $meta: {
       version: 1,
       updatedAt: new Date().toISOString(),
@@ -462,7 +462,7 @@ export async function onboard(opts: OnboardOptions): Promise<void> {
   let shouldRunNow = opts.run === true || opts.yes === true;
   if (!shouldRunNow && !opts.invokedByRun && process.stdin.isTTY && process.stdout.isTTY) {
     const answer = await p.confirm({
-      message: "Start HixAI now?",
+      message: "Start HIxAI now?",
       initialValue: true,
     });
     if (!p.isCancel(answer)) {

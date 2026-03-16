@@ -1,13 +1,13 @@
 # Plugin Authoring Guide
 
-This guide describes the current, implemented way to create a HixAI plugin in this repo.
+This guide describes the current, implemented way to create a HIxAI plugin in this repo.
 
 It is intentionally narrower than [PLUGIN_SPEC.md](./PLUGIN_SPEC.md). The spec includes future ideas; this guide only covers the alpha surface that exists now.
 
 ## Current reality
 
 - Treat plugin workers and plugin UI as trusted code.
-- Plugin UI runs as same-origin JavaScript inside the main HixAI app.
+- Plugin UI runs as same-origin JavaScript inside the main HIxAI app.
 - Worker-side host APIs are capability-gated.
 - Plugin UI is not sandboxed by manifest capabilities.
 - There is no host-provided shared React component kit for plugins yet.
@@ -22,7 +22,7 @@ pnpm --filter @hixai/create-hixai-plugin build
 node packages/plugins/create-hixai-plugin/dist/index.js @yourscope/plugin-name --output ./packages/plugins/examples
 ```
 
-For a plugin that lives outside the HixAI repo:
+For a plugin that lives outside the HIxAI repo:
 
 ```bash
 pnpm --filter @hixai/create-hixai-plugin build
@@ -42,7 +42,7 @@ That creates a package with:
 
 Inside this monorepo, the scaffold uses `workspace:*` for `@hixai/plugin-sdk`.
 
-Outside this monorepo, the scaffold snapshots `@hixai/plugin-sdk` from the local HixAI checkout into a `.hixai-sdk/` tarball so you can build and test a plugin without publishing anything to npm first.
+Outside this monorepo, the scaffold snapshots `@hixai/plugin-sdk` from the local HIxAI checkout into a `.hixai-sdk/` tarball so you can build and test a plugin without publishing anything to npm first.
 
 ## Recommended local workflow
 
@@ -55,7 +55,7 @@ pnpm test
 pnpm build
 ```
 
-For local development, install it into HixAI from an absolute local path through the plugin manager or API. The server supports local filesystem installs and watches local-path plugins for file changes so worker restarts happen automatically after rebuilds.
+For local development, install it into HIxAI from an absolute local path through the plugin manager or API. The server supports local filesystem installs and watches local-path plugins for file changes so worker restarts happen automatically after rebuilds.
 
 Example:
 

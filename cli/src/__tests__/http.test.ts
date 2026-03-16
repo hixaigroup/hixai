@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ApiRequestError, HixAIApiClient } from "../client/http.js";
+import { ApiRequestError, HIxAIApiClient } from "../client/http.js";
 
-describe("HixAIApiClient", () => {
+describe("HIxAIApiClient", () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -12,7 +12,7 @@ describe("HixAIApiClient", () => {
     );
     vi.stubGlobal("fetch", fetchMock);
 
-    const client = new HixAIApiClient({
+    const client = new HIxAIApiClient({
       apiBase: "http://localhost:3100",
       apiKey: "token-123",
       runId: "run-abc",
@@ -36,7 +36,7 @@ describe("HixAIApiClient", () => {
     );
     vi.stubGlobal("fetch", fetchMock);
 
-    const client = new HixAIApiClient({ apiBase: "http://localhost:3100" });
+    const client = new HIxAIApiClient({ apiBase: "http://localhost:3100" });
     const result = await client.get("/api/missing", { ignoreNotFound: true });
     expect(result).toBeNull();
   });
@@ -50,7 +50,7 @@ describe("HixAIApiClient", () => {
     );
     vi.stubGlobal("fetch", fetchMock);
 
-    const client = new HixAIApiClient({ apiBase: "http://localhost:3100" });
+    const client = new HIxAIApiClient({ apiBase: "http://localhost:3100" });
 
     await expect(client.post("/api/issues/1/checkout", {})).rejects.toMatchObject({
       status: 409,

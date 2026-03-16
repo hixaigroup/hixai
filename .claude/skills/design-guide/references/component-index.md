@@ -1,4 +1,4 @@
-# HixAI Component Index
+# HIxAI Component Index
 
 Complete inventory of all UI components. Update this file when adding new reusable components.
 

@@ -4,7 +4,7 @@ import {
   asNumber,
   asStringArray,
   parseObject,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   redactEnvForLogs,
   runChildProcess,
 } from "../utils.js";
@@ -17,7 +17,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   const args = asStringArray(config.args);
   const cwd = asString(config.cwd, process.cwd());
   const envConfig = parseObject(config.env);
-  const env: Record<string, string> = { ...buildHixAIEnv(agent) };
+  const env: Record<string, string> = { ...buildHIxAIEnv(agent) };
   for (const [k, v] of Object.entries(envConfig)) {
     if (typeof v === "string") env[k] = v;
   }

@@ -41,13 +41,13 @@ function expandHomePrefix(value: string): string {
   return value;
 }
 
-function resolveHixAIHomeDir(): string {
+function resolveHIxAIHomeDir(): string {
   const envHome = process.env.HIXAI_HOME?.trim();
   if (envHome) return path.resolve(expandHomePrefix(envHome));
   return path.resolve(os.homedir(), ".hixai");
 }
 
-function resolveHixAIInstanceId(): string {
+function resolveHIxAIInstanceId(): string {
   const raw = process.env.HIXAI_INSTANCE_ID?.trim() || DEFAULT_INSTANCE_ID;
   if (!INSTANCE_ID_RE.test(raw)) {
     throw new Error(`Invalid HIXAI_INSTANCE_ID '${raw}'.`);
@@ -57,15 +57,15 @@ function resolveHixAIInstanceId(): string {
 
 function resolveDefaultConfigPath(): string {
   return path.resolve(
-    resolveHixAIHomeDir(),
+    resolveHIxAIHomeDir(),
     "instances",
-    resolveHixAIInstanceId(),
+    resolveHIxAIInstanceId(),
     CONFIG_BASENAME,
   );
 }
 
 function resolveDefaultEmbeddedPostgresDir(): string {
-  return path.resolve(resolveHixAIHomeDir(), "instances", resolveHixAIInstanceId(), "db");
+  return path.resolve(resolveHIxAIHomeDir(), "instances", resolveHIxAIInstanceId(), "db");
 }
 
 function resolveHomeAwarePath(value: string): string {
@@ -85,14 +85,14 @@ function findConfigFileFromAncestors(startDir: string): string | null {
   }
 }
 
-function resolveHixAIConfigPath(): string {
+function resolveHIxAIConfigPath(): string {
   if (process.env.HIXAI_CONFIG?.trim()) {
     return path.resolve(process.env.HIXAI_CONFIG.trim());
   }
   return findConfigFileFromAncestors(process.cwd()) ?? resolveDefaultConfigPath();
 }
 
-function resolveHixAIEnvPath(configPath: string): string {
+function resolveHIxAIEnvPath(configPath: string): string {
   return path.resolve(path.dirname(configPath), ENV_BASENAME);
 }
 
@@ -213,8 +213,8 @@ function readConfig(configPath: string): PartialConfig | null {
 }
 
 export function resolveDatabaseTarget(): ResolvedDatabaseTarget {
-  const configPath = resolveHixAIConfigPath();
-  const envPath = resolveHixAIEnvPath(configPath);
+  const configPath = resolveHIxAIConfigPath();
+  const envPath = resolveHIxAIEnvPath(configPath);
   const envEntries = readEnvEntries(envPath);
 
   const envUrl = process.env.DATABASE_URL?.trim();

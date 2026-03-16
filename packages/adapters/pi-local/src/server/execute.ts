@@ -8,14 +8,14 @@ import {
   asNumber,
   asStringArray,
   parseObject,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   joinPromptSections,
   redactEnvForLogs,
   ensureAbsoluteDirectory,
   ensureCommandResolvable,
-  ensureHixAISkillSymlink,
+  ensureHIxAISkillSymlink,
   ensurePathInEnv,
-  listHixAISkillEntries,
+  listHIxAISkillEntries,
   removeMaintainerOnlySkillSymlinks,
   renderTemplate,
   runChildProcess,
@@ -51,7 +51,7 @@ function parseModelId(model: string | null): string | null {
 }
 
 async function ensurePiSkillsInjected(onLog: AdapterExecutionContext["onLog"]) {
-  const skillsEntries = await listHixAISkillEntries(__moduleDir);
+  const skillsEntries = await listHIxAISkillEntries(__moduleDir);
   if (skillsEntries.length === 0) return;
 
   const piSkillsHome = path.join(os.homedir(), ".pi", "agent", "skills");
@@ -71,7 +71,7 @@ async function ensurePiSkillsInjected(onLog: AdapterExecutionContext["onLog"]) {
     const target = path.join(piSkillsHome, entry.name);
 
     try {
-      const result = await ensureHixAISkillSymlink(entry.source, target);
+      const result = await ensureHIxAISkillSymlink(entry.source, target);
       if (result === "skipped") continue;
       await onLog(
         "stderr",
@@ -101,7 +101,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your HixAI work.",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your HIxAI work.",
   );
   const command = asString(config.command, "pi");
   const model = asString(config.model, "").trim();
@@ -139,7 +139,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   const envConfig = parseObject(config.env);
   const hasExplicitApiKey =
     typeof envConfig.HIXAI_API_KEY === "string" && envConfig.HIXAI_API_KEY.trim().length > 0;
-  const env: Record<string, string> = { ...buildHixAIEnv(agent) };
+  const env: Record<string, string> = { ...buildHIxAIEnv(agent) };
   env.HIXAI_RUN_ID = runId;
   
   const wakeTaskId =
@@ -254,7 +254,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
         `${instructionsContents}\n\n` +
         `The above agent instructions were loaded from ${resolvedInstructionsFilePath}. ` +
         `Resolve any relative file references from ${instructionsFileDir}.\n\n` +
-        `You are agent {{agent.id}} ({{agent.name}}). Continue your HixAI work.`;
+        `You are agent {{agent.id}} ({{agent.name}}). Continue your HIxAI work.`;
       await onLog(
         "stderr",
         `[hixai] Loaded agent instructions file: ${resolvedInstructionsFilePath}\n`,

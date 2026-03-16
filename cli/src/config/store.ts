@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { hixaiConfigSchema, type HixAIConfig } from "./schema.js";
+import { hixaiConfigSchema, type HIxAIConfig } from "./schema.js";
 import {
   resolveDefaultConfigPath,
-  resolveHixAIInstanceId,
+  resolveHIxAIInstanceId,
 } from "./home.js";
 
 const DEFAULT_CONFIG_BASENAME = "config.json";
@@ -29,7 +29,7 @@ function findConfigFileFromAncestors(startDir: string): string | null {
 export function resolveConfigPath(overridePath?: string): string {
   if (overridePath) return path.resolve(overridePath);
   if (process.env.HIXAI_CONFIG) return path.resolve(process.env.HIXAI_CONFIG);
-  return findConfigFileFromAncestors(process.cwd()) ?? resolveDefaultConfigPath(resolveHixAIInstanceId());
+  return findConfigFileFromAncestors(process.cwd()) ?? resolveDefaultConfigPath(resolveHIxAIInstanceId());
 }
 
 function parseJson(filePath: string): unknown {
@@ -83,7 +83,7 @@ function formatValidationError(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
 
-export function readConfig(configPath?: string): HixAIConfig | null {
+export function readConfig(configPath?: string): HIxAIConfig | null {
   const filePath = resolveConfigPath(configPath);
   if (!fs.existsSync(filePath)) return null;
   const raw = parseJson(filePath);
@@ -96,7 +96,7 @@ export function readConfig(configPath?: string): HixAIConfig | null {
 }
 
 export function writeConfig(
-  config: HixAIConfig,
+  config: HIxAIConfig,
   configPath?: string,
 ): void {
   const filePath = resolveConfigPath(configPath);

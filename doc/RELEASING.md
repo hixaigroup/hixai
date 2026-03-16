@@ -1,6 +1,6 @@
-# Releasing HixAI
+# Releasing HIxAI
 
-Maintainer runbook for shipping a full HixAI release across npm, GitHub, and the website-facing changelog surface.
+Maintainer runbook for shipping a full HIxAI release across npm, GitHub, and the website-facing changelog surface.
 
 The release model is branch-driven:
 
@@ -58,7 +58,7 @@ From the release worktree:
 
 ```bash
 VERSION=X.Y.Z
-claude --print --output-format stream-json --verbose --dangerously-skip-permissions --model claude-opus-4-6 "Use the release-changelog skill to draft or update releases/v${VERSION}.md for HixAI. Read doc/RELEASING.md and .agents/skills/release-changelog/SKILL.md, then generate the stable changelog for v${VERSION} from commits since the last stable tag. Do not create a canary changelog."
+claude --print --output-format stream-json --verbose --dangerously-skip-permissions --model claude-opus-4-6 "Use the release-changelog skill to draft or update releases/v${VERSION}.md for HIxAI. Read doc/RELEASING.md and .agents/skills/release-changelog/SKILL.md, then generate the stable changelog for v${VERSION} from commits since the last stable tag. Do not create a canary changelog."
 ```
 
 ### 3. Verify and publish a canary
@@ -90,7 +90,7 @@ Then open a PR from `release/X.Y.Z` to `master` and merge without squash or reba
 
 ## Release Branches
 
-HixAI uses one release branch per target stable version:
+HIxAI uses one release branch per target stable version:
 
 - `release/0.3.0`
 - `release/0.3.1`

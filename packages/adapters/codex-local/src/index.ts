@@ -40,7 +40,7 @@ Operational fields:
 
 Notes:
 - Prompts are piped via stdin (Codex receives "-" prompt argument).
-- HixAI auto-injects local skills into Codex personal skills dir ("$CODEX_HOME/skills" or "~/.codex/skills") when missing, so Codex can discover "$hixai" and related skills.
+- HIxAI auto-injects local skills into Codex personal skills dir ("$CODEX_HOME/skills" or "~/.codex/skills") when missing, so Codex can discover "$hixai" and related skills.
 - Some model/tool combinations reject certain effort levels (for example minimal with web search enabled).
-- When HixAI realizes a workspace/runtime for a run, it injects HIXAI_WORKSPACE_* and HIXAI_RUNTIME_* env vars for agent-side tooling.
+- When HIxAI realizes a workspace/runtime for a run, it injects HIXAI_WORKSPACE_* and HIXAI_RUNTIME_* env vars for agent-side tooling.
 `;

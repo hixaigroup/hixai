@@ -4,9 +4,9 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   ensureAgentJwtSecret,
-  mergeHixAIEnvEntries,
+  mergeHIxAIEnvEntries,
   readAgentJwtSecretFromEnv,
-  readHixAIEnvEntries,
+  readHIxAIEnvEntries,
   resolveAgentJwtEnvFile,
 } from "../config/env.js";
 import { agentJwtSecretCheck } from "../checks/agent-jwt-secret-check.js";
@@ -65,7 +65,7 @@ describe("agent jwt env helpers", () => {
     const configPath = tempConfigPath();
     const envPath = resolveAgentJwtEnvFile(configPath);
 
-    mergeHixAIEnvEntries(
+    mergeHIxAIEnvEntries(
       {
         HIXAI_WORKTREE_COLOR: "#439edb",
       },
@@ -74,6 +74,6 @@ describe("agent jwt env helpers", () => {
 
     const contents = fs.readFileSync(envPath, "utf-8");
     expect(contents).toContain('HIXAI_WORKTREE_COLOR="#439edb"');
-    expect(readHixAIEnvEntries(envPath).HIXAI_WORKTREE_COLOR).toBe("#439edb");
+    expect(readHIxAIEnvEntries(envPath).HIXAI_WORKTREE_COLOR).toBe("#439edb");
   });
 });

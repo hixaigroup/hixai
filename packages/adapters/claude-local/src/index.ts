@@ -33,5 +33,5 @@ Operational fields:
 - graceSec (number, optional): SIGTERM grace period in seconds
 
 Notes:
-- When HixAI realizes a workspace/runtime for a run, it injects HIXAI_WORKSPACE_* and HIXAI_RUNTIME_* env vars for agent-side tooling.
+- When HIxAI realizes a workspace/runtime for a run, it injects HIXAI_WORKSPACE_* and HIXAI_RUNTIME_* env vars for agent-side tooling.
 `;

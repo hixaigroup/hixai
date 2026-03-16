@@ -5,10 +5,10 @@ import { formatDatabaseBackupResult, runDatabaseBackup } from "@hixai/db";
 import {
   expandHomePrefix,
   resolveDefaultBackupDir,
-  resolveHixAIInstanceId,
+  resolveHIxAIInstanceId,
 } from "../config/home.js";
 import { readConfig, resolveConfigPath } from "../config/store.js";
-import { printHixAICliBanner } from "../utils/banner.js";
+import { printHIxAICliBanner } from "../utils/banner.js";
 
 type DbBackupOptions = {
   config?: string;
@@ -47,13 +47,13 @@ function resolveBackupDir(raw: string): string {
 }
 
 export async function dbBackupCommand(opts: DbBackupOptions): Promise<void> {
-  printHixAICliBanner();
+  printHIxAICliBanner();
   p.intro(pc.bgCyan(pc.black(" hixai db:backup ")));
 
   const configPath = resolveConfigPath(opts.config);
   const config = readConfig(opts.config);
   const connection = resolveConnectionString(opts.config);
-  const defaultDir = resolveDefaultBackupDir(resolveHixAIInstanceId());
+  const defaultDir = resolveDefaultBackupDir(resolveHIxAIInstanceId());
   const configuredDir = opts.dir?.trim() || config?.database.backup.dir || defaultDir;
   const backupDir = resolveBackupDir(configuredDir);
   const retentionDays = normalizeRetentionDays(

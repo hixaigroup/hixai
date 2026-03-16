@@ -28,7 +28,7 @@ import type { Db } from "@hixai/db";
 import { companies, pluginLogs, pluginWebhookDeliveries } from "@hixai/db";
 import type {
   PluginStatus,
-  HixAIPluginManifestV1,
+  HIxAIPluginManifestV1,
   PluginBridgeErrorCode,
   PluginLauncherRenderContextSnapshot,
 } from "@hixai/shared";
@@ -51,9 +51,9 @@ import { assertBoard, assertCompanyAccess, getActorInfo } from "./authz.js";
 import { validateInstanceConfig } from "../services/plugin-config-validator.js";
 
 /** UI slot declaration extracted from plugin manifest */
-type PluginUiSlotDeclaration = NonNullable<NonNullable<HixAIPluginManifestV1["ui"]>["slots"]>[number];
+type PluginUiSlotDeclaration = NonNullable<NonNullable<HIxAIPluginManifestV1["ui"]>["slots"]>[number];
 /** Launcher declaration extracted from plugin manifest */
-type PluginLauncherDeclaration = NonNullable<HixAIPluginManifestV1["launchers"]>[number];
+type PluginLauncherDeclaration = NonNullable<HIxAIPluginManifestV1["launchers"]>[number];
 
 /**
  * Normalized UI contribution for frontend slot host consumption.
@@ -119,7 +119,7 @@ const BUNDLED_PLUGIN_EXAMPLES: AvailablePluginExample[] = [
     packageName: "@hixai/plugin-hello-world-example",
     pluginKey: "hixai.hello-world-example",
     displayName: "Hello World Widget (Example)",
-    description: "Reference UI plugin that adds a simple Hello World widget to the HixAI dashboard.",
+    description: "Reference UI plugin that adds a simple Hello World widget to the HIxAI dashboard.",
     localPath: "packages/plugins/examples/plugin-hello-world-example",
     tag: "example",
   },
@@ -135,7 +135,7 @@ const BUNDLED_PLUGIN_EXAMPLES: AvailablePluginExample[] = [
     packageName: "@hixai/plugin-kitchen-sink-example",
     pluginKey: "hixai-kitchen-sink-example",
     displayName: "Kitchen Sink (Example)",
-    description: "Reference plugin that demonstrates the current HixAI plugin API surface, bridge flows, UI extension surfaces, jobs, webhooks, tools, streams, and trusted local workspace/process demos.",
+    description: "Reference plugin that demonstrates the current HIxAI plugin API surface, bridge flows, UI extension surfaces, jobs, webhooks, tools, streams, and trusted local workspace/process demos.",
     localPath: "packages/plugins/examples/plugin-kitchen-sink-example",
     tag: "example",
   },

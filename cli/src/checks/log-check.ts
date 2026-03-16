@@ -1,9 +1,9 @@
 import fs from "node:fs";
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import type { CheckResult } from "./index.js";
 import { resolveRuntimeLikePath } from "./path-resolver.js";
 
-export function logCheck(config: HixAIConfig, configPath?: string): CheckResult {
+export function logCheck(config: HIxAIConfig, configPath?: string): CheckResult {
   const logDir = resolveRuntimeLikePath(config.logging.logDir, configPath);
   const reportedDir = logDir;
 

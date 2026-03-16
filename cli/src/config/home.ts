@@ -4,13 +4,13 @@ import path from "node:path";
 const DEFAULT_INSTANCE_ID = "default";
 const INSTANCE_ID_RE = /^[a-zA-Z0-9_-]+$/;
 
-export function resolveHixAIHomeDir(): string {
+export function resolveHIxAIHomeDir(): string {
   const envHome = process.env.HIXAI_HOME?.trim();
   if (envHome) return path.resolve(expandHomePrefix(envHome));
   return path.resolve(os.homedir(), ".hixai");
 }
 
-export function resolveHixAIInstanceId(override?: string): string {
+export function resolveHIxAIInstanceId(override?: string): string {
   const raw = override?.trim() || process.env.HIXAI_INSTANCE_ID?.trim() || DEFAULT_INSTANCE_ID;
   if (!INSTANCE_ID_RE.test(raw)) {
     throw new Error(
@@ -20,37 +20,37 @@ export function resolveHixAIInstanceId(override?: string): string {
   return raw;
 }
 
-export function resolveHixAIInstanceRoot(instanceId?: string): string {
-  const id = resolveHixAIInstanceId(instanceId);
-  return path.resolve(resolveHixAIHomeDir(), "instances", id);
+export function resolveHIxAIInstanceRoot(instanceId?: string): string {
+  const id = resolveHIxAIInstanceId(instanceId);
+  return path.resolve(resolveHIxAIHomeDir(), "instances", id);
 }
 
 export function resolveDefaultConfigPath(instanceId?: string): string {
-  return path.resolve(resolveHixAIInstanceRoot(instanceId), "config.json");
+  return path.resolve(resolveHIxAIInstanceRoot(instanceId), "config.json");
 }
 
 export function resolveDefaultContextPath(): string {
-  return path.resolve(resolveHixAIHomeDir(), "context.json");
+  return path.resolve(resolveHIxAIHomeDir(), "context.json");
 }
 
 export function resolveDefaultEmbeddedPostgresDir(instanceId?: string): string {
-  return path.resolve(resolveHixAIInstanceRoot(instanceId), "db");
+  return path.resolve(resolveHIxAIInstanceRoot(instanceId), "db");
 }
 
 export function resolveDefaultLogsDir(instanceId?: string): string {
-  return path.resolve(resolveHixAIInstanceRoot(instanceId), "logs");
+  return path.resolve(resolveHIxAIInstanceRoot(instanceId), "logs");
 }
 
 export function resolveDefaultSecretsKeyFilePath(instanceId?: string): string {
-  return path.resolve(resolveHixAIInstanceRoot(instanceId), "secrets", "master.key");
+  return path.resolve(resolveHIxAIInstanceRoot(instanceId), "secrets", "master.key");
 }
 
 export function resolveDefaultStorageDir(instanceId?: string): string {
-  return path.resolve(resolveHixAIInstanceRoot(instanceId), "data", "storage");
+  return path.resolve(resolveHIxAIInstanceRoot(instanceId), "data", "storage");
 }
 
 export function resolveDefaultBackupDir(instanceId?: string): string {
-  return path.resolve(resolveHixAIInstanceRoot(instanceId), "data", "backups");
+  return path.resolve(resolveHIxAIInstanceRoot(instanceId), "data", "backups");
 }
 
 export function expandHomePrefix(value: string): string {
@@ -60,10 +60,10 @@ export function expandHomePrefix(value: string): string {
 }
 
 export function describeLocalInstancePaths(instanceId?: string) {
-  const resolvedInstanceId = resolveHixAIInstanceId(instanceId);
-  const instanceRoot = resolveHixAIInstanceRoot(resolvedInstanceId);
+  const resolvedInstanceId = resolveHIxAIInstanceId(instanceId);
+  const instanceRoot = resolveHIxAIInstanceRoot(resolvedInstanceId);
   return {
-    homeDir: resolveHixAIHomeDir(),
+    homeDir: resolveHIxAIHomeDir(),
     instanceId: resolvedInstanceId,
     instanceRoot,
     configPath: resolveDefaultConfigPath(resolvedInstanceId),

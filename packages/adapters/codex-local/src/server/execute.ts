@@ -8,13 +8,13 @@ import {
   asBoolean,
   asStringArray,
   parseObject,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   redactEnvForLogs,
   ensureAbsoluteDirectory,
   ensureCommandResolvable,
-  ensureHixAISkillSymlink,
+  ensureHIxAISkillSymlink,
   ensurePathInEnv,
-  listHixAISkillEntries,
+  listHIxAISkillEntries,
   removeMaintainerOnlySkillSymlinks,
   renderTemplate,
   joinPromptSections,
@@ -61,7 +61,7 @@ function resolveCodexBillingType(env: Record<string, string>): "api" | "subscrip
   return hasNonEmptyEnvValue(env, "OPENAI_API_KEY") ? "api" : "subscription";
 }
 
-async function isLikelyHixAIRepoRoot(candidate: string): Promise<boolean> {
+async function isLikelyHIxAIRepoRoot(candidate: string): Promise<boolean> {
   const [hasWorkspace, hasPackageJson, hasServerDir, hasAdapterUtilsDir] = await Promise.all([
     pathExists(path.join(candidate, "pnpm-workspace.yaml")),
     pathExists(path.join(candidate, "package.json")),
@@ -72,7 +72,7 @@ async function isLikelyHixAIRepoRoot(candidate: string): Promise<boolean> {
   return hasWorkspace && hasPackageJson && hasServerDir && hasAdapterUtilsDir;
 }
 
-async function isLikelyHixAIRuntimeSkillSource(candidate: string, skillName: string): Promise<boolean> {
+async function isLikelyHIxAIRuntimeSkillSource(candidate: string, skillName: string): Promise<boolean> {
   if (path.basename(candidate) !== skillName) return false;
   const skillsRoot = path.dirname(candidate);
   if (path.basename(skillsRoot) !== "skills") return false;
@@ -80,7 +80,7 @@ async function isLikelyHixAIRuntimeSkillSource(candidate: string, skillName: str
 
   let cursor = path.dirname(skillsRoot);
   for (let depth = 0; depth < 6; depth += 1) {
-    if (await isLikelyHixAIRepoRoot(cursor)) return true;
+    if (await isLikelyHIxAIRepoRoot(cursor)) return true;
     const parent = path.dirname(cursor);
     if (parent === cursor) break;
     cursor = parent;
@@ -91,7 +91,7 @@ async function isLikelyHixAIRuntimeSkillSource(candidate: string, skillName: str
 
 type EnsureCodexSkillsInjectedOptions = {
   skillsHome?: string;
-  skillsEntries?: Awaited<ReturnType<typeof listHixAISkillEntries>>;
+  skillsEntries?: Awaited<ReturnType<typeof listHIxAISkillEntries>>;
   linkSkill?: (source: string, target: string) => Promise<void>;
 };
 
@@ -99,7 +99,7 @@ export async function ensureCodexSkillsInjected(
   onLog: AdapterExecutionContext["onLog"],
   options: EnsureCodexSkillsInjectedOptions = {},
 ) {
-  const skillsEntries = options.skillsEntries ?? await listHixAISkillEntries(__moduleDir);
+  const skillsEntries = options.skillsEntries ?? await listHIxAISkillEntries(__moduleDir);
   if (skillsEntries.length === 0) return;
 
   const skillsHome = options.skillsHome ?? path.join(resolveCodexHomeDir(process.env), "skills");
@@ -128,7 +128,7 @@ export async function ensureCodexSkillsInjected(
         if (
           resolvedLinkedPath &&
           resolvedLinkedPath !== entry.source &&
-          (await isLikelyHixAIRuntimeSkillSource(resolvedLinkedPath, entry.name))
+          (await isLikelyHIxAIRuntimeSkillSource(resolvedLinkedPath, entry.name))
         ) {
           await fs.unlink(target);
           if (linkSkill) {
@@ -144,7 +144,7 @@ export async function ensureCodexSkillsInjected(
         }
       }
 
-      const result = await ensureHixAISkillSymlink(entry.source, target, linkSkill);
+      const result = await ensureHIxAISkillSymlink(entry.source, target, linkSkill);
       if (result === "skipped") continue;
 
       await onLog(
@@ -165,7 +165,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your HixAI work.",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your HIxAI work.",
   );
   const command = asString(config.command, "codex");
   const model = asString(config.model, "");
@@ -224,7 +224,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   );
   const hasExplicitApiKey =
     typeof envConfig.HIXAI_API_KEY === "string" && envConfig.HIXAI_API_KEY.trim().length > 0;
-  const env: Record<string, string> = { ...buildHixAIEnv(agent) };
+  const env: Record<string, string> = { ...buildHIxAIEnv(agent) };
   if (effectiveCodexHome) {
     env.CODEX_HOME = effectiveCodexHome;
   }

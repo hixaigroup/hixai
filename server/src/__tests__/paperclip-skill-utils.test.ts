@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import {
-  listHixAISkillEntries,
+  listHIxAISkillEntries,
   removeMaintainerOnlySkillSymlinks,
 } from "@hixai/adapter-utils/server-utils";
 
@@ -28,7 +28,7 @@ describe("hixai skill utils", () => {
     await fs.mkdir(path.join(root, "skills", "hixai"), { recursive: true });
     await fs.mkdir(path.join(root, ".agents", "skills", "release"), { recursive: true });
 
-    const entries = await listHixAISkillEntries(moduleDir);
+    const entries = await listHIxAISkillEntries(moduleDir);
 
     expect(entries.map((entry) => entry.name)).toEqual(["hixai"]);
     expect(entries[0]?.source).toBe(path.join(root, "skills", "hixai"));

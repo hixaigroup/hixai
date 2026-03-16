@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "HixAI",
-  "short_name": "HixAI",
+  "name": "HIxAI",
+  "short_name": "HIxAI",
   "description": "AI-powered project management and agent coordination platform",
   "start_url": "/",
   "scope": "/",

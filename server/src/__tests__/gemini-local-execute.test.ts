@@ -99,7 +99,7 @@ describe("gemini execute", () => {
       expect(capture.argv).toContain("--approval-mode");
       expect(capture.argv).toContain("yolo");
       expect(capture.argv.at(-1)).toContain("Follow the hixai heartbeat.");
-      expect(capture.argv.at(-1)).toContain("HixAI runtime note:");
+      expect(capture.argv.at(-1)).toContain("HIxAI runtime note:");
       expect(capture.hixaiEnvKeys).toEqual(
         expect.arrayContaining([
           "HIXAI_AGENT_ID",
@@ -109,9 +109,9 @@ describe("gemini execute", () => {
           "HIXAI_RUN_ID",
         ]),
       );
-      expect(invocationPrompt).toContain("HixAI runtime note:");
+      expect(invocationPrompt).toContain("HIxAI runtime note:");
       expect(invocationPrompt).toContain("HIXAI_API_URL");
-      expect(invocationPrompt).toContain("HixAI API access note:");
+      expect(invocationPrompt).toContain("HIxAI API access note:");
       expect(invocationPrompt).toContain("run_shell_command");
       expect(result.question).toBeNull();
     } finally {

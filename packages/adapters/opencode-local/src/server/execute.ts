@@ -8,7 +8,7 @@ import {
   asNumber,
   asStringArray,
   parseObject,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   joinPromptSections,
   redactEnvForLogs,
   ensureAbsoluteDirectory,
@@ -46,7 +46,7 @@ function claudeSkillsHome(): string {
   return path.join(os.homedir(), ".claude", "skills");
 }
 
-async function resolveHixAISkillsDir(): Promise<string | null> {
+async function resolveHIxAISkillsDir(): Promise<string | null> {
   for (const candidate of HIXAI_SKILLS_CANDIDATES) {
     const isDir = await fs.stat(candidate).then((s) => s.isDirectory()).catch(() => false);
     if (isDir) return candidate;
@@ -55,7 +55,7 @@ async function resolveHixAISkillsDir(): Promise<string | null> {
 }
 
 async function ensureOpenCodeSkillsInjected(onLog: AdapterExecutionContext["onLog"]) {
-  const skillsDir = await resolveHixAISkillsDir();
+  const skillsDir = await resolveHIxAISkillsDir();
   if (!skillsDir) return;
 
   const skillsHome = claudeSkillsHome();
@@ -88,7 +88,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your HixAI work.",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your HIxAI work.",
   );
   const command = asString(config.command, "opencode");
   const model = asString(config.model, "").trim();
@@ -116,7 +116,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   const envConfig = parseObject(config.env);
   const hasExplicitApiKey =
     typeof envConfig.HIXAI_API_KEY === "string" && envConfig.HIXAI_API_KEY.trim().length > 0;
-  const env: Record<string, string> = { ...buildHixAIEnv(agent) };
+  const env: Record<string, string> = { ...buildHIxAIEnv(agent) };
   env.HIXAI_RUN_ID = runId;
   const wakeTaskId =
     (typeof context.taskId === "string" && context.taskId.trim().length > 0 && context.taskId.trim()) ||

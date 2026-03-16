@@ -1,6 +1,6 @@
 import * as p from "@clack/prompts";
 import pc from "picocolors";
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import { readConfig, resolveConfigPath } from "../config/store.js";
 import {
   agentJwtSecretCheck,
@@ -14,8 +14,8 @@ import {
   storageCheck,
   type CheckResult,
 } from "../checks/index.js";
-import { loadHixAIEnvFile } from "../config/env.js";
-import { printHixAICliBanner } from "../utils/banner.js";
+import { loadHIxAIEnvFile } from "../config/env.js";
+import { printHIxAICliBanner } from "../utils/banner.js";
 
 const STATUS_ICON = {
   pass: pc.green("✓"),
@@ -28,11 +28,11 @@ export async function doctor(opts: {
   repair?: boolean;
   yes?: boolean;
 }): Promise<{ passed: number; warned: number; failed: number }> {
-  printHixAICliBanner();
+  printHIxAICliBanner();
   p.intro(pc.bgCyan(pc.black(" hixai doctor ")));
 
   const configPath = resolveConfigPath(opts.config);
-  loadHixAIEnvFile(configPath);
+  loadHIxAIEnvFile(configPath);
   const results: CheckResult[] = [];
 
   // 1. Config check (must pass before others)
@@ -44,7 +44,7 @@ export async function doctor(opts: {
     return printSummary(results);
   }
 
-  let config: HixAIConfig;
+  let config: HIxAIConfig;
   try {
     config = readConfig(opts.config)!;
   } catch (err) {
@@ -173,7 +173,7 @@ async function runRepairableCheck(input: {
   if (!repaired) return result;
 
   // Repairs may create/update the adjacent .env file or other local resources.
-  loadHixAIEnvFile(input.configPath);
+  loadHIxAIEnvFile(input.configPath);
   result = await input.run();
   printResult(result);
   return result;

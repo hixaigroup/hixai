@@ -1,9 +1,9 @@
 import fs from "node:fs";
-import { hixaiConfigSchema, type HixAIConfig } from "@hixai/shared";
-import { resolveHixAIConfigPath } from "./paths.js";
+import { hixaiConfigSchema, type HIxAIConfig } from "@hixai/shared";
+import { resolveHIxAIConfigPath } from "./paths.js";
 
-export function readConfigFile(): HixAIConfig | null {
-  const configPath = resolveHixAIConfigPath();
+export function readConfigFile(): HIxAIConfig | null {
+  const configPath = resolveHIxAIConfigPath();
 
   if (!fs.existsSync(configPath)) return null;
 

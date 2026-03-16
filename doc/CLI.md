@@ -1,6 +1,6 @@
 # CLI Reference
 
-HixAI CLI now supports both:
+HIxAI CLI now supports both:
 
 - instance setup/diagnostics (`onboard`, `doctor`, `configure`, `env`, `allowed-hostname`)
 - control-plane client operations (issues, approvals, agents, activity, dashboard)
@@ -119,10 +119,10 @@ pnpm hixai agent get <agent-id>
 pnpm hixai agent local-cli <agent-id-or-shortname> --company-id <company-id>
 ```
 
-`agent local-cli` is the quickest way to run local Claude/Codex manually as a HixAI agent:
+`agent local-cli` is the quickest way to run local Claude/Codex manually as a HIxAI agent:
 
 - creates a new long-lived agent API key
-- installs missing HixAI skills into `~/.codex/skills` and `~/.claude/skills`
+- installs missing HIxAI skills into `~/.codex/skills` and `~/.claude/skills`
 - prints `export ...` lines for `HIXAI_API_URL`, `HIXAI_COMPANY_ID`, `HIXAI_AGENT_ID`, and `HIXAI_API_KEY`
 
 Example for shortname-based local setup:

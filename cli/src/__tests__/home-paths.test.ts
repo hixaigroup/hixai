@@ -4,8 +4,8 @@ import { afterEach, describe, expect, it } from "vitest";
 import {
   describeLocalInstancePaths,
   expandHomePrefix,
-  resolveHixAIHomeDir,
-  resolveHixAIInstanceId,
+  resolveHIxAIHomeDir,
+  resolveHIxAIInstanceId,
 } from "../config/home.js";
 
 const ORIGINAL_ENV = { ...process.env };
@@ -28,13 +28,13 @@ describe("home path resolution", () => {
   it("supports HIXAI_HOME and explicit instance ids", () => {
     process.env.HIXAI_HOME = "~/hixai-home";
 
-    const home = resolveHixAIHomeDir();
+    const home = resolveHIxAIHomeDir();
     expect(home).toBe(path.resolve(os.homedir(), "hixai-home"));
-    expect(resolveHixAIInstanceId("dev_1")).toBe("dev_1");
+    expect(resolveHIxAIInstanceId("dev_1")).toBe("dev_1");
   });
 
   it("rejects invalid instance ids", () => {
-    expect(() => resolveHixAIInstanceId("bad/id")).toThrow(/Invalid instance id/);
+    expect(() => resolveHIxAIInstanceId("bad/id")).toThrow(/Invalid instance id/);
   });
 
   it("expands ~ prefixes", () => {

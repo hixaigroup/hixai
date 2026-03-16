@@ -11,7 +11,7 @@ const HIXAI_ART = [
 
 const TAGLINE = "Open-source orchestration for zero-human companies";
 
-export function printHixAICliBanner(): void {
+export function printHIxAICliBanner(): void {
   const lines = [
     "",
     ...HIXAI_ART.map((line) => pc.cyan(line)),

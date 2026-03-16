@@ -3,7 +3,7 @@ title: Architecture
 summary: Stack overview, request flow, and adapter model
 ---
 
-HixAI is a monorepo with four main layers.
+HIxAI is a monorepo with four main layers.
 
 ## Stack Overview
 
@@ -60,7 +60,7 @@ hixai/
 │       └── codex-local/         # OpenAI Codex adapter
 │
 ├── skills/                      # Agent skills
-│   └── hixai/               # Core HixAI skill (heartbeat protocol)
+│   └── hixai/               # Core HIxAI skill (heartbeat protocol)
 │
 ├── cli/                         # CLI client
 │   └── src/                     # Setup and control-plane commands
@@ -74,14 +74,14 @@ When a heartbeat fires:
 
 1. **Trigger** — Scheduler, manual invoke, or event (assignment, mention) triggers a heartbeat
 2. **Adapter invocation** — Server calls the configured adapter's `execute()` function
-3. **Agent process** — Adapter spawns the agent (e.g. Claude Code CLI) with HixAI env vars and a prompt
-4. **Agent work** — The agent calls HixAI's REST API to check assignments, checkout tasks, do work, and update status
+3. **Agent process** — Adapter spawns the agent (e.g. Claude Code CLI) with HIxAI env vars and a prompt
+4. **Agent work** — The agent calls HIxAI's REST API to check assignments, checkout tasks, do work, and update status
 5. **Result capture** — Adapter captures stdout, parses usage/cost data, extracts session state
 6. **Run record** — Server records the run result, costs, and any session state for next heartbeat
 
 ## Adapter Model
 
-Adapters are the bridge between HixAI and agent runtimes. Each adapter is a package with three modules:
+Adapters are the bridge between HIxAI and agent runtimes. Each adapter is a package with three modules:
 
 - **Server module** — `execute()` function that spawns/calls the agent, plus environment diagnostics
 - **UI module** — stdout parser for the run viewer, config form fields for agent creation
@@ -91,7 +91,7 @@ Built-in adapters: `claude_local`, `codex_local`, `process`, `http`. You can cre
 
 ## Key Design Decisions
 
-- **Control plane, not execution plane** — HixAI orchestrates agents; it doesn't run them
+- **Control plane, not execution plane** — HIxAI orchestrates agents; it doesn't run them
 - **Company-scoped** — all entities belong to exactly one company; strict data boundaries
 - **Single-assignee tasks** — atomic checkout prevents concurrent work on the same task
 - **Adapter-agnostic** — any runtime that can call an HTTP API works as an agent

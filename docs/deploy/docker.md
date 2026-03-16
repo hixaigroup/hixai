@@ -3,7 +3,7 @@ title: Docker
 summary: Docker Compose quickstart
 ---
 
-Run HixAI in Docker without installing Node or pnpm locally.
+Run HIxAI in Docker without installing Node or pnpm locally.
 
 ## Compose Quickstart (Recommended)
 

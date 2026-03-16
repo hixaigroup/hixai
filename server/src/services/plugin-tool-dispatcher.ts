@@ -24,7 +24,7 @@
 
 import type { Db } from "@hixai/db";
 import type {
-  HixAIPluginManifestV1,
+  HIxAIPluginManifestV1,
   PluginRecord,
 } from "@hixai/shared";
 import type { ToolRunContext, ToolResult } from "@hixai/plugin-sdk";
@@ -155,7 +155,7 @@ export interface PluginToolDispatcher {
    */
   registerPluginTools(
     pluginId: string,
-    manifest: HixAIPluginManifestV1,
+    manifest: HIxAIPluginManifestV1,
   ): void;
 
   /**
@@ -428,7 +428,7 @@ export function createPluginToolDispatcher(
 
     registerPluginTools(
       pluginId: string,
-      manifest: HixAIPluginManifestV1,
+      manifest: HIxAIPluginManifestV1,
     ): void {
       registry.registerPlugin(pluginId, manifest);
     },

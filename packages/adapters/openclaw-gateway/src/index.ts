@@ -8,12 +8,12 @@ export const agentConfigurationDoc = `# openclaw_gateway agent configuration
 Adapter: openclaw_gateway
 
 Use when:
-- You want HixAI to invoke OpenClaw over the Gateway WebSocket protocol.
+- You want HIxAI to invoke OpenClaw over the Gateway WebSocket protocol.
 - You want native gateway auth/connect semantics instead of HTTP /v1/responses or /hooks/*.
 
 Don't use when:
 - You only expose OpenClaw HTTP endpoints.
-- Your deployment does not permit outbound WebSocket access from the HixAI server.
+- Your deployment does not permit outbound WebSocket access from the HIxAI server.
 
 Core fields:
 - url (string, required): OpenClaw gateway WebSocket URL (ws:// or wss://)
@@ -31,20 +31,20 @@ Gateway connect identity fields:
 
 Request behavior fields:
 - payloadTemplate (object, optional): additional fields merged into gateway agent params
-- workspaceRuntime (object, optional): desired runtime service intents; HixAI forwards these in a standardized hixai.workspaceRuntime block for remote execution environments
+- workspaceRuntime (object, optional): desired runtime service intents; HIxAI forwards these in a standardized hixai.workspaceRuntime block for remote execution environments
 - timeoutSec (number, optional): adapter timeout in seconds (default 120)
 - waitTimeoutMs (number, optional): agent.wait timeout override (default timeoutSec * 1000)
 - autoPairOnFirstConnect (boolean, optional): on first "pairing required", attempt device.pair.list/device.pair.approve via shared auth, then retry once (default true)
-- hixaiApiUrl (string, optional): absolute HixAI base URL advertised in wake text
+- hixaiApiUrl (string, optional): absolute HIxAI base URL advertised in wake text
 
 Session routing fields:
 - sessionKeyStrategy (string, optional): issue (default), fixed, or run
 - sessionKey (string, optional): fixed session key when strategy=fixed (default hixai)
 
 Standard outbound payload additions:
-- hixai (object): standardized HixAI context added to every gateway agent request
+- hixai (object): standardized HIxAI context added to every gateway agent request
 - hixai.workspace (object, optional): resolved execution workspace for this run
-- hixai.workspaces (array, optional): additional workspace hints HixAI exposed to the run
+- hixai.workspaces (array, optional): additional workspace hints HIxAI exposed to the run
 - hixai.workspaceRuntime (object, optional): normalized runtime service intent config for the workspace
 
 Standard result metadata supported:

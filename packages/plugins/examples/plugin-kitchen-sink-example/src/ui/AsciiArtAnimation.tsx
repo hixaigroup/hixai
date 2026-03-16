@@ -27,7 +27,7 @@ const HIXAI_SPRITES = [
   ],
 ] as const;
 
-type HixAISprite = (typeof HIXAI_SPRITES)[number];
+type HIxAISprite = (typeof HIXAI_SPRITES)[number];
 
 interface Clip {
   x: number;
@@ -37,7 +37,7 @@ interface Clip {
   life: number;
   maxLife: number;
   drift: number;
-  sprite: HixAISprite;
+  sprite: HIxAISprite;
   width: number;
   height: number;
 }
@@ -53,7 +53,7 @@ function measureChar(container: HTMLElement): { w: number; h: number } {
   return { w: rect.width, h: rect.height };
 }
 
-function spriteSize(sprite: HixAISprite): { width: number; height: number } {
+function spriteSize(sprite: HIxAISprite): { width: number; height: number } {
   let width = 0;
   for (const row of sprite) width = Math.max(width, row.length);
   return { width, height: sprite.length };

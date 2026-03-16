@@ -1,13 +1,13 @@
 ---
 title: Adapters Overview
-summary: What adapters are and how they connect agents to HixAI
+summary: What adapters are and how they connect agents to HIxAI
 ---
 
-Adapters are the bridge between HixAI's orchestration layer and agent runtimes. Each adapter knows how to invoke a specific type of AI agent and capture its results.
+Adapters are the bridge between HIxAI's orchestration layer and agent runtimes. Each adapter knows how to invoke a specific type of AI agent and capture its results.
 
 ## How Adapters Work
 
-When a heartbeat fires, HixAI:
+When a heartbeat fires, HIxAI:
 
 1. Looks up the agent's `adapterType` and `adapterConfig`
 2. Calls the adapter's `execute()` function with the execution context

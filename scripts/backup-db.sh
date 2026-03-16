@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Backup the configured HixAI database to the configured backup directory
+# Backup the configured HIxAI database to the configured backup directory
 # (default: ~/.hixai/instances/<instance-id>/data/backups)
 #
 # Usage:

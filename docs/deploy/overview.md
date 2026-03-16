@@ -3,7 +3,7 @@ title: Deployment Overview
 summary: Deployment modes at a glance
 ---
 
-HixAI supports three deployment configurations, from zero-friction local to internet-facing production.
+HIxAI supports three deployment configurations, from zero-friction local to internet-facing production.
 
 ## Deployment Modes
 
@@ -38,7 +38,7 @@ HixAI supports three deployment configurations, from zero-friction local to inte
 
 ## Choosing a Mode
 
-- **Just trying HixAI?** Use `local_trusted` (the default)
+- **Just trying HIxAI?** Use `local_trusted` (the default)
 - **Sharing with a team on private network?** Use `authenticated` + `private`
 - **Deploying to the cloud?** Use `authenticated` + `public`
 

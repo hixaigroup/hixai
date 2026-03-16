@@ -54,7 +54,7 @@ HIXAI_APPROVAL_ID=${HIXAI_APPROVAL_ID}
 HIXAI_APPROVAL_STATUS=${HIXAI_APPROVAL_STATUS}
 HIXAI_LINKED_ISSUE_IDS=${HIXAI_LINKED_ISSUE_IDS}
 
-Run your HixAI heartbeat procedure now.
+Run your HIxAI heartbeat procedure now.
 EOF
 
 PAYLOAD="$(jq -nc \

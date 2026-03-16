@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# release.sh — Prepare and publish a HixAI release.
+# release.sh — Prepare and publish a HIxAI release.
 #
 # Stable release:
 #   ./scripts/release.sh patch

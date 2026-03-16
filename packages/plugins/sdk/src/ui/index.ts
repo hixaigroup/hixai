@@ -1,5 +1,5 @@
 /**
- * `@hixai/plugin-sdk/ui` — HixAI plugin UI SDK.
+ * `@hixai/plugin-sdk/ui` — HIxAI plugin UI SDK.
  *
  * Import this subpath from plugin UI bundles (React components that run in
  * the host frontend).  Do **not** import this from plugin worker code.

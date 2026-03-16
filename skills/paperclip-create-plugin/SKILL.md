@@ -1,15 +1,15 @@
 ---
 name: hixai-create-plugin
 description: >
-  Create new HixAI plugins with the current alpha SDK/runtime. Use when
+  Create new HIxAI plugins with the current alpha SDK/runtime. Use when
   scaffolding a plugin package, adding a new example plugin, or updating plugin
   authoring docs. Covers the supported worker/UI surface, route conventions,
   scaffold flow, and verification steps.
 ---
 
-# Create a HixAI Plugin
+# Create a HIxAI Plugin
 
-Use this skill when the task is to create, scaffold, or document a HixAI plugin.
+Use this skill when the task is to create, scaffold, or document a HIxAI plugin.
 
 ## 1. Ground rules
 
@@ -37,7 +37,7 @@ pnpm --filter @hixai/create-hixai-plugin build
 node packages/plugins/create-hixai-plugin/dist/index.js <npm-package-name> --output <target-dir>
 ```
 
-For a plugin that lives outside the HixAI repo, pass `--sdk-path` and let the scaffold snapshot the local SDK/shared packages into `.hixai-sdk/`:
+For a plugin that lives outside the HIxAI repo, pass `--sdk-path` and let the scaffold snapshot the local SDK/shared packages into `.hixai-sdk/`:
 
 ```bash
 pnpm --filter @hixai/create-hixai-plugin build
@@ -68,7 +68,7 @@ Make sure the plugin:
 - does not import host UI component stubs
 - keeps UI self-contained
 - uses `routePath` only on `page` slots
-- is installed into HixAI from an absolute local path during development
+- is installed into HIxAI from an absolute local path during development
 
 ## 4. If the plugin should appear in the app
 

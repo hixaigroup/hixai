@@ -1,9 +1,9 @@
 import fs from "node:fs";
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import type { CheckResult } from "./index.js";
 import { resolveRuntimeLikePath } from "./path-resolver.js";
 
-export function storageCheck(config: HixAIConfig, configPath?: string): CheckResult {
+export function storageCheck(config: HIxAIConfig, configPath?: string): CheckResult {
   if (config.storage.provider === "local_disk") {
     const baseDir = resolveRuntimeLikePath(config.storage.localDisk.baseDir, configPath);
     if (!fs.existsSync(baseDir)) {

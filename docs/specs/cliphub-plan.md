@@ -1,16 +1,16 @@
-# ClipHub: Marketplace for HixAI Team Configurations
+# ClipHub: Marketplace for HIxAI Team Configurations
 
-> The "app store" for whole-company AI teams — pre-built HixAI configurations, agent blueprints, skills, and governance templates that ship real work from day one.
+> The "app store" for whole-company AI teams — pre-built HIxAI configurations, agent blueprints, skills, and governance templates that ship real work from day one.
 
 ## 1. Vision & Positioning
 
-**ClipHub** sells **entire team configurations** — org charts, agent roles, inter-agent workflows, governance rules, and project templates — for HixAI-managed companies.
+**ClipHub** sells **entire team configurations** — org charts, agent roles, inter-agent workflows, governance rules, and project templates — for HIxAI-managed companies.
 
 | Dimension | ClipHub |
 |---|---|
 | Unit of sale | Team blueprint (multi-agent org) |
 | Buyer | Founder / team lead spinning up an AI company |
-| Install target | HixAI company (agents, projects, governance) |
+| Install target | HIxAI company (agents, projects, governance) |
 | Value prop | "Skip org design — get a shipping team in minutes" |
 | Price range | $0–$499 per blueprint (+ individual add-ons) |
 
@@ -20,7 +20,7 @@
 
 ### 2.1 Team Blueprints (primary product)
 
-A complete HixAI company configuration:
+A complete HIxAI company configuration:
 
 - **Org chart**: Agents with roles, titles, reporting chains, capabilities
 - **Agent configs**: Adapter type, model, prompt templates, instructions paths
@@ -36,7 +36,7 @@ A complete HixAI company configuration:
 
 ### 2.2 Agent Blueprints (individual agents within a team context)
 
-Single-agent configurations designed to plug into a HixAI org:
+Single-agent configurations designed to plug into a HIxAI org:
 
 - Role definition, prompt template, adapter config
 - Reporting chain expectations (who they report to)
@@ -50,11 +50,11 @@ Single-agent configurations designed to plug into a HixAI org:
 
 ### 2.3 Skills (modular capabilities)
 
-Portable skill files that any HixAI agent can use:
+Portable skill files that any HIxAI agent can use:
 
 - Markdown skill files with instructions
 - Tool configurations and shell scripts
-- Compatible with HixAI's skill loading system
+- Compatible with HIxAI's skill loading system
 
 **Examples:**
 - "Git PR Workflow" — standardized PR creation and review (Free)
@@ -111,7 +111,7 @@ interface Listing {
   // Compatibility
   compatibleAdapters: string[];    // ['claude_local', 'codex_local', ...]
   requiredModels: string[];        // ['claude-opus-4-6', 'claude-sonnet-4-6']
-  hixaiVersionMin: string;     // Minimum HixAI version
+  hixaiVersionMin: string;     // Minimum HIxAI version
 
   // Social proof
   installCount: number;
@@ -216,7 +216,7 @@ interface Purchase {
   id: string;
   listingId: string;
   buyerUserId: string;
-  buyerCompanyId: string | null;    // Target HixAI company
+  buyerCompanyId: string | null;    // Target HIxAI company
   pricePaidCents: number;
   paymentIntentId: string | null;   // Stripe
   installedAt: string | null;       // When deployed to company
@@ -284,7 +284,7 @@ interface Review {
 | `PATCH` | `/api/listings/:id` | Update listing |
 | `DELETE` | `/api/listings/:id` | Archive listing |
 | `POST` | `/api/listings/:id/purchase` | Purchase listing (Stripe checkout) |
-| `POST` | `/api/listings/:id/install` | Install to HixAI company |
+| `POST` | `/api/listings/:id/install` | Install to HIxAI company |
 | `GET` | `/api/listings/:id/reviews` | Get reviews |
 | `POST` | `/api/listings/:id/reviews` | Submit review |
 | `GET` | `/api/creators/:slug` | Creator profile |
@@ -304,14 +304,14 @@ Homepage → Browse marketplace → Filter by type/category
   → Click listing → Read details, reviews, preview org chart
   → Click "Buy" → Stripe checkout (or free install)
   → Post-purchase: "Install to Company" button
-  → Select target HixAI company (or create new)
-  → ClipHub API calls HixAI API to:
+  → Select target HIxAI company (or create new)
+  → ClipHub API calls HIxAI API to:
       1. Create agents with configs from blueprint
       2. Set up reporting chains
       3. Create projects with workspace configs
       4. Apply governance rules
       5. Deploy skill files to agent instruction paths
-  → Redirect to HixAI dashboard with new team running
+  → Redirect to HIxAI dashboard with new team running
 ```
 
 ### 5.2 Creator: Build → Publish → Earn
@@ -329,11 +329,11 @@ Sign up as creator → Connect Stripe
   → Track installs, revenue, reviews on creator dashboard
 ```
 
-### 5.3 Creator: Export from HixAI → Publish
+### 5.3 Creator: Export from HIxAI → Publish
 
 ```
-Running HixAI company → "Export as Blueprint" (CLI or UI)
-  → HixAI exports:
+Running HIxAI company → "Export as Blueprint" (CLI or UI)
+  → HIxAI exports:
       - Agent configs (sanitized — no secrets)
       - Org chart / reporting chains
       - Governance rules
@@ -349,7 +349,7 @@ Running HixAI company → "Export as Blueprint" (CLI or UI)
 
 ### 6.1 Visual Language
 
-- **Color palette**: Dark ink primary, warm sand backgrounds, accent color for CTAs (HixAI brand blue/purple)
+- **Color palette**: Dark ink primary, warm sand backgrounds, accent color for CTAs (HIxAI brand blue/purple)
 - **Typography**: Clean sans-serif, strong hierarchy, monospace for technical details
 - **Cards**: Rounded corners, subtle shadows, clear pricing badges
 - **Org chart visuals**: Interactive tree/graph showing agent relationships in team blueprints
@@ -360,7 +360,7 @@ Running HixAI company → "Export as Blueprint" (CLI or UI)
 |---|---|
 | Product card | Org chart mini-preview + agent count badge |
 | Detail page | Interactive org chart + per-agent breakdown |
-| Install flow | One-click deploy to HixAI company |
+| Install flow | One-click deploy to HIxAI company |
 | Social proof | "X companies running this blueprint" |
 | Preview | Live demo sandbox (stretch goal) |
 
@@ -407,7 +407,7 @@ When a buyer clicks "Install to Company":
 ```
 POST /api/listings/:id/install
 {
-  "targetCompanyId": "uuid",         // Existing HixAI company
+  "targetCompanyId": "uuid",         // Existing HIxAI company
   "overrides": {                      // Optional customization
     "agentModel": "claude-sonnet-4-6", // Override default model
     "budgetScale": 0.5,               // Scale budgets
@@ -453,20 +453,20 @@ The install handler:
 
 ### 9.1 Stack
 
-- **Frontend**: Next.js (React), Tailwind CSS, same UI framework as HixAI
-- **Backend**: Node.js API (or extend HixAI server)
-- **Database**: Postgres (can share HixAI's DB or separate)
+- **Frontend**: Next.js (React), Tailwind CSS, same UI framework as HIxAI
+- **Backend**: Node.js API (or extend HIxAI server)
+- **Database**: Postgres (can share HIxAI's DB or separate)
 - **Payments**: Stripe Connect (marketplace mode)
 - **Storage**: S3/R2 for listing bundles and images
-- **Auth**: Shared with HixAI auth (or OAuth2)
+- **Auth**: Shared with HIxAI auth (or OAuth2)
 
-### 9.2 Integration with HixAI
+### 9.2 Integration with HIxAI
 
 ClipHub can be:
-- **Option A**: A separate app that calls HixAI's API to install blueprints
-- **Option B**: A built-in section of the HixAI UI (`/marketplace` route)
+- **Option A**: A separate app that calls HIxAI's API to install blueprints
+- **Option B**: A built-in section of the HIxAI UI (`/marketplace` route)
 
-Option B is simpler for MVP — adds routes to the existing HixAI UI and API.
+Option B is simpler for MVP — adds routes to the existing HIxAI UI and API.
 
 ### 9.3 Bundle Format
 
@@ -506,14 +506,14 @@ blueprint/
 - [ ] Listing detail page with org chart visualization
 - [ ] Creator registration and listing creation wizard
 - [ ] Free installs only (no payments yet)
-- [ ] Install flow: blueprint → HixAI company
+- [ ] Install flow: blueprint → HIxAI company
 
 ### Phase 2: Payments & Social
 - [ ] Stripe Connect integration
 - [ ] Purchase flow
 - [ ] Review system
 - [ ] Creator analytics dashboard
-- [ ] "Export from HixAI" CLI command
+- [ ] "Export from HIxAI" CLI command
 
 ### Phase 3: Growth
 - [ ] Search with relevance ranking

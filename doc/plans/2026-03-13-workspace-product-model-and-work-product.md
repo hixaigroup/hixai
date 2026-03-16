@@ -2,12 +2,12 @@
 
 ## Context
 
-HixAI needs to support two very different but equally valid ways of working:
+HIxAI needs to support two very different but equally valid ways of working:
 
 - a solo developer working directly on `master`, or in a folder that is not even a git repo
 - a larger engineering workflow with isolated branches, previews, pull requests, and cleanup automation
 
-Today, HixAI already has the beginnings of this model:
+Today, HIxAI already has the beginnings of this model:
 
 - `projects` can carry execution workspace policy
 - `project_workspaces` already exist as a durable project-scoped object
@@ -21,7 +21,7 @@ The main product risk is overloading one concept to do too much:
 - making subissues do the job of branches or PRs
 - making projects too infrastructure-heavy
 - making workspaces so hidden that users cannot form a mental model
-- making HixAI feel like a code review tool instead of a control plane
+- making HIxAI feel like a code review tool instead of a control plane
 
 ## Goals
 
@@ -38,12 +38,12 @@ The main product risk is overloading one concept to do too much:
    - commits
    - documents and artifacts
 5. Keep the main navigation and task board simple.
-6. Seamlessly upgrade existing HixAI users to the new model without forcing disruptive reconfiguration.
-7. Support cloud-hosted HixAI deployments where execution happens in remote or adapter-managed environments rather than local workers.
+6. Seamlessly upgrade existing HIxAI users to the new model without forcing disruptive reconfiguration.
+7. Support cloud-hosted HIxAI deployments where execution happens in remote or adapter-managed environments rather than local workers.
 
 ## Non-Goals
 
-- Turning HixAI into a full code review product
+- Turning HIxAI into a full code review product
 - Requiring every issue to have its own branch or PR
 - Requiring every project to configure code/workspace automation
 - Making workspaces a top-level global navigation primitive in V1
@@ -91,7 +91,7 @@ Examples:
 - an adapter-managed remote sandbox
 - a cloud agent provider's isolated branch/session environment
 
-This object must be recorded explicitly so that HixAI can:
+This object must be recorded explicitly so that HIxAI can:
 
 - show where work happened
 - attach previews and runtime services
@@ -103,7 +103,7 @@ This object must be recorded explicitly so that HixAI can:
 
 A PR is an output of work, not the planning unit.
 
-HixAI should treat PRs as a type of work product linked back to:
+HIxAI should treat PRs as a type of work product linked back to:
 
 - the issue
 - the execution workspace
@@ -113,7 +113,7 @@ Git-specific automation should live under workspace policy, not under the core i
 
 ### 5. Existing users must upgrade automatically
 
-HixAI already has users and existing project/task data. Any new model must preserve continuity.
+HIxAI already has users and existing project/task data. Any new model must preserve continuity.
 
 The product should default existing installs into a sensible compatibility mode:
 
@@ -124,11 +124,11 @@ The product should default existing installs into a sensible compatibility mode:
 
 This migration should feel additive, not like a mandatory re-onboarding flow.
 
-### 6. Cloud-hosted HixAI must be a first-class deployment mode
+### 6. Cloud-hosted HIxAI must be a first-class deployment mode
 
-HixAI cannot assume that it is running on the same machine as the code.
+HIxAI cannot assume that it is running on the same machine as the code.
 
-In cloud deployments, HixAI may:
+In cloud deployments, HIxAI may:
 
 - run on Vercel or another serverless host
 - have no long-lived local worker process
@@ -164,7 +164,7 @@ Use these terms consistently in product copy:
 - `Execution workspace`: actual runtime workspace used for issue execution
 - `Isolated issue workspace`: user-facing term for an issue-specific derived workspace
 - `Work product`: previews, PRs, branches, commits, artifacts, docs
-- `Runtime service`: a process or service HixAI owns or tracks for a workspace
+- `Runtime service`: a process or service HIxAI owns or tracks for a workspace
 
 Use these terms consistently in migration and deployment messaging:
 
@@ -216,7 +216,7 @@ from:
 - "what temporary execution environment did this issue run in?"
 
 That keeps the model simple for solo users while still supporting advanced automation.
-It also lets cloud-hosted HixAI deployments point at codebases and remotes without pretending the HixAI host has direct filesystem access.
+It also lets cloud-hosted HIxAI deployments point at codebases and remotes without pretending the HIxAI host has direct filesystem access.
 
 ### Proposed fields
 
@@ -257,7 +257,7 @@ This is the main operator-facing configuration surface.
 
 ### Motivation
 
-This lets HixAI support:
+This lets HIxAI support:
 
 - direct editing in a shared workspace
 - isolated workspaces for issue parallelism
@@ -358,7 +358,7 @@ This is the missing object that makes cleanup, previews, PRs, and branch reuse t
 
 ### Motivation
 
-Without an explicit `execution workspace` record, HixAI has nowhere stable to attach:
+Without an explicit `execution workspace` record, HIxAI has nowhere stable to attach:
 
 - derived branch/worktree identity
 - active preview ownership
@@ -455,7 +455,7 @@ User-facing umbrella concept for outputs of work.
 
 ### Motivation
 
-HixAI needs a single place to show:
+HIxAI needs a single place to show:
 
 - "here is the preview"
 - "here is the PR"
@@ -522,9 +522,9 @@ without turning issues into a raw dump of adapter details.
 
 - PRs are stored here as `type=pull_request`
 - previews are stored here as `type=preview_url` or `runtime_service`
-- HixAI-owned processes should update health/status automatically
+- HIxAI-owned processes should update health/status automatically
 - external providers should at least store link, provider, external id, and latest known state
-- cloud agents should be able to create work product records without HixAI owning the execution host
+- cloud agents should be able to create work product records without HIxAI owning the execution host
 
 ## Page and UI Model
 
@@ -965,9 +965,9 @@ Avoid migration copy that implies users were previously using the product "wrong
 
 ## Cloud Deployment Requirements
 
-## 1. HixAI host and execution host must be decoupled
+## 1. HIxAI host and execution host must be decoupled
 
-HixAI may run:
+HIxAI may run:
 
 - locally with direct filesystem access
 - in a cloud app host such as Vercel
@@ -986,7 +986,7 @@ A cloud agent should be able to:
 - emit preview URLs
 - register artifacts
 
-without the HixAI host itself running local git or local preview processes.
+without the HIxAI host itself running local git or local preview processes.
 
 ## 3. Local-only assumptions must be optional
 
@@ -1030,7 +1030,7 @@ Archived or idle workspaces should be hidden from default lists before they are 
 
 ## 2. Multiple issues may intentionally share one execution workspace
 
-This is how HixAI supports:
+This is how HIxAI supports:
 
 - solo dev on a shared branch
 - operator integration branches
@@ -1063,7 +1063,7 @@ The issue should only:
 
 Previews, PRs, commits, and artifacts should all be discoverable through one consistent issue-level affordance.
 
-That keeps HixAI focused on coordination and visibility instead of splitting outputs across many hidden subsystems.
+That keeps HIxAI focused on coordination and visibility instead of splitting outputs across many hidden subsystems.
 
 ## Recommended Implementation Order
 
@@ -1118,9 +1118,9 @@ It also keeps the rollout practical:
 
 - existing users can upgrade without workflow breakage
 - local-first installs stay simple
-- cloud-hosted HixAI deployments remain first-class
+- cloud-hosted HIxAI deployments remain first-class
 
-That is a better fit for HixAI than either extreme:
+That is a better fit for HIxAI than either extreme:
 
 - hiding workspace behavior until nobody understands it
 - or making the whole app revolve around code-host mechanics

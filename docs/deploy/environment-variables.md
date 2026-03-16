@@ -3,7 +3,7 @@ title: Environment Variables
 summary: Full environment variable reference
 ---
 
-All environment variables that HixAI uses for server configuration.
+All environment variables that HIxAI uses for server configuration.
 
 ## Server Configuration
 
@@ -12,7 +12,7 @@ All environment variables that HixAI uses for server configuration.
 | `PORT` | `3100` | Server port |
 | `HOST` | `127.0.0.1` | Server host binding |
 | `DATABASE_URL` | (embedded) | PostgreSQL connection string |
-| `HIXAI_HOME` | `~/.hixai` | Base directory for all HixAI data |
+| `HIXAI_HOME` | `~/.hixai` | Base directory for all HIxAI data |
 | `HIXAI_INSTANCE_ID` | `default` | Instance identifier (for multiple local instances) |
 | `HIXAI_DEPLOYMENT_MODE` | `local_trusted` | Runtime mode override |
 
@@ -32,7 +32,7 @@ These are set automatically by the server when invoking agents:
 |----------|-------------|
 | `HIXAI_AGENT_ID` | Agent's unique ID |
 | `HIXAI_COMPANY_ID` | Company ID |
-| `HIXAI_API_URL` | HixAI API base URL |
+| `HIXAI_API_URL` | HIxAI API base URL |
 | `HIXAI_API_KEY` | Short-lived JWT for API auth |
 | `HIXAI_RUN_ID` | Current heartbeat run ID |
 | `HIXAI_TASK_ID` | Issue that triggered this wake |

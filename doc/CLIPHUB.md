@@ -2,15 +2,15 @@
 
 **Download a company.**
 
-ClipHub is the public registry where people share, discover, and download HixAI company configurations. A company template is a portable artifact containing an entire org — agents, reporting structure, adapter configs, role definitions, seed tasks — ready to spin up with one command.
+ClipHub is the public registry where people share, discover, and download HIxAI company configurations. A company template is a portable artifact containing an entire org — agents, reporting structure, adapter configs, role definitions, seed tasks — ready to spin up with one command.
 
 ---
 
 ## What It Is
 
-ClipHub is to HixAI what a package registry is to a programming language. HixAI already supports exportable org configs (see [SPEC.md](./SPEC.md) §2). ClipHub is the public directory where those exports live.
+ClipHub is to HIxAI what a package registry is to a programming language. HIxAI already supports exportable org configs (see [SPEC.md](./SPEC.md) §2). ClipHub is the public directory where those exports live.
 
-A user builds a working company in HixAI — a dev shop, a marketing agency, a research lab, a content studio — exports the template, and publishes it to ClipHub. Anyone can browse, search, download, and spin up that company on their own HixAI instance.
+A user builds a working company in HIxAI — a dev shop, a marketing agency, a research lab, a content studio — exports the template, and publishes it to ClipHub. Anyone can browse, search, download, and spin up that company on their own HIxAI instance.
 
 The tagline: **you can literally download a company.**
 
@@ -18,7 +18,7 @@ The tagline: **you can literally download a company.**
 
 ## What Gets Published
 
-A ClipHub package is a **company template export** — the portable artifact format defined in the HixAI spec. It contains:
+A ClipHub package is a **company template export** — the portable artifact format defined in the HIxAI spec. It contains:
 
 | Component | Description |
 |---|---|
@@ -87,7 +87,7 @@ Two ways to use a template:
 ```
 hixai install cliphub:<publisher>/<company-slug>
 ```
-Downloads the template and creates a new company in your local HixAI instance. You add your own API keys, set budgets, customize agents, and hit go.
+Downloads the template and creates a new company in your local HIxAI instance. You add your own API keys, set budgets, customize agents, and hit go.
 
 **Fork:**
 Forking creates a copy of the template under your own ClipHub account. You can modify it, republish it as your own variant, and the fork lineage is tracked. This enables evolutionary improvement — someone publishes a marketing agency, you fork it, add a social media team, republish.
@@ -118,7 +118,7 @@ Anyone with a GitHub account can publish to ClipHub. Authentication is via GitHu
 
 ### How to Publish
 
-From within HixAI, export your company as a template, then publish:
+From within HIxAI, export your company as a template, then publish:
 
 ```
 hixai export --template my-company
@@ -201,7 +201,7 @@ New accounts have a waiting period before they can publish. This prevents drive-
 
 ## Architecture
 
-ClipHub is a **separate service** from HixAI itself. HixAI is self-hosted; ClipHub is a hosted registry that HixAI instances talk to.
+ClipHub is a **separate service** from HIxAI itself. HIxAI is self-hosted; ClipHub is a hosted registry that HIxAI instances talk to.
 
 ### Integration Points
 
@@ -209,15 +209,15 @@ ClipHub is a **separate service** from HixAI itself. HixAI is self-hosted; ClipH
 |---|---|
 | **ClipHub Web** | Browse, search, discover, comment, star — the website |
 | **ClipHub API** | Registry API for publishing, downloading, searching programmatically |
-| **HixAI CLI** | `hixai install`, `hixai publish`, `hixai cliphub sync` — built into HixAI |
-| **HixAI UI** | "Browse ClipHub" panel in the HixAI web UI for discovering templates without leaving the app |
+| **HIxAI CLI** | `hixai install`, `hixai publish`, `hixai cliphub sync` — built into HIxAI |
+| **HIxAI UI** | "Browse ClipHub" panel in the HIxAI web UI for discovering templates without leaving the app |
 
 ### Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Frontend | React + Vite (consistent with HixAI) |
-| Backend | TypeScript + Hono (consistent with HixAI) |
+| Frontend | React + Vite (consistent with HIxAI) |
+| Backend | TypeScript + Hono (consistent with HIxAI) |
 | Database | PostgreSQL |
 | Search | Vector embeddings for semantic search |
 | Auth | GitHub OAuth |
@@ -261,13 +261,13 @@ Report
 2. Find a template that fits — "Lean SaaS Dev Shop (CEO + CTO + 3 Engineers)"
 3. Read the description, inspect the org chart, check the comments
 4. Run `hixai install cliphub:acme/lean-saas-shop`
-5. HixAI creates the company locally with all agents pre-configured
+5. HIxAI creates the company locally with all agents pre-configured
 6. Set your API keys, adjust budgets, add your initial tasks
 7. Hit go
 
 ### "I built something great and want to share it"
 
-1. Build and iterate on a company in HixAI until it works well
+1. Build and iterate on a company in HIxAI until it works well
 2. Export: `hixai export --template my-agency`
 3. Publish: `hixai publish cliphub my-agency`
 4. Fill in description, category, tags on the web UI
@@ -291,15 +291,15 @@ Report
 
 ---
 
-## Relationship to HixAI
+## Relationship to HIxAI
 
-ClipHub is **not required** to use HixAI. You can build companies entirely from scratch without ever touching ClipHub. But ClipHub dramatically lowers the barrier to entry:
+ClipHub is **not required** to use HIxAI. You can build companies entirely from scratch without ever touching ClipHub. But ClipHub dramatically lowers the barrier to entry:
 
 - **New users** get a working company in minutes instead of hours
 - **Experienced users** share proven configurations with the community
 - **The ecosystem** compounds — every good template makes the next company easier to build
 
-ClipHub is to HixAI what a package registry is to a language runtime: optional, but transformative.
+ClipHub is to HIxAI what a package registry is to a language runtime: optional, but transformative.
 
 ---
 
@@ -325,7 +325,7 @@ ClipHub is to HixAI what a package registry is to a language runtime: optional, 
 - [ ] Agent and team sub-packages
 - [ ] Verified publisher badges
 - [ ] Automated security scanning of adapter configs
-- [ ] "Browse ClipHub" panel in HixAI web UI
+- [ ] "Browse ClipHub" panel in HIxAI web UI
 - [ ] `hixai cliphub sync` for bulk publishing
 - [ ] Publisher profiles and portfolios
 
@@ -333,4 +333,4 @@ ClipHub is to HixAI what a package registry is to a language runtime: optional, 
 
 - Paid / premium templates (everything is free and public, at least initially)
 - Private registries (may be a future enterprise feature)
-- Running companies on ClipHub (it's a registry, not a runtime — consistent with HixAI's own philosophy)
+- Running companies on ClipHub (it's a registry, not a runtime — consistent with HIxAI's own philosophy)

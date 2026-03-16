@@ -1,7 +1,7 @@
 {
   "name": "@hixai/plugin-sdk",
   "version": "1.0.0",
-  "description": "Stable public API for HixAI plugins — worker-side context and UI bridge hooks",
+  "description": "Stable public API for HIxAI plugins — worker-side context and UI bridge hooks",
   "type": "module",
   "exports": {
     ".": {

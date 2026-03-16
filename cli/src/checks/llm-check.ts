@@ -1,7 +1,7 @@
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import type { CheckResult } from "./index.js";
 
-export async function llmCheck(config: HixAIConfig): Promise<CheckResult> {
+export async function llmCheck(config: HIxAIConfig): Promise<CheckResult> {
   if (!config.llm) {
     return {
       name: "LLM provider",

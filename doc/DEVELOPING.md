@@ -69,7 +69,7 @@ pnpm hixai run
 
 ## Docker Quickstart (No local Node install)
 
-Build and run HixAI in Docker:
+Build and run HIxAI in Docker:
 
 ```sh
 docker build -t hixai-local .
@@ -118,7 +118,7 @@ pnpm hixai configure --section storage
 
 ## Default Agent Workspaces
 
-When a local agent run has no resolved project/session workspace, HixAI falls back to an agent home workspace under the instance root:
+When a local agent run has no resolved project/session workspace, HIxAI falls back to an agent home workspace under the instance root:
 
 - `~/.hixai/instances/default/workspaces/<agent-id>`
 
@@ -126,9 +126,9 @@ This path honors `HIXAI_HOME` and `HIXAI_INSTANCE_ID` in non-default setups.
 
 ## Worktree-local Instances
 
-When developing from multiple git worktrees, do not point two HixAI servers at the same embedded PostgreSQL data directory.
+When developing from multiple git worktrees, do not point two HIxAI servers at the same embedded PostgreSQL data directory.
 
-Instead, create a repo-local HixAI config plus an isolated instance for the worktree:
+Instead, create a repo-local HIxAI config plus an isolated instance for the worktree:
 
 ```sh
 hixai worktree init
@@ -142,7 +142,7 @@ This command:
 - creates an isolated instance under `~/.hixai-worktrees/instances/<worktree-id>/`
 - when run inside a linked git worktree, mirrors the effective git hooks into that worktree's private git dir
 - picks a free app port and embedded PostgreSQL port
-- by default seeds the isolated DB in `minimal` mode from the current effective HixAI instance/config (repo-local worktree config when present, otherwise the default instance) via a logical SQL snapshot
+- by default seeds the isolated DB in `minimal` mode from the current effective HIxAI instance/config (repo-local worktree config when present, otherwise the default instance) via a logical SQL snapshot
 
 Seed modes:
 
@@ -196,7 +196,7 @@ hixai worktree init --from-data-dir ~/.hixai
 hixai worktree init --force
 ```
 
-**`pnpm hixai worktree:make <name> [options]`** — Create `~/NAME` as a git worktree, then initialize an isolated HixAI instance inside it. This combines `git worktree add` with `worktree init` in a single step.
+**`pnpm hixai worktree:make <name> [options]`** — Create `~/NAME` as a git worktree, then initialize an isolated HIxAI instance inside it. This combines `git worktree add` with `worktree init` in a single step.
 
 | Option | Description |
 |---|---|
@@ -220,7 +220,7 @@ pnpm hixai worktree:make my-feature --start-point origin/main
 pnpm hixai worktree:make experiment --no-seed
 ```
 
-**`pnpm hixai worktree env [options]`** — Print shell exports for the current worktree-local HixAI instance.
+**`pnpm hixai worktree env [options]`** — Print shell exports for the current worktree-local HIxAI instance.
 
 | Option | Description |
 |---|---|
@@ -235,7 +235,7 @@ pnpm hixai worktree env --json
 eval "$(pnpm hixai worktree env)"
 ```
 
-For project execution worktrees, HixAI can also run a project-defined provision command after it creates or reuses an isolated git worktree. Configure this on the project's execution workspace policy (`workspaceStrategy.provisionCommand`). The command runs inside the derived worktree and receives `HIXAI_WORKSPACE_*`, `HIXAI_PROJECT_ID`, `HIXAI_AGENT_ID`, and `HIXAI_ISSUE_*` environment variables so each repo can bootstrap itself however it wants.
+For project execution worktrees, HIxAI can also run a project-defined provision command after it creates or reuses an isolated git worktree. Configure this on the project's execution workspace policy (`workspaceStrategy.provisionCommand`). The command runs inside the derived worktree and receives `HIXAI_WORKSPACE_*`, `HIXAI_PROJECT_ID`, `HIXAI_AGENT_ID`, and `HIXAI_ISSUE_*` environment variables so each repo can bootstrap itself however it wants.
 
 ## Quick Health Checks
 
@@ -266,7 +266,7 @@ If you set `DATABASE_URL`, the server will use that instead of embedded PostgreS
 
 ## Automatic DB Backups
 
-HixAI can run automatic DB backups on a timer. Defaults:
+HIxAI can run automatic DB backups on a timer. Defaults:
 
 - enabled
 - every 60 minutes
@@ -338,7 +338,7 @@ Default behavior:
 
 ## CLI Client Operations
 
-HixAI CLI now includes client-side control-plane commands in addition to setup commands.
+HIxAI CLI now includes client-side control-plane commands in addition to setup commands.
 
 Quick examples:
 
@@ -371,7 +371,7 @@ Agent-oriented invite onboarding now exposes machine-readable API docs:
 - `GET /api/invites/:token/onboarding` returns onboarding manifest details (registration endpoint, claim endpoint template, skill install hints).
 - `GET /api/invites/:token/onboarding.txt` returns a plain-text onboarding doc intended for both human operators and agents (llm.txt-style handoff), including optional inviter message and suggested network host candidates.
 - `GET /api/skills/index` lists available skill documents.
-- `GET /api/skills/hixai` returns the HixAI heartbeat skill markdown.
+- `GET /api/skills/hixai` returns the HIxAI heartbeat skill markdown.
 
 ## OpenClaw Join Smoke Test
 
@@ -424,6 +424,6 @@ State behavior for this smoke script:
 
 Networking behavior for this smoke script:
 
-- auto-detects and prints a HixAI host URL reachable from inside OpenClaw Docker
+- auto-detects and prints a HIxAI host URL reachable from inside OpenClaw Docker
 - default container-side host alias is `host.docker.internal` (override with `HIXAI_HOST_FROM_CONTAINER` / `HIXAI_HOST_PORT`)
-- if HixAI rejects container hostnames in authenticated/private mode, allow `host.docker.internal` via `pnpm hixai allowed-hostname host.docker.internal` and restart HixAI
+- if HIxAI rejects container hostnames in authenticated/private mode, allow `host.docker.internal` via `pnpm hixai allowed-hostname host.docker.internal` and restart HIxAI

@@ -1,4 +1,4 @@
-# HixAI Create Agent API Reference
+# HIxAI Create Agent API Reference
 
 ## Core Endpoints
 

@@ -1,4 +1,4 @@
-# HixAI V1 Implementation Spec
+# HIxAI V1 Implementation Spec
 
 Status: Implementation contract for first release (V1)
 Date: 2026-02-17
@@ -13,7 +13,7 @@ When there is a conflict, `SPEC-implementation.md` controls V1 behavior.
 
 ## 2. V1 Outcomes
 
-HixAI V1 must provide a full control-plane loop for autonomous agents:
+HIxAI V1 must provide a full control-plane loop for autonomous agents:
 
 1. A human board creates a company and defines goals.
 2. The board creates and manages agents in an org tree.

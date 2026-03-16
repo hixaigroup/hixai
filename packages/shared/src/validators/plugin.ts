@@ -341,7 +341,7 @@ export type PluginLauncherDeclarationInput = z.infer<typeof pluginLauncherDeclar
 // ---------------------------------------------------------------------------
 
 /**
- * Zod schema for {@link HixAIPluginManifestV1} — the complete runtime
+ * Zod schema for {@link HIxAIPluginManifestV1} — the complete runtime
  * validator for plugin manifests read at install time.
  *
  * Field-level constraints (see PLUGIN_SPEC.md §10.1 for the normative rules):
@@ -356,7 +356,7 @@ export type PluginLauncherDeclarationInput = z.infer<typeof pluginLauncherDeclar
  * | `author`                 | string     | 1–200 chars                                  |
  * | `categories`             | enum[]     | at least one; values from PLUGIN_CATEGORIES  |
  * | `minimumHostVersion`     | string?    | semver lower bound if present, no leading `v`|
- * | `minimumHixAIVersion`| string?    | legacy alias of `minimumHostVersion`         |
+ * | `minimumHIxAIVersion`| string?    | legacy alias of `minimumHostVersion`         |
  * | `capabilities`           | enum[]     | at least one; values from PLUGIN_CAPABILITIES|
  * | `entrypoints.worker`     | string     | min 1 char                                   |
  * | `entrypoints.ui`         | string?    | required when `ui.slots` is declared         |
@@ -372,7 +372,7 @@ export type PluginLauncherDeclarationInput = z.infer<typeof pluginLauncherDeclar
  * - duplicate `ui.slots[].id` values are rejected
  *
  * @see PLUGIN_SPEC.md §10.1 — Manifest shape
- * @see {@link HixAIPluginManifestV1} — the inferred TypeScript type
+ * @see {@link HIxAIPluginManifestV1} — the inferred TypeScript type
  */
 export const pluginManifestV1Schema = z.object({
   id: z.string().min(1).regex(
@@ -392,9 +392,9 @@ export const pluginManifestV1Schema = z.object({
     /^\d+\.\d+\.\d+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$/,
     "minimumHostVersion must follow semver (e.g. 1.0.0)",
   ).optional(),
-  minimumHixAIVersion: z.string().regex(
+  minimumHIxAIVersion: z.string().regex(
     /^\d+\.\d+\.\d+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$/,
-    "minimumHixAIVersion must follow semver (e.g. 1.0.0)",
+    "minimumHIxAIVersion must follow semver (e.g. 1.0.0)",
   ).optional(),
   capabilities: z.array(z.enum(PLUGIN_CAPABILITIES)).min(1),
   entrypoints: z.object({
@@ -426,12 +426,12 @@ export const pluginManifestV1Schema = z.object({
 
   if (
     manifest.minimumHostVersion
-    && manifest.minimumHixAIVersion
-    && manifest.minimumHostVersion !== manifest.minimumHixAIVersion
+    && manifest.minimumHIxAIVersion
+    && manifest.minimumHostVersion !== manifest.minimumHIxAIVersion
   ) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
-      message: "minimumHostVersion and minimumHixAIVersion must match when both are declared",
+      message: "minimumHostVersion and minimumHIxAIVersion must match when both are declared",
       path: ["minimumHostVersion"],
     });
   }

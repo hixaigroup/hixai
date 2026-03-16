@@ -1,145 +1,33 @@
-# AGENTS.md
+# Contributor Guidelines — HIxAI
 
-Guidance for human and AI contributors working in this repository.
+Instructions for human and AI contributors working in this repository.
 
-## 1. Purpose
+## Context
 
-HixAI is a control plane for AI-agent companies.
-The current implementation target is V1 and is defined in `doc/SPEC-implementation.md`.
+HIxAI is an orchestration control plane for AI-agent teams. The current build target is V1, defined in `doc/SPEC-implementation.md`.
 
-## 2. Read This First
+## Architecture Overview
 
-Before making changes, read in this order:
+- `doc/SPEC.md` — Long-term product vision and design rationale
+- `doc/SPEC-implementation.md` — The concrete V1 build contract
+- `server/` — Express REST API and core orchestration services
+- `ui/` — React front-end (Vite + TypeScript)
+- `cli/` — Command-line interface for setup and management
+- `packages/` — Shared libraries, adapters, and plugin SDK
 
-1. `doc/GOAL.md`
-2. `doc/PRODUCT.md`
-3. `doc/SPEC-implementation.md`
-4. `doc/DEVELOPING.md`
-5. `doc/DATABASE.md`
+## Development Defaults
 
-`doc/SPEC.md` is long-horizon product context.
-`doc/SPEC-implementation.md` is the concrete V1 build contract.
+- For local development, leave `DATABASE_URL` unset. The server will use an embedded PGlite instance automatically.
+- Run `pnpm dev` to start both the API server and UI in watch mode.
 
-## 3. Repo Map
+## Contribution Principles
 
-- `server/`: Express REST API and orchestration services
-- `ui/`: React + Vite board UI
-- `packages/db/`: Drizzle schema, migrations, DB clients
-- `packages/shared/`: shared types, constants, validators, API path constants
-- `doc/`: operational and product docs
+1. **Scope everything to a company.** Every domain entity belongs to a company. Company boundaries must be enforced at the route and service layer.
 
-## 4. Dev Setup (Auto DB)
+2. **Keep layers in sync.** When you modify schema, API behavior, or service logic, update all affected layers — types, routes, services, UI, and docs.
 
-Use embedded PGlite in dev by leaving `DATABASE_URL` unset.
+3. **Respect control-plane invariants.** Budget enforcement, task checkout atomicity, and governance gates are system-level guarantees. Don't bypass them.
 
-```sh
-pnpm install
-pnpm dev
-```
+4. **Prefer additive changes to docs.** Don't overwrite strategic documents unless explicitly asked. Keep `doc/SPEC.md` and `doc/SPEC-implementation.md` consistent with each other.
 
-This starts:
-
-- API: `http://localhost:3100`
-- UI: `http://localhost:3100` (served by API server in dev middleware mode)
-
-Quick checks:
-
-```sh
-curl http://localhost:3100/api/health
-curl http://localhost:3100/api/companies
-```
-
-Reset local dev DB:
-
-```sh
-rm -rf data/pglite
-pnpm dev
-```
-
-## 5. Core Engineering Rules
-
-1. Keep changes company-scoped.
-Every domain entity should be scoped to a company and company boundaries must be enforced in routes/services.
-
-2. Keep contracts synchronized.
-If you change schema/API behavior, update all impacted layers:
-- `packages/db` schema and exports
-- `packages/shared` types/constants/validators
-- `server` routes/services
-- `ui` API clients and pages
-
-3. Preserve control-plane invariants.
-- Single-assignee task model
-- Atomic issue checkout semantics
-- Approval gates for governed actions
-- Budget hard-stop auto-pause behavior
-- Activity logging for mutating actions
-
-4. Do not replace strategic docs wholesale unless asked.
-Prefer additive updates. Keep `doc/SPEC.md` and `doc/SPEC-implementation.md` aligned.
-
-5. Keep plan docs dated and centralized.
-New plan documents belong in `doc/plans/` and should use `YYYY-MM-DD-slug.md` filenames.
-
-## 6. Database Change Workflow
-
-When changing data model:
-
-1. Edit `packages/db/src/schema/*.ts`
-2. Ensure new tables are exported from `packages/db/src/schema/index.ts`
-3. Generate migration:
-
-```sh
-pnpm db:generate
-```
-
-4. Validate compile:
-
-```sh
-pnpm -r typecheck
-```
-
-Notes:
-- `packages/db/drizzle.config.ts` reads compiled schema from `dist/schema/*.js`
-- `pnpm db:generate` compiles `packages/db` first
-
-## 7. Verification Before Hand-off
-
-Run this full check before claiming done:
-
-```sh
-pnpm -r typecheck
-pnpm test:run
-pnpm build
-```
-
-If anything cannot be run, explicitly report what was not run and why.
-
-## 8. API and Auth Expectations
-
-- Base path: `/api`
-- Board access is treated as full-control operator context
-- Agent access uses bearer API keys (`agent_api_keys`), hashed at rest
-- Agent keys must not access other companies
-
-When adding endpoints:
-
-- apply company access checks
-- enforce actor permissions (board vs agent)
-- write activity log entries for mutations
-- return consistent HTTP errors (`400/401/403/404/409/422/500`)
-
-## 9. UI Expectations
-
-- Keep routes and nav aligned with available API surface
-- Use company selection context for company-scoped pages
-- Surface failures clearly; do not silently ignore API errors
-
-## 10. Definition of Done
-
-A change is done when all are true:
-
-1. Behavior matches `doc/SPEC-implementation.md`
-2. Typecheck, tests, and build pass
-3. Contracts are synced across db/shared/server/ui
-4. Docs updated when behavior or commands change
+5. **Test your changes.** Run `pnpm typecheck` and `pnpm test:run` before submitting. If you're changing API behavior, verify the affected flows end-to-end.

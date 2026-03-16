@@ -40,7 +40,7 @@ import type { Db } from "@hixai/db";
 import type {
   PluginStatus,
   PluginRecord,
-  HixAIPluginManifestV1,
+  HIxAIPluginManifestV1,
 } from "@hixai/shared";
 import { pluginRegistryService } from "./plugin-registry.js";
 import { pluginLoader, type PluginLoader } from "./plugin-loader.js";

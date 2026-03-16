@@ -28,11 +28,11 @@ import {
   runDatabaseRestore,
 } from "@hixai/db";
 import type { Command } from "commander";
-import { ensureAgentJwtSecret, loadHixAIEnvFile, mergeHixAIEnvEntries, readHixAIEnvEntries, resolveHixAIEnvFile } from "../config/env.js";
+import { ensureAgentJwtSecret, loadHIxAIEnvFile, mergeHIxAIEnvEntries, readHIxAIEnvEntries, resolveHIxAIEnvFile } from "../config/env.js";
 import { expandHomePrefix } from "../config/home.js";
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import { readConfig, resolveConfigPath, writeConfig } from "../config/store.js";
-import { printHixAICliBanner } from "../utils/banner.js";
+import { printHIxAICliBanner } from "../utils/banner.js";
 import { resolveRuntimeLikePath } from "../utils/path-resolver.js";
 import {
   buildWorktreeConfig,
@@ -438,7 +438,7 @@ export function resolveSourceConfigPath(opts: WorktreeInitOptions): string {
   return path.resolve(sourceHome, "instances", sourceInstanceId, "config.json");
 }
 
-function resolveSourceConnectionString(config: HixAIConfig, envEntries: Record<string, string>, portOverride?: number): string {
+function resolveSourceConnectionString(config: HIxAIConfig, envEntries: Record<string, string>, portOverride?: number): string {
   if (config.database.mode === "postgres") {
     const connectionString = nonEmpty(envEntries.DATABASE_URL) ?? nonEmpty(config.database.connectionString);
     if (!connectionString) {
@@ -455,7 +455,7 @@ function resolveSourceConnectionString(config: HixAIConfig, envEntries: Record<s
 
 export function copySeededSecretsKey(input: {
   sourceConfigPath: string;
-  sourceConfig: HixAIConfig;
+  sourceConfig: HIxAIConfig;
   sourceEnvEntries: Record<string, string>;
   targetKeyFilePath: string;
 }): void {
@@ -555,15 +555,15 @@ async function ensureEmbeddedPostgres(dataDir: string, preferredPort: number): P
 
 async function seedWorktreeDatabase(input: {
   sourceConfigPath: string;
-  sourceConfig: HixAIConfig;
-  targetConfig: HixAIConfig;
+  sourceConfig: HIxAIConfig;
+  targetConfig: HIxAIConfig;
   targetPaths: WorktreeLocalPaths;
   instanceId: string;
   seedMode: WorktreeSeedMode;
 }): Promise<SeedWorktreeDatabaseResult> {
   const seedPlan = resolveWorktreeSeedPlan(input.seedMode);
-  const sourceEnvFile = resolveHixAIEnvFile(input.sourceConfigPath);
-  const sourceEnvEntries = readHixAIEnvEntries(sourceEnvFile);
+  const sourceEnvFile = resolveHIxAIEnvFile(input.sourceConfigPath);
+  const sourceEnvEntries = readHIxAIEnvEntries(sourceEnvFile);
   copySeededSecretsKey({
     sourceConfigPath: input.sourceConfigPath,
     sourceConfig: input.sourceConfig,
@@ -673,11 +673,11 @@ async function runWorktreeInit(opts: WorktreeInitOptions): Promise<void> {
   });
 
   writeConfig(targetConfig, paths.configPath);
-  const sourceEnvEntries = readHixAIEnvEntries(resolveHixAIEnvFile(sourceConfigPath));
+  const sourceEnvEntries = readHIxAIEnvEntries(resolveHIxAIEnvFile(sourceConfigPath));
   const existingAgentJwtSecret =
     nonEmpty(sourceEnvEntries.HIXAI_AGENT_JWT_SECRET) ??
     nonEmpty(process.env.HIXAI_AGENT_JWT_SECRET);
-  mergeHixAIEnvEntries(
+  mergeHIxAIEnvEntries(
     {
       ...buildWorktreeEnvEntries(paths, branding),
       ...(existingAgentJwtSecret ? { HIXAI_AGENT_JWT_SECRET: existingAgentJwtSecret } : {}),
@@ -685,7 +685,7 @@ async function runWorktreeInit(opts: WorktreeInitOptions): Promise<void> {
     paths.envPath,
   );
   ensureAgentJwtSecret(paths.configPath);
-  loadHixAIEnvFile(paths.configPath);
+  loadHIxAIEnvFile(paths.configPath);
   const copiedGitHooks = copyGitHooksToWorktreeGitDir(cwd);
 
   let seedSummary: string | null = null;
@@ -738,19 +738,19 @@ async function runWorktreeInit(opts: WorktreeInitOptions): Promise<void> {
   }
   p.outro(
     pc.green(
-      `Worktree ready. Run HixAI inside this repo and the CLI/server will use ${paths.instanceId} automatically.`,
+      `Worktree ready. Run HIxAI inside this repo and the CLI/server will use ${paths.instanceId} automatically.`,
     ),
   );
 }
 
 export async function worktreeInitCommand(opts: WorktreeInitOptions): Promise<void> {
-  printHixAICliBanner();
+  printHIxAICliBanner();
   p.intro(pc.bgCyan(pc.black(" hixai worktree init ")));
   await runWorktreeInit(opts);
 }
 
 export async function worktreeMakeCommand(nameArg: string, opts: WorktreeMakeOptions): Promise<void> {
-  printHixAICliBanner();
+  printHIxAICliBanner();
   p.intro(pc.bgCyan(pc.black(" hixai worktree:make ")));
 
   const name = resolveWorktreeMakeName(nameArg);
@@ -916,7 +916,7 @@ function worktreePathHasUncommittedChanges(worktreePath: string): boolean {
 }
 
 export async function worktreeCleanupCommand(nameArg: string, opts: WorktreeCleanupOptions): Promise<void> {
-  printHixAICliBanner();
+  printHIxAICliBanner();
   p.intro(pc.bgCyan(pc.black(" hixai worktree:cleanup ")));
 
   const name = resolveWorktreeMakeName(nameArg);
@@ -1053,8 +1053,8 @@ export async function worktreeCleanupCommand(nameArg: string, opts: WorktreeClea
 
 export async function worktreeEnvCommand(opts: WorktreeEnvOptions): Promise<void> {
   const configPath = resolveConfigPath(opts.config);
-  const envPath = resolveHixAIEnvFile(configPath);
-  const envEntries = readHixAIEnvEntries(envPath);
+  const envPath = resolveHIxAIEnvFile(configPath);
+  const envEntries = readHIxAIEnvEntries(envPath);
   const out = {
     HIXAI_CONFIG: configPath,
     ...(envEntries.HIXAI_HOME ? { HIXAI_HOME: envEntries.HIXAI_HOME } : {}),
@@ -1072,11 +1072,11 @@ export async function worktreeEnvCommand(opts: WorktreeEnvOptions): Promise<void
 }
 
 export function registerWorktreeCommands(program: Command): void {
-  const worktree = program.command("worktree").description("Worktree-local HixAI instance helpers");
+  const worktree = program.command("worktree").description("Worktree-local HIxAI instance helpers");
 
   program
     .command("worktree:make")
-    .description("Create ~/NAME as a git worktree, then initialize an isolated HixAI instance inside it")
+    .description("Create ~/NAME as a git worktree, then initialize an isolated HIxAI instance inside it")
     .argument("<name>", "Worktree name — auto-prefixed with hixai- if needed (created at ~/hixai-NAME)")
     .option("--start-point <ref>", "Remote ref to base the new branch on (env: HIXAI_WORKTREE_START_POINT)")
     .option("--instance <id>", "Explicit isolated instance id")
@@ -1109,7 +1109,7 @@ export function registerWorktreeCommands(program: Command): void {
 
   worktree
     .command("env")
-    .description("Print shell exports for the current worktree-local HixAI instance")
+    .description("Print shell exports for the current worktree-local HIxAI instance")
     .option("-c, --config <path>", "Path to config file")
     .option("--json", "Print JSON instead of shell exports")
     .action(worktreeEnvCommand);

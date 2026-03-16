@@ -9,13 +9,13 @@ import {
   asNumber,
   asString,
   asStringArray,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   ensureAbsoluteDirectory,
   ensureCommandResolvable,
-  ensureHixAISkillSymlink,
+  ensureHIxAISkillSymlink,
   joinPromptSections,
   ensurePathInEnv,
-  listHixAISkillEntries,
+  listHIxAISkillEntries,
   removeMaintainerOnlySkillSymlinks,
   parseObject,
   redactEnvForLogs,
@@ -45,13 +45,13 @@ function resolveGeminiBillingType(env: Record<string, string>): "api" | "subscri
     : "subscription";
 }
 
-function renderHixAIEnvNote(env: Record<string, string>): string {
+function renderHIxAIEnvNote(env: Record<string, string>): string {
   const hixaiKeys = Object.keys(env)
     .filter((key) => key.startsWith("HIXAI_"))
     .sort();
   if (hixaiKeys.length === 0) return "";
   return [
-    "HixAI runtime note:",
+    "HIxAI runtime note:",
     `The following HIXAI_* environment variables are available in this run: ${hixaiKeys.join(", ")}`,
     "Do not assume these variables are missing without checking your shell environment.",
     "",
@@ -62,12 +62,12 @@ function renderHixAIEnvNote(env: Record<string, string>): string {
 function renderApiAccessNote(env: Record<string, string>): string {
   if (!hasNonEmptyEnvValue(env, "HIXAI_API_URL") || !hasNonEmptyEnvValue(env, "HIXAI_API_KEY")) return "";
   return [
-    "HixAI API access note:",
-    "Use run_shell_command with curl to make HixAI API requests.",
+    "HIxAI API access note:",
+    "Use run_shell_command with curl to make HIxAI API requests.",
     "GET example:",
     `  run_shell_command({ command: "curl -s -H \\"Authorization: Bearer $HIXAI_API_KEY\\" \\"$HIXAI_API_URL/api/agents/me\\"" })`,
     "POST/PATCH example:",
-    `  run_shell_command({ command: "curl -s -X POST -H \\"Authorization: Bearer $HIXAI_API_KEY\\" -H 'Content-Type: application/json' -H \\"X-HixAI-Run-Id: $HIXAI_RUN_ID\\" -d '{...}' \\"$HIXAI_API_URL/api/issues/{id}/checkout\\"" })`,
+    `  run_shell_command({ command: "curl -s -X POST -H \\"Authorization: Bearer $HIXAI_API_KEY\\" -H 'Content-Type: application/json' -H \\"X-HIxAI-Run-Id: $HIXAI_RUN_ID\\" -d '{...}' \\"$HIXAI_API_URL/api/issues/{id}/checkout\\"" })`,
     "",
     "",
   ].join("\n");
@@ -78,14 +78,14 @@ function geminiSkillsHome(): string {
 }
 
 /**
- * Inject HixAI skills directly into `~/.gemini/skills/` via symlinks.
+ * Inject HIxAI skills directly into `~/.gemini/skills/` via symlinks.
  * This avoids needing GEMINI_CLI_HOME overrides, so the CLI naturally finds
  * both its auth credentials and the injected skills in the real home directory.
  */
 async function ensureGeminiSkillsInjected(
   onLog: AdapterExecutionContext["onLog"],
 ): Promise<void> {
-  const skillsEntries = await listHixAISkillEntries(__moduleDir);
+  const skillsEntries = await listHIxAISkillEntries(__moduleDir);
   if (skillsEntries.length === 0) return;
 
   const skillsHome = geminiSkillsHome();
@@ -113,7 +113,7 @@ async function ensureGeminiSkillsInjected(
     const target = path.join(skillsHome, entry.name);
 
     try {
-      const result = await ensureHixAISkillSymlink(entry.source, target);
+      const result = await ensureHIxAISkillSymlink(entry.source, target);
       if (result === "skipped") continue;
       await onLog(
         "stderr",
@@ -133,7 +133,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your HixAI work.",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your HIxAI work.",
   );
   const command = asString(config.command, "gemini");
   const model = asString(config.model, DEFAULT_GEMINI_LOCAL_MODEL).trim();
@@ -161,7 +161,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   const envConfig = parseObject(config.env);
   const hasExplicitApiKey =
     typeof envConfig.HIXAI_API_KEY === "string" && envConfig.HIXAI_API_KEY.trim().length > 0;
-  const env: Record<string, string> = { ...buildHixAIEnv(agent) };
+  const env: Record<string, string> = { ...buildHIxAIEnv(agent) };
   env.HIXAI_RUN_ID = runId;
   const wakeTaskId =
     (typeof context.taskId === "string" && context.taskId.trim().length > 0 && context.taskId.trim()) ||
@@ -287,7 +287,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
       ? renderTemplate(bootstrapPromptTemplate, templateData).trim()
       : "";
   const sessionHandoffNote = asString(context.hixaiSessionHandoffMarkdown, "").trim();
-  const hixaiEnvNote = renderHixAIEnvNote(env);
+  const hixaiEnvNote = renderHIxAIEnvNote(env);
   const apiAccessNote = renderApiAccessNote(env);
   const prompt = joinPromptSections([
     instructionsPrefix,

@@ -163,7 +163,7 @@ export async function runDatabaseBackup(opts: RunDatabaseBackupOptions): Promise
       emit(STATEMENT_BREAKPOINT);
     };
 
-    emit("-- HixAI database backup");
+    emit("-- HIxAI database backup");
     emit(`-- Created: ${new Date().toISOString()}`);
     emit("");
     emitStatement("BEGIN;");

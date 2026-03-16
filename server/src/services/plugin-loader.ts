@@ -33,7 +33,7 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import type { Db } from "@hixai/db";
 import type {
-  HixAIPluginManifestV1,
+  HIxAIPluginManifestV1,
   PluginLauncherDeclaration,
   PluginRecord,
   PluginUiSlotDeclaration,
@@ -57,8 +57,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ---------------------------------------------------------------------------
 
 /**
- * Naming convention for npm-published HixAI plugins.
- * Packages matching this pattern are considered HixAI plugins.
+ * Naming convention for npm-published HIxAI plugins.
+ * Packages matching this pattern are considered HIxAI plugins.
  *
  * @see PLUGIN_SPEC.md §10 — Package Contract
  */
@@ -95,7 +95,7 @@ export interface DiscoveredPlugin {
   /** Source that found this package. */
   source: PluginSource;
   /** The parsed and validated manifest if available, null if discovery-only. */
-  manifest: HixAIPluginManifestV1 | null;
+  manifest: HIxAIPluginManifestV1 | null;
 }
 
 /**
@@ -127,7 +127,7 @@ export interface PluginDiscoveryResult {
   sources: PluginSource[];
 }
 
-function getDeclaredPageRoutePaths(manifest: HixAIPluginManifestV1): string[] {
+function getDeclaredPageRoutePaths(manifest: HIxAIPluginManifestV1): string[] {
   return (manifest.ui?.slots ?? [])
     .filter((slot): slot is PluginUiSlotDeclaration => slot.type === "page" && typeof slot.routePath === "string" && slot.routePath.length > 0)
     .map((slot) => slot.routePath!);
@@ -236,7 +236,7 @@ export interface PluginRuntimeServices {
    * events.emit, config.get). Each plugin gets its own set of handlers
    * scoped to its capabilities and plugin ID.
    */
-  buildHostHandlers: (pluginId: string, manifest: HixAIPluginManifestV1) => WorkerToHostHandlers;
+  buildHostHandlers: (pluginId: string, manifest: HIxAIPluginManifestV1) => WorkerToHostHandlers;
   /**
    * Host instance information passed to the worker during initialization.
    * Includes the instance ID and host version.
@@ -336,7 +336,7 @@ export interface PluginLoader {
   discoverFromLocalFilesystem(dir?: string): Promise<PluginDiscoveryResult>;
 
   /**
-   * Discover HixAI plugins installed as npm packages in the current
+   * Discover HIxAI plugins installed as npm packages in the current
    * Node.js environment matching the "hixai-plugin-*" naming convention.
    *
    * Looks for packages in node_modules that match the naming convention.
@@ -352,12 +352,12 @@ export interface PluginLoader {
    * the "hixaiPlugin.manifest" key, loads the manifest module, and
    * validates it against the plugin manifest schema.
    *
-   * Returns null if the package is not a HixAI plugin.
-   * Throws if the package is a HixAI plugin but the manifest is invalid.
+   * Returns null if the package is not a HIxAI plugin.
+   * Throws if the package is a HIxAI plugin but the manifest is invalid.
    *
    * @see PLUGIN_SPEC.md §10 — Package Contract
    */
-  loadManifest(packagePath: string): Promise<HixAIPluginManifestV1 | null>;
+  loadManifest(packagePath: string): Promise<HIxAIPluginManifestV1 | null>;
 
   /**
    * Install a plugin package and register it in the database.
@@ -390,8 +390,8 @@ export interface PluginLoader {
    * @see PLUGIN_SPEC.md §25.3 — Upgrade Lifecycle
    */
   upgradePlugin(pluginId: string, options: Omit<PluginInstallOptions, "installDir">): Promise<{
-    oldManifest: HixAIPluginManifestV1;
-    newManifest: HixAIPluginManifestV1;
+    oldManifest: HIxAIPluginManifestV1;
+    newManifest: HIxAIPluginManifestV1;
     discovered: DiscoveredPlugin;
   }>;
 
@@ -500,7 +500,7 @@ export interface PluginLoader {
 // ---------------------------------------------------------------------------
 
 /**
- * Check whether a package name matches the HixAI plugin naming convention.
+ * Check whether a package name matches the HIxAI plugin naming convention.
  * Accepts both the "hixai-plugin-" prefix and scoped "@scope/plugin-" packages.
  *
  * @see PLUGIN_SPEC.md §10 — Package Contract
@@ -639,8 +639,8 @@ function compareSemver(left: string, right: string): number {
   return 0;
 }
 
-function getMinimumHostVersion(manifest: HixAIPluginManifestV1): string | undefined {
-  return manifest.minimumHostVersion ?? manifest.minimumHixAIVersion;
+function getMinimumHostVersion(manifest: HIxAIPluginManifestV1): string | undefined {
+  return manifest.minimumHostVersion ?? manifest.minimumHIxAIVersion;
 }
 
 /**
@@ -651,7 +651,7 @@ function getMinimumHostVersion(manifest: HixAIPluginManifestV1): string | undefi
  * `launchers` field and the preferred `ui.launchers` field.
  */
 export function getPluginUiContributionMetadata(
-  manifest: HixAIPluginManifestV1,
+  manifest: HIxAIPluginManifestV1,
 ): PluginUiContributionMetadata | null {
   const slots = manifest.ui?.slots ?? [];
   const launchers = [
@@ -745,7 +745,7 @@ export function pluginLoader(
   const log = logger.child({ service: "plugin-loader" });
   const hostVersion = runtimeServices?.instanceInfo.hostVersion;
 
-  async function assertPageRoutePathsAvailable(manifest: HixAIPluginManifestV1): Promise<void> {
+  async function assertPageRoutePathsAvailable(manifest: HIxAIPluginManifestV1): Promise<void> {
     const requestedRoutePaths = getDeclaredPageRoutePaths(manifest);
     if (requestedRoutePaths.length === 0) return;
 
@@ -757,7 +757,7 @@ export function pluginLoader(
     const installedPlugins = await registry.listInstalled();
     for (const plugin of installedPlugins) {
       if (plugin.pluginKey === manifest.id) continue;
-      const installedManifest = plugin.manifestJson as HixAIPluginManifestV1 | null;
+      const installedManifest = plugin.manifestJson as HIxAIPluginManifestV1 | null;
       if (!installedManifest) continue;
       const installedRoutePaths = new Set(getDeclaredPageRoutePaths(installedManifest));
       const conflictingRoute = requestedRoutePaths.find((routePath) => installedRoutePaths.has(routePath));
@@ -868,7 +868,7 @@ export function pluginLoader(
     const manifestPath = resolveManifestPath(resolvedPackagePath, pkgJson);
     if (!manifestPath || !existsSync(manifestPath)) {
       throw new Error(
-        `Package ${resolvedPackageName} at ${resolvedPackagePath} does not appear to be a HixAI plugin (no manifest found).`,
+        `Package ${resolvedPackageName} at ${resolvedPackagePath} does not appear to be a HIxAI plugin (no manifest found).`,
       );
     }
 
@@ -922,7 +922,7 @@ export function pluginLoader(
    */
   async function loadManifestFromPath(
     manifestPath: string,
-  ): Promise<HixAIPluginManifestV1> {
+  ): Promise<HIxAIPluginManifestV1> {
     let raw: unknown;
 
     try {
@@ -941,7 +941,7 @@ export function pluginLoader(
 
   /**
    * Build a DiscoveredPlugin from a resolved package directory, or null
-   * if the package is not a HixAI plugin.
+   * if the package is not a HIxAI plugin.
    */
   async function buildDiscoveredPlugin(
     packagePath: string,
@@ -954,10 +954,10 @@ export function pluginLoader(
     const version = typeof pkgJson["version"] === "string" ? pkgJson["version"] : "0.0.0";
 
     // Determine if this is a plugin package at all
-    const hasHixAIPlugin = "hixaiPlugin" in pkgJson;
+    const hasHIxAIPlugin = "hixaiPlugin" in pkgJson;
     const nameMatchesConvention = isPluginPackageName(packageName);
 
-    if (!hasHixAIPlugin && !nameMatchesConvention) {
+    if (!hasHIxAIPlugin && !nameMatchesConvention) {
       return null;
     }
 
@@ -1227,15 +1227,15 @@ export function pluginLoader(
     // loadManifest
     // -----------------------------------------------------------------------
 
-    async loadManifest(packagePath: string): Promise<HixAIPluginManifestV1 | null> {
+    async loadManifest(packagePath: string): Promise<HIxAIPluginManifestV1 | null> {
       const pkgJson = await readPackageJson(packagePath);
       if (!pkgJson) return null;
 
-      const hasHixAIPlugin = "hixaiPlugin" in pkgJson;
+      const hasHIxAIPlugin = "hixaiPlugin" in pkgJson;
       const packageName = typeof pkgJson["name"] === "string" ? pkgJson["name"] : "";
       const nameMatchesConvention = isPluginPackageName(packageName);
 
-      if (!hasHixAIPlugin && !nameMatchesConvention) {
+      if (!hasHIxAIPlugin && !nameMatchesConvention) {
         return null;
       }
 
@@ -1295,15 +1295,15 @@ export function pluginLoader(
       pluginId: string,
       upgradeOptions: Omit<PluginInstallOptions, "installDir">,
     ): Promise<{
-      oldManifest: HixAIPluginManifestV1;
-      newManifest: HixAIPluginManifestV1;
+      oldManifest: HIxAIPluginManifestV1;
+      newManifest: HIxAIPluginManifestV1;
       discovered: DiscoveredPlugin;
     }> {
       const plugin = (await registry.getById(pluginId)) as {
         id: string;
         packageName: string;
         packagePath: string | null;
-        manifestJson: HixAIPluginManifestV1;
+        manifestJson: HIxAIPluginManifestV1;
       } | null;
       if (!plugin) throw new Error(`Plugin not found: ${pluginId}`);
 

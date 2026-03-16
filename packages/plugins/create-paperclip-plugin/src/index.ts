@@ -111,7 +111,7 @@ function packLocalPackage(packagePath: string, outputDir: string): string {
 }
 
 /**
- * Generate a complete HixAI plugin starter project.
+ * Generate a complete HIxAI plugin starter project.
  *
  * Output includes manifest/worker/UI entries, SDK harness tests, bundler presets,
  * and a local dev server script for hot-reload workflow.
@@ -136,7 +136,7 @@ export function scaffoldPluginProject(options: ScaffoldPluginOptions): string {
   }
 
   const displayName = options.displayName ?? makeDisplayName(options.pluginName);
-  const description = options.description ?? "A HixAI plugin";
+  const description = options.description ?? "A HIxAI plugin";
   const author = options.author ?? "Plugin Author";
   const category = options.category ?? (template === "workspace" ? "workspace" : "connector");
   const manifestId = packageToManifestId(options.pluginName);
@@ -298,9 +298,9 @@ export default defineConfig({
 
   writeFile(
     path.join(outputDir, "src", "manifest.ts"),
-    `import type { HixAIPluginManifestV1 } from "@hixai/plugin-sdk";
+    `import type { HIxAIPluginManifestV1 } from "@hixai/plugin-sdk";
 
-const manifest: HixAIPluginManifestV1 = {
+const manifest: HIxAIPluginManifestV1 = {
   id: ${quote(manifestId)},
   apiVersion: 1,
   version: "0.1.0",
@@ -434,10 +434,10 @@ pnpm test
 \`\`\`
 
 ${sdkDependency.startsWith("file:")
-  ? `This scaffold snapshots \`@hixai/plugin-sdk\` and \`@hixai/shared\` from a local HixAI checkout at:\n\n\`${toPosixPath(localSdkPath)}\`\n\nThe packed tarballs live in \`.hixai-sdk/\` for local development. Before publishing this plugin, switch those dependencies to published package versions once they are available on npm.\n\n`
+  ? `This scaffold snapshots \`@hixai/plugin-sdk\` and \`@hixai/shared\` from a local HIxAI checkout at:\n\n\`${toPosixPath(localSdkPath)}\`\n\nThe packed tarballs live in \`.hixai-sdk/\` for local development. Before publishing this plugin, switch those dependencies to published package versions once they are available on npm.\n\n`
   : ""}
 
-## Install Into HixAI
+## Install Into HIxAI
 
 \`\`\`bash
 curl -X POST http://127.0.0.1:3100/api/plugins/install \\

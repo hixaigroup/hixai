@@ -96,7 +96,7 @@ export type {
   PluginLauncherDeclaration,
   PluginMinimumHostVersion,
   PluginUiDeclaration,
-  HixAIPluginManifestV1,
+  HIxAIPluginManifestV1,
   PluginRecord,
   PluginStateRecord,
   PluginConfig,

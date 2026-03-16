@@ -1,7 +1,7 @@
 {
   "name": "hixai",
   "version": "0.3.1",
-  "description": "HixAI CLI — orchestrate AI agent teams to run a business",
+  "description": "HIxAI CLI — orchestrate AI agent teams to run a business",
   "type": "module",
   "bin": {
     "hixai": "./dist/index.js"

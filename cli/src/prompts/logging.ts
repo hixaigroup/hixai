@@ -1,9 +1,9 @@
 import * as p from "@clack/prompts";
 import type { LoggingConfig } from "../config/schema.js";
-import { resolveDefaultLogsDir, resolveHixAIInstanceId } from "../config/home.js";
+import { resolveDefaultLogsDir, resolveHIxAIInstanceId } from "../config/home.js";
 
 export async function promptLogging(): Promise<LoggingConfig> {
-  const defaultLogDir = resolveDefaultLogsDir(resolveHixAIInstanceId());
+  const defaultLogDir = resolveDefaultLogsDir(resolveHIxAIInstanceId());
   const mode = await p.select({
     message: "Logging mode",
     options: [

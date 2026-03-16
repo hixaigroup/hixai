@@ -1,6 +1,6 @@
 # @hixai/create-hixai-plugin
 
-Scaffolding tool for creating new HixAI plugins.
+Scaffolding tool for creating new HIxAI plugins.
 
 ```bash
 npx @hixai/create-hixai-plugin my-plugin
@@ -13,7 +13,7 @@ npx @hixai/create-hixai-plugin @acme/my-plugin \
   --template connector \
   --category connector \
   --display-name "Acme Connector" \
-  --description "Syncs Acme data into HixAI" \
+  --description "Syncs Acme data into HIxAI" \
   --author "Acme Inc"
 ```
 
@@ -31,7 +31,7 @@ The scaffold intentionally uses plain React elements rather than host-provided U
 
 Inside this repo, the generated package uses `@hixai/plugin-sdk` via `workspace:*`.
 
-Outside this repo, the scaffold snapshots `@hixai/plugin-sdk` from your local HixAI checkout into a `.hixai-sdk/` tarball and points the generated package at that local file by default. You can override the SDK source explicitly:
+Outside this repo, the scaffold snapshots `@hixai/plugin-sdk` from your local HIxAI checkout into a `.hixai-sdk/` tarball and points the generated package at that local file by default. You can override the SDK source explicitly:
 
 ```bash
 node packages/plugins/create-hixai-plugin/dist/index.js @acme/my-plugin \

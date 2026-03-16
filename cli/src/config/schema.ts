@@ -12,7 +12,7 @@ export {
   storageS3ConfigSchema,
   secretsConfigSchema,
   secretsLocalEncryptedConfigSchema,
-  type HixAIConfig,
+  type HIxAIConfig,
   type LlmConfig,
   type DatabaseBackupConfig,
   type DatabaseConfig,

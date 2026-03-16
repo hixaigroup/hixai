@@ -344,8 +344,8 @@ export function buildJoinDefaultsPayloadForAccept(input: {
     : ({} as Record<string, unknown>);
 
   if (!nonEmptyTrimmedString(merged.hixaiApiUrl)) {
-    const legacyHixAIApiUrl = nonEmptyTrimmedString(input.hixaiApiUrl);
-    if (legacyHixAIApiUrl) merged.hixaiApiUrl = legacyHixAIApiUrl;
+    const legacyHIxAIApiUrl = nonEmptyTrimmedString(input.hixaiApiUrl);
+    if (legacyHIxAIApiUrl) merged.hixaiApiUrl = legacyHIxAIApiUrl;
   }
   const mergedHeaders = normalizeHeaderMap(merged.headers) ?? {};
 
@@ -725,35 +725,35 @@ export function normalizeAgentDefaultsForJoin(input: {
     }
   }
 
-  const rawHixAIApiUrl =
+  const rawHIxAIApiUrl =
     typeof defaults.hixaiApiUrl === "string"
       ? defaults.hixaiApiUrl.trim()
       : "";
-  if (rawHixAIApiUrl) {
+  if (rawHIxAIApiUrl) {
     try {
-      const parsedHixAIApiUrl = new URL(rawHixAIApiUrl);
+      const parsedHIxAIApiUrl = new URL(rawHIxAIApiUrl);
       if (
-        parsedHixAIApiUrl.protocol !== "http:" &&
-        parsedHixAIApiUrl.protocol !== "https:"
+        parsedHIxAIApiUrl.protocol !== "http:" &&
+        parsedHIxAIApiUrl.protocol !== "https:"
       ) {
         diagnostics.push({
           code: "openclaw_gateway_hixai_api_url_protocol",
           level: "warn",
-          message: `hixaiApiUrl must use http:// or https:// (got ${parsedHixAIApiUrl.protocol}).`
+          message: `hixaiApiUrl must use http:// or https:// (got ${parsedHIxAIApiUrl.protocol}).`
         });
       } else {
-        normalized.hixaiApiUrl = parsedHixAIApiUrl.toString();
+        normalized.hixaiApiUrl = parsedHIxAIApiUrl.toString();
         diagnostics.push({
           code: "openclaw_gateway_hixai_api_url_configured",
           level: "info",
-          message: `hixaiApiUrl set to ${parsedHixAIApiUrl.toString()}`
+          message: `hixaiApiUrl set to ${parsedHIxAIApiUrl.toString()}`
         });
       }
     } catch {
       diagnostics.push({
         code: "openclaw_gateway_hixai_api_url_invalid",
         level: "warn",
-        message: `Invalid hixaiApiUrl: ${rawHixAIApiUrl}`
+        message: `Invalid hixaiApiUrl: ${rawHIxAIApiUrl}`
       });
     }
   }
@@ -819,7 +819,7 @@ function buildOnboardingDiscoveryDiagnostics(input: {
       code: "openclaw_onboarding_api_loopback",
       level: "warn",
       message:
-        "Onboarding URL resolves to loopback hostname. Remote OpenClaw agents cannot reach localhost on your HixAI host.",
+        "Onboarding URL resolves to loopback hostname. Remote OpenClaw agents cannot reach localhost on your HIxAI host.",
       hint: "Use a reachable hostname/IP (for example Tailscale hostname, Docker host alias, or public domain)."
     });
   }
@@ -832,7 +832,7 @@ function buildOnboardingDiscoveryDiagnostics(input: {
     diagnostics.push({
       code: "openclaw_onboarding_private_loopback_bind",
       level: "warn",
-      message: "HixAI is bound to loopback in authenticated/private mode.",
+      message: "HIxAI is bound to loopback in authenticated/private mode.",
       hint: "Run with a reachable bind host or use pnpm dev --tailscale-auth for private-network onboarding."
     });
   }
@@ -969,8 +969,8 @@ function buildInviteOnboardingManifest(
         guidance:
           opts.deploymentMode === "authenticated" &&
           opts.deploymentExposure === "private"
-            ? "If OpenClaw runs on another machine, ensure the HixAI hostname is reachable and allowed via `pnpm hixai allowed-hostname <host>`."
-            : "Ensure OpenClaw can reach this HixAI API base URL for invite, claim, and skill bootstrap calls."
+            ? "If OpenClaw runs on another machine, ensure the HIxAI hostname is reachable and allowed via `pnpm hixai allowed-hostname <host>`."
+            : "Ensure OpenClaw can reach this HIxAI API base URL for invite, claim, and skill bootstrap calls."
       },
       textInstructions: {
         path: onboardingTextPath,
@@ -1031,7 +1031,7 @@ export function buildInviteOnboardingTextDocument(
   };
 
   appendBlock(`
-    # HixAI OpenClaw Gateway Onboarding
+    # HIxAI OpenClaw Gateway Onboarding
 
     This document is meant to be readable by both humans and agents.
 
@@ -1096,7 +1096,7 @@ export function buildInviteOnboardingTextDocument(
     Legacy x-openclaw-auth is also accepted, but x-openclaw-token is preferred.
     Use adapterType "openclaw_gateway" and a ws:// or wss:// gateway URL.
     Pairing mode requirement:
-    - Keep device auth enabled (recommended). If devicePrivateKeyPem is omitted, HixAI generates and persists one during join so pairing approvals are stable.
+    - Keep device auth enabled (recommended). If devicePrivateKeyPem is omitted, HIxAI generates and persists one during join so pairing approvals are stable.
     - You may set disableDeviceAuth=true only for special environments that cannot support pairing.
     - First run may return "pairing required" once; approve the pending pairing request in OpenClaw, then retry.
     Do NOT use /v1/responses or /hooks/* in this gateway join flow.
@@ -1124,7 +1124,7 @@ export function buildInviteOnboardingTextDocument(
     - claimApiKeyPath
 
     ## Step 2: Wait for board approval
-    The board approves the join request in HixAI before key claim is allowed.
+    The board approves the join request in HIxAI before key claim is allowed.
 
     ## Step 3: Claim API key (one-time)
     ${
@@ -1160,7 +1160,7 @@ export function buildInviteOnboardingTextDocument(
     - claim secrets are single-use
     - claim fails before board approval
 
-    ## Step 4: Install HixAI skill in OpenClaw
+    ## Step 4: Install HIxAI skill in OpenClaw
     GET ${onboarding.skill.url}
     Install path: ${onboarding.skill.installPath}
 
@@ -1172,7 +1172,7 @@ export function buildInviteOnboardingTextDocument(
     ## Connectivity guidance
     ${
       onboarding.connectivity?.guidance ??
-      "Ensure HixAI is reachable from your OpenClaw runtime."
+      "Ensure HIxAI is reachable from your OpenClaw runtime."
     }
   `);
 
@@ -1185,7 +1185,7 @@ export function buildInviteOnboardingTextDocument(
     : [];
 
   if (connectionCandidates.length > 0) {
-    lines.push("## Suggested HixAI base URLs to try");
+    lines.push("## Suggested HIxAI base URLs to try");
     for (const candidate of connectionCandidates) {
       lines.push(`- ${candidate}`);
     }
@@ -1198,7 +1198,7 @@ export function buildInviteOnboardingTextDocument(
       If none are reachable: ask your human operator for a reachable hostname/address and help them update network configuration.
       For authenticated/private mode, they may need:
       - pnpm hixai allowed-hostname <host>
-      - then restart HixAI and retry onboarding.
+      - then restart HIxAI and retry onboarding.
     `);
   }
 

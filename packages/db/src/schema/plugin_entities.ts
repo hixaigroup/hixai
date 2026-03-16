@@ -11,7 +11,7 @@ import { plugins } from "./plugins.js";
 import type { PluginStateScopeKind } from "@hixai/shared";
 
 /**
- * `plugin_entities` table — persistent high-level mapping between HixAI
+ * `plugin_entities` table — persistent high-level mapping between HIxAI
  * objects and external plugin-defined entities.
  *
  * This table is used by plugins (e.g. `linear`, `github`) to store pointers

@@ -3,7 +3,7 @@ title: Companies
 summary: Company CRUD endpoints
 ---
 
-Manage companies within your HixAI instance.
+Manage companies within your HIxAI instance.
 
 ## List Companies
 

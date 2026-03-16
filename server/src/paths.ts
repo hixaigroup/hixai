@@ -23,12 +23,12 @@ function findConfigFileFromAncestors(startDir: string): string | null {
   return null;
 }
 
-export function resolveHixAIConfigPath(overridePath?: string): string {
+export function resolveHIxAIConfigPath(overridePath?: string): string {
   if (overridePath) return path.resolve(overridePath);
   if (process.env.HIXAI_CONFIG) return path.resolve(process.env.HIXAI_CONFIG);
   return findConfigFileFromAncestors(process.cwd()) ?? resolveDefaultConfigPath();
 }
 
-export function resolveHixAIEnvPath(overrideConfigPath?: string): string {
-  return path.resolve(path.dirname(resolveHixAIConfigPath(overrideConfigPath)), HIXAI_ENV_FILENAME);
+export function resolveHIxAIEnvPath(overrideConfigPath?: string): string {
+  return path.resolve(path.dirname(resolveHIxAIConfigPath(overrideConfigPath)), HIXAI_ENV_FILENAME);
 }

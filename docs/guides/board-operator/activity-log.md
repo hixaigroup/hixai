@@ -3,7 +3,7 @@ title: Activity Log
 summary: Audit trail for all mutations
 ---
 
-Every mutation in HixAI is recorded in the activity log. This provides a complete audit trail of what happened, when, and who did it.
+Every mutation in HIxAI is recorded in the activity log. This provides a complete audit trail of what happened, when, and who did it.
 
 ## What Gets Logged
 

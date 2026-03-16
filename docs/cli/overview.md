@@ -3,7 +3,7 @@ title: CLI Overview
 summary: CLI installation and setup
 ---
 
-The HixAI CLI handles instance setup, diagnostics, and control-plane operations.
+The HIxAI CLI handles instance setup, diagnostics, and control-plane operations.
 
 ## Usage
 
@@ -17,7 +17,7 @@ All commands support:
 
 | Flag | Description |
 |------|-------------|
-| `--data-dir <path>` | Local HixAI data root (isolates from `~/.hixai`) |
+| `--data-dir <path>` | Local HIxAI data root (isolates from `~/.hixai`) |
 | `--api-base <url>` | API base URL |
 | `--api-key <token>` | API authentication token |
 | `--context <path>` | Context file path |

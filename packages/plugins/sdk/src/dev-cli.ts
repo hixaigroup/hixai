@@ -32,7 +32,7 @@ async function main() {
   });
 
   // eslint-disable-next-line no-console
-  console.log(`HixAI plugin dev server listening at ${server.url}`);
+  console.log(`HIxAI plugin dev server listening at ${server.url}`);
 
   const shutdown = async () => {
     await server.close();

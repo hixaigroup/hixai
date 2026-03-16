@@ -20,7 +20,7 @@ describe("cursor local adapter skill injection", () => {
     cleanupDirs.clear();
   });
 
-  it("links missing HixAI skills into Cursor skills home", async () => {
+  it("links missing HIxAI skills into Cursor skills home", async () => {
     const skillsDir = await makeTempDir("hixai-cursor-skills-src-");
     const skillsHome = await makeTempDir("hixai-cursor-skills-home-");
     cleanupDirs.add(skillsDir);

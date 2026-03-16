@@ -23,7 +23,7 @@ import {
   rewriteLocalUrlPort,
   sanitizeWorktreeInstanceId,
 } from "../commands/worktree-lib.js";
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 
 const ORIGINAL_CWD = process.cwd();
 const ORIGINAL_ENV = { ...process.env };
@@ -39,7 +39,7 @@ afterEach(() => {
   }
 });
 
-function buildSourceConfig(): HixAIConfig {
+function buildSourceConfig(): HIxAIConfig {
   return {
     $meta: {
       version: 1,
@@ -306,12 +306,12 @@ describe("worktree helpers", () => {
     }
   });
 
-  it("defaults the seed source config to the current repo-local HixAI config", () => {
+  it("defaults the seed source config to the current repo-local HIxAI config", () => {
     const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "hixai-worktree-source-config-"));
     const repoRoot = path.join(tempRoot, "repo");
     const localConfigPath = path.join(repoRoot, ".hixai", "config.json");
     const originalCwd = process.cwd();
-    const originalHixAIConfig = process.env.HIXAI_CONFIG;
+    const originalHIxAIConfig = process.env.HIXAI_CONFIG;
 
     try {
       fs.mkdirSync(path.dirname(localConfigPath), { recursive: true });
@@ -322,10 +322,10 @@ describe("worktree helpers", () => {
       expect(fs.realpathSync(resolveSourceConfigPath({}))).toBe(fs.realpathSync(localConfigPath));
     } finally {
       process.chdir(originalCwd);
-      if (originalHixAIConfig === undefined) {
+      if (originalHIxAIConfig === undefined) {
         delete process.env.HIXAI_CONFIG;
       } else {
-        process.env.HIXAI_CONFIG = originalHixAIConfig;
+        process.env.HIXAI_CONFIG = originalHIxAIConfig;
       }
       fs.rmSync(tempRoot, { recursive: true, force: true });
     }
@@ -336,7 +336,7 @@ describe("worktree helpers", () => {
     const sourceConfigPath = path.join(tempRoot, "source", "config.json");
     const targetRoot = path.join(tempRoot, "target");
     const originalCwd = process.cwd();
-    const originalHixAIConfig = process.env.HIXAI_CONFIG;
+    const originalHIxAIConfig = process.env.HIXAI_CONFIG;
 
     try {
       fs.mkdirSync(path.dirname(sourceConfigPath), { recursive: true });
@@ -350,10 +350,10 @@ describe("worktree helpers", () => {
       );
     } finally {
       process.chdir(originalCwd);
-      if (originalHixAIConfig === undefined) {
+      if (originalHIxAIConfig === undefined) {
         delete process.env.HIXAI_CONFIG;
       } else {
-        process.env.HIXAI_CONFIG = originalHixAIConfig;
+        process.env.HIXAI_CONFIG = originalHIxAIConfig;
       }
       fs.rmSync(tempRoot, { recursive: true, force: true });
     }

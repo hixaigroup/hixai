@@ -3,7 +3,7 @@ import type {
   AdapterExecutionResult,
   AdapterRuntimeServiceReport,
 } from "@hixai/adapter-utils";
-import { asNumber, asString, buildHixAIEnv, parseObject } from "@hixai/adapter-utils/server-utils";
+import { asNumber, asString, buildHIxAIEnv, parseObject } from "@hixai/adapter-utils/server-utils";
 import crypto, { randomUUID } from "node:crypto";
 import { WebSocket } from "ws";
 
@@ -301,7 +301,7 @@ function buildWakePayload(ctx: AdapterExecutionContext): WakePayload {
   };
 }
 
-function resolveHixAIApiUrlOverride(value: unknown): string | null {
+function resolveHIxAIApiUrlOverride(value: unknown): string | null {
   const raw = nonEmpty(value);
   if (!raw) return null;
   try {
@@ -313,10 +313,10 @@ function resolveHixAIApiUrlOverride(value: unknown): string | null {
   }
 }
 
-function buildHixAIEnvForWake(ctx: AdapterExecutionContext, wakePayload: WakePayload): Record<string, string> {
-  const hixaiApiUrlOverride = resolveHixAIApiUrlOverride(ctx.config.hixaiApiUrl);
+function buildHIxAIEnvForWake(ctx: AdapterExecutionContext, wakePayload: WakePayload): Record<string, string> {
+  const hixaiApiUrlOverride = resolveHIxAIApiUrlOverride(ctx.config.hixaiApiUrl);
   const hixaiEnv: Record<string, string> = {
-    ...buildHixAIEnv(ctx.agent),
+    ...buildHIxAIEnv(ctx.agent),
     HIXAI_RUN_ID: ctx.runId,
   };
 
@@ -361,7 +361,7 @@ function buildWakeText(payload: WakePayload, hixaiEnv: Record<string, string>): 
   const apiBaseHint = hixaiEnv.HIXAI_API_URL ?? "<set HIXAI_API_URL>";
 
   const lines = [
-    "HixAI wake event for a cloud adapter.",
+    "HIxAI wake event for a cloud adapter.",
     "",
     "Run this procedure now. Do not guess undocumented endpoints and do not ask for additional heartbeat docs.",
     "",
@@ -382,7 +382,7 @@ function buildWakeText(payload: WakePayload, hixaiEnv: Record<string, string>): 
     "",
     "HTTP rules:",
     "- Use Authorization: Bearer $HIXAI_API_KEY on every API call.",
-    "- Use X-HixAI-Run-Id: $HIXAI_RUN_ID on every mutating API call.",
+    "- Use X-HIxAI-Run-Id: $HIXAI_RUN_ID on every mutating API call.",
     "- Use only /api endpoints listed below.",
     "- Do NOT call guessed endpoints like /api/cloud-adapter/*, /api/cloud-adapters/*, /api/adapters/cloud/*, or /api/heartbeat.",
     "",
@@ -415,13 +415,13 @@ function appendWakeText(baseText: string, wakeText: string): string {
   return trimmedBase.length > 0 ? `${trimmedBase}\n\n${wakeText}` : wakeText;
 }
 
-function buildStandardHixAIPayload(
+function buildStandardHIxAIPayload(
   ctx: AdapterExecutionContext,
   wakePayload: WakePayload,
   hixaiEnv: Record<string, string>,
   payloadTemplate: Record<string, unknown>,
 ): Record<string, unknown> {
-  const templateHixAI = parseObject(payloadTemplate.hixai);
+  const templateHIxAI = parseObject(payloadTemplate.hixai);
   const workspace = asRecord(ctx.context.hixaiWorkspace);
   const workspaces = Array.isArray(ctx.context.hixaiWorkspaces)
     ? ctx.context.hixaiWorkspaces.filter((entry): entry is Record<string, unknown> => Boolean(asRecord(entry)))
@@ -433,7 +433,7 @@ function buildStandardHixAIPayload(
       )
     : [];
 
-  const standardHixAI: Record<string, unknown> = {
+  const standardHIxAI: Record<string, unknown> = {
     runId: ctx.runId,
     companyId: ctx.agent.companyId,
     agentId: ctx.agent.id,
@@ -449,21 +449,21 @@ function buildStandardHixAIPayload(
   };
 
   if (workspace) {
-    standardHixAI.workspace = workspace;
+    standardHIxAI.workspace = workspace;
   }
   if (workspaces.length > 0) {
-    standardHixAI.workspaces = workspaces;
+    standardHIxAI.workspaces = workspaces;
   }
   if (runtimeServiceIntents.length > 0 || Object.keys(configuredWorkspaceRuntime).length > 0) {
-    standardHixAI.workspaceRuntime = {
+    standardHIxAI.workspaceRuntime = {
       ...configuredWorkspaceRuntime,
       ...(runtimeServiceIntents.length > 0 ? { services: runtimeServiceIntents } : {}),
     };
   }
 
   return {
-    ...templateHixAI,
-    ...standardHixAI,
+    ...templateHIxAI,
+    ...standardHIxAI,
   };
 }
 
@@ -1051,7 +1051,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   const disableDeviceAuth = parseBoolean(ctx.config.disableDeviceAuth, false);
 
   const wakePayload = buildWakePayload(ctx);
-  const hixaiEnv = buildHixAIEnvForWake(ctx, wakePayload);
+  const hixaiEnv = buildHIxAIEnvForWake(ctx, wakePayload);
   const wakeText = buildWakeText(wakePayload, hixaiEnv);
 
   const sessionKeyStrategy = normalizeSessionKeyStrategy(ctx.config.sessionKeyStrategy);
@@ -1065,7 +1065,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const templateMessage = nonEmpty(payloadTemplate.message) ?? nonEmpty(payloadTemplate.text);
   const message = templateMessage ? appendWakeText(templateMessage, wakeText) : wakeText;
-  const hixaiPayload = buildStandardHixAIPayload(ctx, wakePayload, hixaiEnv, payloadTemplate);
+  const hixaiPayload = buildStandardHIxAIPayload(ctx, wakePayload, hixaiEnv, payloadTemplate);
 
   const agentParams: Record<string, unknown> = {
     ...payloadTemplate,

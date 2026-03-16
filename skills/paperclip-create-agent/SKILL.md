@@ -1,12 +1,12 @@
 ---
 name: hixai-create-agent
 description: >
-  Create new agents in HixAI with governance-aware hiring. Use when you need
+  Create new agents in HIxAI with governance-aware hiring. Use when you need
   to inspect adapter configuration options, compare existing agent configs,
   draft a new agent prompt/config, and submit a hire request.
 ---
 
-# HixAI Create Agent Skill
+# HIxAI Create Agent Skill
 
 Use this skill when you are asked to hire/create an agent.
 
@@ -28,7 +28,7 @@ curl -sS "$HIXAI_API_URL/api/agents/me" \
   -H "Authorization: Bearer $HIXAI_API_KEY"
 ```
 
-2. Discover available adapter configuration docs for this HixAI instance.
+2. Discover available adapter configuration docs for this HIxAI instance.
 
 ```sh
 curl -sS "$HIXAI_API_URL/llms/agent-configuration.txt" \

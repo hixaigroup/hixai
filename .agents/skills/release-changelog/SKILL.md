@@ -1,13 +1,13 @@
 ---
 name: release-changelog
 description: >
-  Generate the stable HixAI release changelog at releases/v{version}.md by
+  Generate the stable HIxAI release changelog at releases/v{version}.md by
   reading commits, changesets, and merged PR context since the last stable tag.
 ---
 
 # Release Changelog Skill
 
-Generate the user-facing changelog for the **stable** HixAI release.
+Generate the user-facing changelog for the **stable** HIxAI release.
 
 Output:
 

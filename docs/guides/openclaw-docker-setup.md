@@ -1,10 +1,10 @@
 # Running OpenClaw in Docker (Local Development)
 
-How to get OpenClaw running in a Docker container for local development and testing the HixAI OpenClaw adapter integration.
+How to get OpenClaw running in a Docker container for local development and testing the HIxAI OpenClaw adapter integration.
 
 ## Automated Join Smoke Test (Recommended First)
 
-HixAI includes an end-to-end join smoke harness:
+HIxAI includes an end-to-end join smoke harness:
 
 ```bash
 pnpm smoke:openclaw-join
@@ -42,7 +42,7 @@ What this command does:
 - writes isolated smoke config under `~/.openclaw-hixai-smoke/openclaw.json` and Docker `.env`
 - pins agent model defaults to OpenAI (`openai/gpt-5.2` with OpenAI fallback)
 - starts `openclaw-gateway` via Compose (with required `/tmp` tmpfs override)
-- probes and prints a HixAI host URL that is reachable from inside OpenClaw Docker
+- probes and prints a HIxAI host URL that is reachable from inside OpenClaw Docker
 - waits for health and prints:
   - `http://127.0.0.1:18789/#token=...`
 - disables Control UI device pairing by default for local smoke ergonomics
@@ -66,7 +66,7 @@ Environment knobs:
 
 ### Authenticated mode
 
-If your HixAI deployment is `authenticated`, provide auth context:
+If your HIxAI deployment is `authenticated`, provide auth context:
 
 ```bash
 HIXAI_AUTH_HEADER="Bearer <token>" pnpm smoke:openclaw-join
@@ -77,15 +77,15 @@ HIXAI_COOKIE="your_session_cookie=..." pnpm smoke:openclaw-join
 ### Network topology tips
 
 - Local same-host smoke: default callback uses `http://127.0.0.1:<port>/webhook`.
-- Inside OpenClaw Docker, `127.0.0.1` points to the container itself, not your host HixAI server.
-- For invite/onboarding URLs consumed by OpenClaw in Docker, use the script-printed HixAI URL (typically `http://host.docker.internal:3100`).
-- If HixAI rejects the container-visible host with a hostname error, allow it from host:
+- Inside OpenClaw Docker, `127.0.0.1` points to the container itself, not your host HIxAI server.
+- For invite/onboarding URLs consumed by OpenClaw in Docker, use the script-printed HIxAI URL (typically `http://host.docker.internal:3100`).
+- If HIxAI rejects the container-visible host with a hostname error, allow it from host:
 
 ```bash
 pnpm hixai allowed-hostname host.docker.internal
 ```
 
-Then restart HixAI and rerun the smoke script.
+Then restart HIxAI and rerun the smoke script.
 - Docker/remote OpenClaw: prefer a reachable hostname (Docker host alias, Tailscale hostname, or public domain).
 - Authenticated/private mode: ensure hostnames are in the allowed list when required:
 

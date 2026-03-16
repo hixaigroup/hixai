@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, realpathSync } from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
-import type { HixAIPluginManifestV1 } from "@hixai/shared";
+import type { HIxAIPluginManifestV1 } from "@hixai/shared";
 import type { PluginCapabilityValidator } from "./plugin-capability-validator.js";
 
 export class PluginSandboxError extends Error {
@@ -54,7 +54,7 @@ const DEFAULT_GLOBALS: Record<string, unknown> = {
 };
 
 export function createCapabilityScopedInvoker(
-  manifest: HixAIPluginManifestV1,
+  manifest: HIxAIPluginManifestV1,
   validator: PluginCapabilityValidator,
 ): CapabilityScopedInvoker {
   return {

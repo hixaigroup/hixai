@@ -9,7 +9,7 @@ import {
   pluginWebhookDeliveries,
 } from "@hixai/db";
 import type {
-  HixAIPluginManifestV1,
+  HIxAIPluginManifestV1,
   PluginStatus,
   InstallPlugin,
   UpdatePluginStatus,
@@ -49,7 +49,7 @@ function isPluginKeyConflict(error: unknown): boolean {
 /**
  * PluginRegistry – CRUD operations for the `plugins` and `plugin_config`
  * tables.  Follows the same factory-function pattern used by the rest of
- * the HixAI service layer.
+ * the HIxAI service layer.
  *
  * This is the lowest-level persistence layer for plugins. Higher-level
  * concerns such as lifecycle state-machine enforcement and capability
@@ -134,7 +134,7 @@ export function pluginRegistryService(db: Db) {
      * manifest from the package.  This method persists the plugin row and
      * assigns the next install order.
      */
-    install: async (input: InstallPlugin, manifest: HixAIPluginManifestV1) => {
+    install: async (input: InstallPlugin, manifest: HIxAIPluginManifestV1) => {
       const existing = await getByKey(manifest.id);
       if (existing) {
         if (existing.status !== "uninstalled") {
@@ -198,7 +198,7 @@ export function pluginRegistryService(db: Db) {
       data: {
         packageName?: string;
         version?: string;
-        manifest?: HixAIPluginManifestV1;
+        manifest?: HIxAIPluginManifestV1;
       },
     ) => {
       const plugin = await getById(id);
@@ -436,7 +436,7 @@ export function pluginRegistryService(db: Db) {
         .then((rows) => rows[0] ?? null),
 
     /**
-     * Create or update a persistent mapping between a HixAI object and an
+     * Create or update a persistent mapping between a HIxAI object and an
      * external entity.
      *
      * @param pluginId - The UUID of the plugin.

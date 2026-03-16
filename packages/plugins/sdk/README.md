@@ -1,6 +1,6 @@
 # `@hixai/plugin-sdk`
 
-Official TypeScript SDK for HixAI plugin authors.
+Official TypeScript SDK for HIxAI plugin authors.
 
 - **Worker SDK:** `@hixai/plugin-sdk` — `definePlugin`, context, lifecycle
 - **UI SDK:** `@hixai/plugin-sdk/ui` — React hooks and slot props
@@ -42,9 +42,9 @@ pnpm add @hixai/plugin-sdk
 The SDK is stable enough for local development and first-party examples, but the runtime deployment model is still early.
 
 - Plugin workers and plugin UI should both be treated as trusted code today.
-- Plugin UI bundles run as same-origin JavaScript inside the main HixAI app. They can call ordinary HixAI HTTP APIs with the board session, so manifest capabilities are not a frontend sandbox.
+- Plugin UI bundles run as same-origin JavaScript inside the main HIxAI app. They can call ordinary HIxAI HTTP APIs with the board session, so manifest capabilities are not a frontend sandbox.
 - Local-path installs and the repo example plugins are development workflows. They assume the plugin source checkout exists on disk.
-- For deployed plugins, publish an npm package and install that package into the HixAI instance at runtime.
+- For deployed plugins, publish an npm package and install that package into the HIxAI instance at runtime.
 - The current host runtime expects a writable filesystem, `npm` available at runtime, and network access to the package registry used for plugin installation.
 - Dynamic plugin install is currently best suited to single-node persistent deployments. Multi-instance cloud deployments still need a shared artifact/distribution model before runtime installs are reliable across nodes.
 - The host does not currently ship a real shared React component kit for plugins. Build your plugin UI with ordinary React components and CSS.
@@ -240,7 +240,7 @@ Replaces the auto-generated JSON Schema settings form with a custom React compon
 
 #### `dashboardWidget`
 
-A card or section rendered on the main dashboard. Use this for at-a-glance metrics, status indicators, or summary views that surface plugin data alongside core HixAI information. Receives `PluginWidgetProps` with `context.companyId` set to the active company. Requires the `ui.dashboardWidget.register` capability.
+A card or section rendered on the main dashboard. Use this for at-a-glance metrics, status indicators, or summary views that surface plugin data alongside core HIxAI information. Receives `PluginWidgetProps` with `context.companyId` set to the active company. Requires the `ui.dashboardWidget.register` capability.
 
 #### `detailTab`
 

@@ -3,7 +3,7 @@ title: Deployment Modes
 summary: local_trusted vs authenticated (private/public)
 ---
 
-HixAI supports two runtime modes with different security profiles.
+HIxAI supports two runtime modes with different security profiles.
 
 ## `local_trusted`
 
@@ -58,7 +58,7 @@ pnpm hixai onboard
 
 ## Board Claim Flow
 
-When migrating from `local_trusted` to `authenticated`, HixAI emits a one-time claim URL at startup:
+When migrating from `local_trusted` to `authenticated`, HIxAI emits a one-time claim URL at startup:
 
 ```
 /board-claim/<token>?code=<code>

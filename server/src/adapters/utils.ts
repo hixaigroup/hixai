@@ -17,7 +17,7 @@ export {
   resolvePathValue,
   renderTemplate,
   redactEnvForLogs,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   defaultPathForPlatform,
   ensurePathInEnv,
   ensureAbsoluteDirectory,

@@ -3,7 +3,7 @@ import {
   expandHomePrefix,
   resolveDefaultConfigPath,
   resolveDefaultContextPath,
-  resolveHixAIInstanceId,
+  resolveHIxAIInstanceId,
 } from "./home.js";
 
 export interface DataDirOptionLike {
@@ -31,7 +31,7 @@ export function applyDataDirOverride(
   if (support.hasConfigOption) {
     const hasConfigOverride = Boolean(options.config?.trim()) || Boolean(process.env.HIXAI_CONFIG?.trim());
     if (!hasConfigOverride) {
-      const instanceId = resolveHixAIInstanceId(options.instance);
+      const instanceId = resolveHIxAIInstanceId(options.instance);
       process.env.HIXAI_INSTANCE_ID = instanceId;
       process.env.HIXAI_CONFIG = resolveDefaultConfigPath(instanceId);
     }

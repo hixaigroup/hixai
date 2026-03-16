@@ -8,13 +8,13 @@ import {
   asNumber,
   asStringArray,
   parseObject,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   redactEnvForLogs,
   ensureAbsoluteDirectory,
   ensureCommandResolvable,
-  ensureHixAISkillSymlink,
+  ensureHIxAISkillSymlink,
   ensurePathInEnv,
-  listHixAISkillEntries,
+  listHIxAISkillEntries,
   removeMaintainerOnlySkillSymlinks,
   renderTemplate,
   joinPromptSections,
@@ -63,13 +63,13 @@ function normalizeMode(rawMode: string): "plan" | "ask" | null {
   return null;
 }
 
-function renderHixAIEnvNote(env: Record<string, string>): string {
+function renderHIxAIEnvNote(env: Record<string, string>): string {
   const hixaiKeys = Object.keys(env)
     .filter((key) => key.startsWith("HIXAI_"))
     .sort();
   if (hixaiKeys.length === 0) return "";
   return [
-    "HixAI runtime note:",
+    "HIxAI runtime note:",
     `The following HIXAI_* environment variables are available in this run: ${hixaiKeys.join(", ")}`,
     "Do not assume these variables are missing without checking your shell environment.",
     "",
@@ -97,7 +97,7 @@ export async function ensureCursorSkillsInjected(
       ? (await fs.readdir(options.skillsDir, { withFileTypes: true }))
           .filter((entry) => entry.isDirectory())
           .map((entry) => ({ name: entry.name, source: path.join(options.skillsDir!, entry.name) }))
-      : await listHixAISkillEntries(__moduleDir));
+      : await listHIxAISkillEntries(__moduleDir));
   if (skillsEntries.length === 0) return;
 
   const skillsHome = options.skillsHome ?? cursorSkillsHome();
@@ -124,7 +124,7 @@ export async function ensureCursorSkillsInjected(
   for (const entry of skillsEntries) {
     const target = path.join(skillsHome, entry.name);
     try {
-      const result = await ensureHixAISkillSymlink(entry.source, target, linkSkill);
+      const result = await ensureHIxAISkillSymlink(entry.source, target, linkSkill);
       if (result === "skipped") continue;
 
       await onLog(
@@ -145,7 +145,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your HixAI work.",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your HIxAI work.",
   );
   const command = asString(config.command, "agent");
   const model = asString(config.model, DEFAULT_CURSOR_LOCAL_MODEL).trim();
@@ -173,7 +173,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
   const envConfig = parseObject(config.env);
   const hasExplicitApiKey =
     typeof envConfig.HIXAI_API_KEY === "string" && envConfig.HIXAI_API_KEY.trim().length > 0;
-  const env: Record<string, string> = { ...buildHixAIEnv(agent) };
+  const env: Record<string, string> = { ...buildHIxAIEnv(agent) };
   env.HIXAI_RUN_ID = runId;
   const wakeTaskId =
     (typeof context.taskId === "string" && context.taskId.trim().length > 0 && context.taskId.trim()) ||
@@ -330,7 +330,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
       ? renderTemplate(bootstrapPromptTemplate, templateData).trim()
       : "";
   const sessionHandoffNote = asString(context.hixaiSessionHandoffMarkdown, "").trim();
-  const hixaiEnvNote = renderHixAIEnvNote(env);
+  const hixaiEnvNote = renderHIxAIEnvNote(env);
   const prompt = joinPromptSections([
     instructionsPrefix,
     renderedBootstrapPrompt,

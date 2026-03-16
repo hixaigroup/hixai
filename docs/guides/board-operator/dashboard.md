@@ -1,6 +1,6 @@
 ---
 title: Dashboard
-summary: Understanding the HixAI dashboard
+summary: Understanding the HIxAI dashboard
 ---
 
 The dashboard gives you a real-time overview of your autonomous company's health.

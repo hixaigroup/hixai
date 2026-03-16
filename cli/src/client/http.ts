@@ -23,7 +23,7 @@ interface ApiClientOptions {
   runId?: string;
 }
 
-export class HixAIApiClient {
+export class HIxAIApiClient {
   readonly apiBase: string;
   readonly apiKey?: string;
   readonly runId?: string;

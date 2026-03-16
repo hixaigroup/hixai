@@ -28,9 +28,9 @@ Codex uses `previous_response_id` for session continuity. The adapter serializes
 
 ## Skills Injection
 
-The adapter symlinks HixAI skills into the global Codex skills directory (`~/.codex/skills`). Existing user skills are not overwritten.
+The adapter symlinks HIxAI skills into the global Codex skills directory (`~/.codex/skills`). Existing user skills are not overwritten.
 
-When HixAI is running inside a managed worktree instance (`HIXAI_IN_WORKTREE=true`), the adapter instead uses a worktree-isolated `CODEX_HOME` under the HixAI instance so Codex skills, sessions, logs, and other runtime state do not leak across checkouts. It seeds that isolated home from the user's main Codex home for shared auth/config continuity.
+When HIxAI is running inside a managed worktree instance (`HIXAI_IN_WORKTREE=true`), the adapter instead uses a worktree-isolated `CODEX_HOME` under the HIxAI instance so Codex skills, sessions, logs, and other runtime state do not leak across checkouts. It seeds that isolated home from the user's main Codex home for shared auth/config continuity.
 
 For manual local CLI usage outside heartbeat runs (for example running as `codexcoder` directly), use:
 

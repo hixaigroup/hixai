@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { buildHixAIEnv } from "../adapters/utils.js";
+import { buildHIxAIEnv } from "../adapters/utils.js";
 
 const ORIGINAL_HIXAI_API_URL = process.env.HIXAI_API_URL;
 const ORIGINAL_HIXAI_LISTEN_HOST = process.env.HIXAI_LISTEN_HOST;
@@ -24,13 +24,13 @@ afterEach(() => {
   else process.env.PORT = ORIGINAL_PORT;
 });
 
-describe("buildHixAIEnv", () => {
+describe("buildHIxAIEnv", () => {
   it("prefers an explicit HIXAI_API_URL", () => {
     process.env.HIXAI_API_URL = "http://localhost:4100";
     process.env.HIXAI_LISTEN_HOST = "127.0.0.1";
     process.env.HIXAI_LISTEN_PORT = "3101";
 
-    const env = buildHixAIEnv({ id: "agent-1", companyId: "company-1" });
+    const env = buildHIxAIEnv({ id: "agent-1", companyId: "company-1" });
 
     expect(env.HIXAI_API_URL).toBe("http://localhost:4100");
   });
@@ -41,7 +41,7 @@ describe("buildHixAIEnv", () => {
     process.env.HIXAI_LISTEN_PORT = "3101";
     process.env.PORT = "3100";
 
-    const env = buildHixAIEnv({ id: "agent-1", companyId: "company-1" });
+    const env = buildHIxAIEnv({ id: "agent-1", companyId: "company-1" });
 
     expect(env.HIXAI_API_URL).toBe("http://localhost:3101");
   });
@@ -51,7 +51,7 @@ describe("buildHixAIEnv", () => {
     process.env.HIXAI_LISTEN_HOST = "::1";
     process.env.HIXAI_LISTEN_PORT = "3101";
 
-    const env = buildHixAIEnv({ id: "agent-1", companyId: "company-1" });
+    const env = buildHIxAIEnv({ id: "agent-1", companyId: "company-1" });
 
     expect(env.HIXAI_API_URL).toBe("http://[::1]:3101");
   });

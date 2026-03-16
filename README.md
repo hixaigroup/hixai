@@ -1,114 +1,111 @@
 # HIxAI — AI-Agent Orchestration Platform
 
-**Open-source orchestration for AI-powered operations**
+**The operating system for autonomous AI teams**
 
-[**Quickstart**](#quickstart) · [**Docs**](https://github.com/hixaigroup/docs) · [**GitHub**](https://github.com/hixaigroup/hixai)
+[**Get Started**](#get-started) · [**Documentation**](https://github.com/hixaigroup/docs) · [**Source**](https://github.com/hixaigroup/hixai)
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 &nbsp;
 
-## What is HIxAI?
+## The Problem
 
-# Open-source orchestration for AI-agent companies
+You have AI agents — Claude Code, Codex, Cursor, OpenClaw — but no way to make them work *together*. Each one runs in its own terminal, its own context, its own silo. You're the bottleneck, copy-pasting context between windows, manually tracking what's done and what isn't, hoping nobody burns through your token budget while you sleep.
 
-**If OpenClaw is an *employee*, HIxAI is the *company***
+**That's not a company. That's chaos.**
 
-HIxAI is a Node.js server and React UI that orchestrates a team of AI agents to run a business. Bring your own agents, assign goals, and track your agents' work and costs from one dashboard.
+&nbsp;
 
-It looks like a task manager — but under the hood it has org charts, budgets, governance, goal alignment, and agent coordination.
+## What HIxAI Does
 
-**Manage business goals, not pull requests.**
+HIxAI gives your AI agents structure. It's a self-hosted orchestration layer — built on Node.js and React — that turns a collection of disconnected agents into a coordinated team with hierarchy, accountability, and budget controls.
 
-|  | Step | Example |
+Think of it as the difference between hiring freelancers on five different platforms versus building an actual organization with roles, reporting lines, and oversight.
+
+|  | Step | What Happens |
 | --- | --- | --- |
-| **01** | Define the goal | *"Build the #1 AI note-taking app to $1M MRR."* |
-| **02** | Hire the team | CEO, CTO, engineers, designers, marketers — any bot, any provider. |
-| **03** | Approve and run | Review strategy. Set budgets. Hit go. Monitor from the dashboard. |
+| **01** | Set the objective | *"Launch an AI-powered note-taking app and reach $1M MRR."* |
+| **02** | Assemble the team | Assign roles — CEO, CTO, engineers, designers — each backed by the AI runtime of your choice. |
+| **03** | Approve and launch | Review the strategy, allocate budgets, and let the team execute. Monitor everything from one dashboard. |
 
 &nbsp;
 
-|  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Works with** | OpenClaw | Claude Code | Codex | Cursor | Bash | HTTP |
+**Compatible runtimes:** OpenClaw · Claude Code · Codex · Cursor · Bash · HTTP
 
-*If it can receive a heartbeat, it's hired.*
+*Any agent that can receive a heartbeat signal can join the team.*
 
 &nbsp;
 
-## HIxAI is right for you if
+## Who This Is For
 
-* ✅ You want to build **autonomous AI companies**
-* ✅ You **coordinate many different agents** (OpenClaw, Codex, Claude, Cursor) toward a common goal
-* ✅ You have **20 simultaneous Claude Code terminals** open and lose track of what everyone is doing
-* ✅ You want agents running **autonomously 24/7**, but still want to audit work and chime in when needed
-* ✅ You want to **monitor costs** and enforce budgets
-* ✅ You want a process for managing agents that **feels like using a task manager**
-* ✅ You want to manage your autonomous businesses **from your phone**
+* ✅ You're building **AI-driven operations** across multiple agents and need them pulling in the same direction
+* ✅ You have **too many agent sessions** open and can't remember which one is doing what
+* ✅ You want agents working **around the clock**, but with guardrails and visibility
+* ✅ You need **cost controls** — hard budget caps, not just estimates
+* ✅ You want a system that **feels like a project manager**, not a pile of shell scripts
+* ✅ You want to check in on your autonomous workflows **from anywhere**
 
 &nbsp;
 
-## Features
+## Core Capabilities
 
 |  |  |  |
 | --- | --- | --- |
-| 🔌 **Bring Your Own Agent** Any agent, any runtime, one org chart. If it can receive a heartbeat, it's hired. | 🎯 **Goal Alignment** Every task traces back to the company mission. Agents know *what* to do and *why*. | 💓 **Heartbeats** Agents wake on a schedule, check work, and act. Delegation flows up and down the org chart. |
-| 💰 **Cost Control** Monthly budgets per agent. When they hit the limit, they stop. No runaway costs. | 🏢 **Multi-Company** One deployment, many companies. Complete data isolation. One control plane for your portfolio. | 🎫 **Ticket System** Every conversation traced. Every decision explained. Full tool-call tracing and immutable audit log. |
-| 🛡️ **Governance** You're the board. Approve hires, override strategy, pause or terminate any agent — at any time. | 📊 **Org Chart** Hierarchies, roles, reporting lines. Your agents have a boss, a title, and a job description. | 📱 **Mobile Ready** Monitor and manage your autonomous businesses from anywhere. |
+| 🔌 **Runtime Agnostic** Connect any AI agent — different providers, different models, one unified org structure. | 🎯 **Mission-Driven Execution** Every task inherits context from the company mission down. Agents always understand the bigger picture. | 💓 **Scheduled Heartbeats** Agents activate on a cadence, review their queue, and take action. Work flows through the hierarchy automatically. |
+| 💰 **Budget Enforcement** Each agent gets a monthly token allowance. When it's spent, the agent stops. No surprises. | 🏢 **Multi-Tenant Isolation** Run separate ventures on a single deployment. Complete data separation between each one. | 🎫 **Full Audit Trail** Every conversation, every tool call, every decision — logged and traceable. Nothing happens off the record. |
+| 🛡️ **Board-Level Control** You sit at the top. Approve hires, override decisions, pause or shut down any agent at any time. | 📊 **Organizational Structure** Real reporting lines, job descriptions, and role hierarchies — not just a flat list of bots. | 📱 **Remote Access** Manage your autonomous operations from any device. |
 
 &nbsp;
 
-## Problems HIxAI solves
+## Before and After
 
 | Without HIxAI | With HIxAI |
 | --- | --- |
-| ❌ You have 20 Claude Code tabs open and can't track which one does what. On reboot you lose everything. | ✅ Tasks are ticket-based, conversations are threaded, sessions persist across reboots. |
-| ❌ You manually gather context from several places to remind your bot what you're actually doing. | ✅ Context flows from the task up through the project and company goals — your agent always knows what to do and why. |
-| ❌ Folders of agent configs are disorganized and you're re-inventing task management, communication, and coordination between agents. | ✅ HIxAI gives you org charts, ticketing, delegation, and governance out of the box — so you run a company, not a pile of scripts. |
-| ❌ Runaway loops waste hundreds of dollars of tokens and max your quota before you even know what happened. | ✅ Cost tracking surfaces token budgets and throttles agents when they're out. Management prioritizes with budgets. |
-| ❌ You have recurring jobs (customer support, social, reports) and have to remember to manually kick them off. | ✅ Heartbeats handle regular work on a schedule. Management supervises. |
-| ❌ You have an idea, you have to find your repo, fire up Claude Code, keep a tab open, and babysit it. | ✅ Add a task in HIxAI. Your coding agent works on it until it's done. Management reviews their work. |
+| ❌ Twenty agent terminals open, no idea which is doing what. Restart your machine and lose all context. | ✅ Ticket-based task management with threaded conversations that survive restarts. |
+| ❌ Manually gathering context from multiple sources every time you prompt an agent. | ✅ Context cascades from company mission → project goals → individual tasks. Agents self-orient. |
+| ❌ A folder of scattered configs where you're reinventing coordination from scratch. | ✅ Built-in org charts, task routing, delegation rules, and approval workflows. |
+| ❌ An agent loop burns $200 in tokens before you notice. | ✅ Per-agent budgets with automatic cutoffs. Spend is visible and capped. |
+| ❌ Recurring work (reports, monitoring, support) requires you to remember and kick it off manually. | ✅ Heartbeat scheduling handles repeating work. Supervisors review output. |
+| ❌ Every new task requires finding the right repo, opening a terminal, and babysitting the session. | ✅ Create a ticket, assign it, and the right agent picks it up and works until it's done. |
 
 &nbsp;
 
-## Why HIxAI is special
-
-HIxAI handles the hard orchestration details correctly.
+## What Makes This Different
 
 |  |  |
 | --- | --- |
-| **Atomic execution.** | Task checkout and budget enforcement are atomic, so no double-work and no runaway spend. |
-| **Persistent agent state.** | Agents resume the same task context across heartbeats instead of restarting from scratch. |
-| **Runtime skill injection.** | Agents can learn HIxAI workflows and project context at runtime, without retraining. |
-| **Governance with rollback.** | Approval gates are enforced, config changes are revisioned, and bad changes can be rolled back safely. |
-| **Goal-aware execution.** | Tasks carry full goal ancestry so agents consistently see the "why," not just a title. |
-| **Portable company templates.** | Export/import orgs, agents, and skills with secret scrubbing and collision handling. |
-| **True multi-company isolation.** | Every entity is company-scoped, so one deployment can run many companies with separate data and audit trails. |
+| **Atomic operations** | Task assignment and budget checks happen in a single transaction — no double-assignments, no budget overruns. |
+| **Persistent context** | Agents pick up where they left off across heartbeat cycles instead of starting cold every time. |
+| **Runtime skill loading** | Agents absorb platform workflows and project context on the fly — no retraining or prompt rebuilding. |
+| **Versioned governance** | Approval gates are enforced at the system level. Configuration changes are tracked and reversible. |
+| **Goal lineage** | Every task carries the full chain of reasoning from the company mission. Agents see the *why*, not just the *what*. |
+| **Portable templates** | Export and import entire organizational structures — roles, agents, skills — with automatic secret scrubbing. |
+| **True data isolation** | Every entity is scoped to its company. One deployment, many businesses, zero data leakage between them. |
 
 &nbsp;
 
-## What HIxAI is not
+## What HIxAI Is *Not*
 
 |  |  |
 | --- | --- |
-| **Not a chatbot.** | Agents have jobs, not chat windows. |
-| **Not an agent framework.** | We don't tell you how to build agents. We tell you how to run a company made of them. |
-| **Not a workflow builder.** | No drag-and-drop pipelines. HIxAI models companies — with org charts, goals, budgets, and governance. |
-| **Not a prompt manager.** | Agents bring their own prompts, models, and runtimes. HIxAI manages the organization they work in. |
-| **Not a single-agent tool.** | This is for teams. If you have one agent, you probably don't need HIxAI. If you have twenty — you definitely do. |
-| **Not a code review tool.** | HIxAI orchestrates work, not pull requests. Bring your own review process. |
+| **Not a chatbot.** | Agents have responsibilities, not conversations. |
+| **Not an agent framework.** | We don't define how your agents work. We define how they work *together*. |
+| **Not a drag-and-drop workflow tool.** | HIxAI models organizations — with roles, goals, budgets, and accountability. |
+| **Not a prompt library.** | Each agent brings its own model, prompts, and runtime. HIxAI provides the organizational layer. |
+| **Not a solo tool.** | Built for coordinating teams. If you have one agent, you probably don't need this. |
+| **Not a code review system.** | HIxAI manages work allocation, not pull requests. Bring your own review process. |
 
 &nbsp;
 
-## Quickstart
+## Get Started
 
-Open source. Self-hosted. No account required.
+Self-hosted. MIT-licensed. No account required.
 
 ```
 npx hixai onboard --yes
 ```
 
-Or manually:
+Or set it up manually:
 
 ```
 git clone https://github.com/hixaigroup/hixai.git
@@ -117,48 +114,48 @@ pnpm install
 pnpm dev
 ```
 
-This starts the API server at `http://localhost:3100`. An embedded PostgreSQL database is created automatically — no setup required.
+The API server starts at `http://localhost:3100` with an embedded PostgreSQL database — zero external dependencies.
 
-> **Requirements:** Node.js 20+, pnpm 9.15+
+> **Prerequisites:** Node.js 20+ and pnpm 9.15+
 
 &nbsp;
 
-## FAQ
+## Common Questions
 
-**What does a typical setup look like?**
-Locally, a single Node.js process manages an embedded Postgres and local file storage. For production, point it at your own Postgres and deploy however you like. Configure projects, agents, and goals — the agents take care of the rest.
+**What's the typical deployment?**
+For local development, a single Node.js process handles everything — embedded Postgres, file storage, the works. For production, point it at your own Postgres instance and deploy however you prefer.
 
-**Can I run multiple companies?**
-Yes. A single deployment can run an unlimited number of companies with complete data isolation.
+**Can I run multiple businesses?**
+Yes. A single deployment supports unlimited companies with full data isolation between them.
 
-**How is HIxAI different from agents like OpenClaw or Claude Code?**
-HIxAI *uses* those agents. It orchestrates them into a company — with org charts, budgets, goals, governance, and accountability.
+**How does HIxAI relate to tools like Claude Code or OpenClaw?**
+HIxAI orchestrates those tools. They do the work; HIxAI provides the organizational structure, budget controls, goal alignment, and oversight.
 
-**Do agents run continuously?**
-By default, agents run on scheduled heartbeats and event-based triggers (task assignment, @-mentions). You can also hook in continuous agents like OpenClaw. You bring your agent and HIxAI coordinates.
+**Are agents always running?**
+By default, agents operate on scheduled heartbeats and event triggers (task assignments, mentions). You can also integrate always-on runtimes. HIxAI coordinates — your agents execute.
 
 &nbsp;
 
 ## Development
 
 ```
-pnpm dev              # Full dev (API + UI, watch mode)
-pnpm dev:once         # Full dev without file watching
-pnpm dev:server       # Server only
-pnpm build            # Build all
-pnpm typecheck        # Type checking
-pnpm test:run         # Run tests
-pnpm db:generate      # Generate DB migration
-pnpm db:migrate       # Apply migrations
+pnpm dev              # Full stack dev mode (API + UI, file watching)
+pnpm dev:once         # Full stack without file watching
+pnpm dev:server       # API server only
+pnpm build            # Build all packages
+pnpm typecheck        # Run type checks
+pnpm test:run         # Execute test suite
+pnpm db:generate      # Generate a new migration
+pnpm db:migrate       # Apply pending migrations
 ```
 
-See [doc/DEVELOPING.md](doc/DEVELOPING.md) for the full development guide.
+See [doc/DEVELOPING.md](doc/DEVELOPING.md) for the complete development guide.
 
 &nbsp;
 
 ## Contributing
 
-We welcome contributions. See the [contributing guide](CONTRIBUTING.md) for details.
+Contributions are welcome. See the [contributing guide](CONTRIBUTING.md) for how to get involved.
 
 &nbsp;
 
@@ -170,4 +167,4 @@ MIT © 2026 HIxAI Group
 
 ---
 
-Open source under MIT. Built for people who want to run companies, not babysit agents.
+*Open source under MIT. Built for operators who want to run businesses, not babysit terminals.*

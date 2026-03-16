@@ -2,7 +2,7 @@
  * JSON-RPC 2.0 message types and protocol helpers for the host ↔ worker IPC
  * channel.
  *
- * The HixAI plugin runtime uses JSON-RPC 2.0 over stdio to communicate
+ * The HIxAI plugin runtime uses JSON-RPC 2.0 over stdio to communicate
  * between the host process and each plugin worker process. This module defines:
  *
  * - Core JSON-RPC 2.0 envelope types (request, response, notification, error)
@@ -16,7 +16,7 @@
  */
 
 import type {
-  HixAIPluginManifestV1,
+  HIxAIPluginManifestV1,
   PluginLauncherBounds,
   PluginLauncherRenderContextSnapshot,
   PluginLauncherRenderEnvironment,
@@ -52,7 +52,7 @@ export const JSONRPC_VERSION = "2.0" as const;
 
 /**
  * A unique request identifier. JSON-RPC 2.0 allows strings or numbers;
- * we use strings (UUIDs or monotonic counters) for all HixAI messages.
+ * we use strings (UUIDs or monotonic counters) for all HIxAI messages.
  */
 export type JsonRpcId = string | number;
 
@@ -169,7 +169,7 @@ export type JsonRpcErrorCode =
   (typeof JSONRPC_ERROR_CODES)[keyof typeof JSONRPC_ERROR_CODES];
 
 /**
- * HixAI plugin-specific error codes.
+ * HIxAI plugin-specific error codes.
  *
  * These live in the JSON-RPC "server error" reserved range (-32000 to -32099)
  * as specified by JSON-RPC 2.0 for implementation-defined server errors.
@@ -205,14 +205,14 @@ export type PluginRpcErrorCode =
  */
 export interface InitializeParams {
   /** Full plugin manifest snapshot. */
-  manifest: HixAIPluginManifestV1;
+  manifest: HIxAIPluginManifestV1;
   /** Resolved operator configuration (validated against `instanceConfigSchema`). */
   config: Record<string, unknown>;
   /** Instance-level metadata. */
   instanceInfo: {
-    /** UUID of this HixAI instance. */
+    /** UUID of this HIxAI instance. */
     instanceId: string;
-    /** Semver version of the running HixAI host. */
+    /** Semver version of the running HIxAI host. */
     hostVersion: string;
   };
   /** Host API version. */

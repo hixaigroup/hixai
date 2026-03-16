@@ -15,7 +15,7 @@ function getBridgeRegistry(): PluginBridgeRegistry | undefined {
 
 function missingBridgeValueError(name: string): Error {
   return new Error(
-    `HixAI plugin UI runtime is not initialized for "${name}". ` +
+    `HIxAI plugin UI runtime is not initialized for "${name}". ` +
       'Ensure the host loaded the plugin bridge before rendering this UI module.',
   );
 }
@@ -47,5 +47,5 @@ export function renderSdkUiComponent<TProps>(
     return component(props);
   }
 
-  throw new Error(`HixAI plugin UI component "${name}" is not callable`);
+  throw new Error(`HIxAI plugin UI component "${name}" is not callable`);
 }

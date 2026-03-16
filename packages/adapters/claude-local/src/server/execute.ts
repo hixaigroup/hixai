@@ -11,7 +11,7 @@ import {
   asStringArray,
   parseObject,
   parseJson,
-  buildHixAIEnv,
+  buildHIxAIEnv,
   joinPromptSections,
   redactEnvForLogs,
   ensureAbsoluteDirectory,
@@ -34,7 +34,7 @@ const HIXAI_SKILLS_CANDIDATES = [
   path.resolve(__moduleDir, "../../../../../skills"), // dev: src/server/ -> repo root/skills/
 ];
 
-async function resolveHixAISkillsDir(): Promise<string | null> {
+async function resolveHIxAISkillsDir(): Promise<string | null> {
   for (const candidate of HIXAI_SKILLS_CANDIDATES) {
     const isDir = await fs.stat(candidate).then((s) => s.isDirectory()).catch(() => false);
     if (isDir) return candidate;
@@ -51,7 +51,7 @@ async function buildSkillsDir(): Promise<string> {
   const tmp = await fs.mkdtemp(path.join(os.tmpdir(), "hixai-skills-"));
   const target = path.join(tmp, ".claude", "skills");
   await fs.mkdir(target, { recursive: true });
-  const skillsDir = await resolveHixAISkillsDir();
+  const skillsDir = await resolveHIxAISkillsDir();
   if (!skillsDir) return tmp;
   const entries = await fs.readdir(skillsDir, { withFileTypes: true });
   for (const entry of entries) {
@@ -148,7 +148,7 @@ async function buildClaudeRuntimeConfig(input: ClaudeExecutionInput): Promise<Cl
   const envConfig = parseObject(config.env);
   const hasExplicitApiKey =
     typeof envConfig.HIXAI_API_KEY === "string" && envConfig.HIXAI_API_KEY.trim().length > 0;
-  const env: Record<string, string> = { ...buildHixAIEnv(agent) };
+  const env: Record<string, string> = { ...buildHIxAIEnv(agent) };
   env.HIXAI_RUN_ID = runId;
 
   const wakeTaskId =
@@ -307,7 +307,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your HixAI work.",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your HIxAI work.",
   );
   const model = asString(config.model, "");
   const effort = asString(config.effort, "");

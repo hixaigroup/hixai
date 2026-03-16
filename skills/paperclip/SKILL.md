@@ -1,24 +1,24 @@
 ---
 name: hixai
 description: >
-  Interact with the HixAI control plane API to manage tasks, coordinate with
+  Interact with the HIxAI control plane API to manage tasks, coordinate with
   other agents, and follow company governance. Use when you need to check
   assignments, update task status, delegate work, post comments, or call any
-  HixAI API endpoint. Do NOT use for the actual domain work itself (writing
-  code, research, etc.) — only for HixAI coordination.
+  HIxAI API endpoint. Do NOT use for the actual domain work itself (writing
+  code, research, etc.) — only for HIxAI coordination.
 ---
 
-# HixAI Skill
+# HIxAI Skill
 
-You run in **heartbeats** — short execution windows triggered by HixAI. Each heartbeat, you wake up, check your work, do something useful, and exit. You do not run continuously.
+You run in **heartbeats** — short execution windows triggered by HIxAI. Each heartbeat, you wake up, check your work, do something useful, and exit. You do not run continuously.
 
 ## Authentication
 
 Env vars auto-injected: `HIXAI_AGENT_ID`, `HIXAI_COMPANY_ID`, `HIXAI_API_URL`, `HIXAI_RUN_ID`. Optional wake-context vars may also be present: `HIXAI_TASK_ID` (issue/task that triggered this wake), `HIXAI_WAKE_REASON` (why this run was triggered), `HIXAI_WAKE_COMMENT_ID` (specific comment that triggered this wake), `HIXAI_APPROVAL_ID`, `HIXAI_APPROVAL_STATUS`, and `HIXAI_LINKED_ISSUE_IDS` (comma-separated). For local adapters, `HIXAI_API_KEY` is auto-injected as a short-lived run JWT. For non-local adapters, your operator should set `HIXAI_API_KEY` in adapter config. All requests use `Authorization: Bearer $HIXAI_API_KEY`. All endpoints under `/api`, all JSON. Never hard-code the API URL.
 
-Manual local CLI mode (outside heartbeat runs): use `hixai agent local-cli <agent-id-or-shortname> --company-id <company-id>` to install HixAI skills for Claude/Codex and print/export the required `HIXAI_*` environment variables for that agent identity.
+Manual local CLI mode (outside heartbeat runs): use `hixai agent local-cli <agent-id-or-shortname> --company-id <company-id>` to install HIxAI skills for Claude/Codex and print/export the required `HIXAI_*` environment variables for that agent identity.
 
-**Run audit trail:** You MUST include `-H 'X-HixAI-Run-Id: $HIXAI_RUN_ID'` on ALL API requests that modify issues (checkout, update, comment, create subtask, release). This links your actions to the current heartbeat run for traceability.
+**Run audit trail:** You MUST include `-H 'X-HIxAI-Run-Id: $HIXAI_RUN_ID'` on ALL API requests that modify issues (checkout, update, comment, create subtask, release). This links your actions to the current heartbeat run for traceability.
 
 ## The Heartbeat Procedure
 
@@ -50,7 +50,7 @@ If nothing is assigned and there is no valid mention-based ownership handoff, ex
 
 ```
 POST /api/issues/{issueId}/checkout
-Headers: Authorization: Bearer $HIXAI_API_KEY, X-HixAI-Run-Id: $HIXAI_RUN_ID
+Headers: Authorization: Bearer $HIXAI_API_KEY, X-HIxAI-Run-Id: $HIXAI_RUN_ID
 { "agentId": "{your-agent-id}", "expectedStatuses": ["todo", "backlog", "blocked"] }
 ```
 
@@ -73,11 +73,11 @@ If you are blocked at any point, you MUST update the issue to `blocked` before e
 
 ```json
 PATCH /api/issues/{issueId}
-Headers: X-HixAI-Run-Id: $HIXAI_RUN_ID
+Headers: X-HIxAI-Run-Id: $HIXAI_RUN_ID
 { "status": "done", "comment": "What was done and why." }
 
 PATCH /api/issues/{issueId}
-Headers: X-HixAI-Run-Id: $HIXAI_RUN_ID
+Headers: X-HIxAI-Run-Id: $HIXAI_RUN_ID
 { "status": "blocked", "comment": "What is blocked, why, and who needs to unblock it." }
 ```
 
@@ -140,7 +140,7 @@ Access control:
 - **Budget**: auto-paused at 100%. Above 80%, focus on critical tasks only.
 - **Escalate** via `chainOfCommand` when stuck. Reassign to manager or create a task for them.
 - **Hiring**: use `hixai-create-agent` skill for new agent creation workflows.
-- **Commit Co-author**: if you make a git commit you MUST add `Co-Authored-By: HixAI <noreply@hixai.com>` to the end of each commit message
+- **Commit Co-author**: if you make a git commit you MUST add `Co-Authored-By: HIxAI <noreply@hixai.com>` to the end of each commit message
 
 ## Comment Style (Required)
 
@@ -269,7 +269,7 @@ Results are ranked by relevance: title matches first, then identifier, descripti
 
 ## Self-Test Playbook (App-Level)
 
-Use this when validating HixAI itself (assignment flow, checkouts, run visibility, and status transitions).
+Use this when validating HIxAI itself (assignment flow, checkouts, run visibility, and status transitions).
 
 1. Create a throwaway issue assigned to a known local agent (`claudecoder` or `codexcoder`):
 
@@ -302,7 +302,7 @@ pnpm hixai issue update <issue-id> --assignee-agent-id <other-agent-id> --status
 
 5. Cleanup: mark temporary issues done/cancelled with a clear note.
 
-If you use direct `curl` during these tests, include `X-HixAI-Run-Id` on all mutating issue requests whenever running inside a heartbeat.
+If you use direct `curl` during these tests, include `X-HIxAI-Run-Id` on all mutating issue requests whenever running inside a heartbeat.
 
 ## Full Reference
 

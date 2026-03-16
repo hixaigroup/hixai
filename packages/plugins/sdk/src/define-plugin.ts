@@ -1,5 +1,5 @@
 /**
- * `definePlugin` — the top-level helper for authoring a HixAI plugin.
+ * `definePlugin` — the top-level helper for authoring a HIxAI plugin.
  *
  * Plugin authors call `definePlugin()` and export the result as the default
  * export from their worker entrypoint. The host imports the worker module,
@@ -200,7 +200,7 @@ export interface PluginDefinition {
 }
 
 // ---------------------------------------------------------------------------
-// HixAIPlugin — the sealed object returned by definePlugin()
+// HIxAIPlugin — the sealed object returned by definePlugin()
 // ---------------------------------------------------------------------------
 
 /**
@@ -211,7 +211,7 @@ export interface PluginDefinition {
  *
  * @see PLUGIN_SPEC.md §14 — SDK Surface
  */
-export interface HixAIPlugin {
+export interface HIxAIPlugin {
   /** The original plugin definition passed to `definePlugin()`. */
   readonly definition: PluginDefinition;
 }
@@ -221,14 +221,14 @@ export interface HixAIPlugin {
 // ---------------------------------------------------------------------------
 
 /**
- * Define a HixAI plugin.
+ * Define a HIxAI plugin.
  *
  * Call this function in your worker entrypoint and export the result as the
  * default export. The host will import the module and call lifecycle methods
  * on the returned object.
  *
  * @param definition - Plugin lifecycle handlers
- * @returns A sealed `HixAIPlugin` object for the host to consume
+ * @returns A sealed `HIxAIPlugin` object for the host to consume
  *
  * @example
  * ```ts
@@ -250,6 +250,6 @@ export interface HixAIPlugin {
  *
  * @see PLUGIN_SPEC.md §14.1 — Example SDK Shape
  */
-export function definePlugin(definition: PluginDefinition): HixAIPlugin {
+export function definePlugin(definition: PluginDefinition): HIxAIPlugin {
   return Object.freeze({ definition });
 }

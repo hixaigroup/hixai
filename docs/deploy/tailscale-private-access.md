@@ -1,11 +1,11 @@
 ---
 title: Tailscale Private Access
-summary: Run HixAI with Tailscale-friendly host binding and connect from other devices
+summary: Run HIxAI with Tailscale-friendly host binding and connect from other devices
 ---
 
-Use this when you want to access HixAI over Tailscale (or a private LAN/VPN) instead of only `localhost`.
+Use this when you want to access HIxAI over Tailscale (or a private LAN/VPN) instead of only `localhost`.
 
-## 1. Start HixAI in private authenticated mode
+## 1. Start HIxAI in private authenticated mode
 
 ```sh
 pnpm dev --tailscale-auth
@@ -26,7 +26,7 @@ pnpm dev --authenticated-private
 
 ## 2. Find your reachable Tailscale address
 
-From the machine running HixAI:
+From the machine running HIxAI:
 
 ```sh
 tailscale ip -4
@@ -34,9 +34,9 @@ tailscale ip -4
 
 You can also use your Tailscale MagicDNS hostname (for example `my-macbook.tailnet.ts.net`).
 
-## 3. Open HixAI from another device
+## 3. Open HIxAI from another device
 
-Use the Tailscale IP or MagicDNS host with the HixAI port:
+Use the Tailscale IP or MagicDNS host with the HIxAI port:
 
 ```txt
 http://<tailscale-host-or-ip>:3100
@@ -50,7 +50,7 @@ http://my-macbook.tailnet.ts.net:3100
 
 ## 4. Allow custom private hostnames when needed
 
-If you access HixAI with a custom private hostname, add it to the allowlist:
+If you access HIxAI with a custom private hostname, add it to the allowlist:
 
 ```sh
 pnpm hixai allowed-hostname my-macbook.tailnet.ts.net

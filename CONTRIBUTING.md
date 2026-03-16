@@ -1,41 +1,54 @@
-# Contributing Guide
+# Contributing to HIxAI
 
-Thanks for wanting to contribute!
+Thanks for your interest in contributing. Here's how to get started.
 
-We really appreciate both small fixes and thoughtful larger changes.
+## Setup
 
-## Two Paths to Get Your Pull Request Accepted
+1. Clone the repository and install dependencies:
 
-### Path 1: Small, Focused Changes (Fastest way to get merged)
-- Pick **one** clear thing to fix/improve
-- Touch the **smallest possible number of files**
-- Make sure the change is very targeted and easy to review
-- All automated checks pass (including Greptile comments)
-- No new lint/test failures
+```bash
+git clone https://github.com/hixaigroup/hixai.git
+cd hixai
+pnpm install
+```
 
-These almost always get merged quickly when they're clean.
+2. Start the development environment:
 
-### Path 2: Bigger or Impactful Changes
-- **First** talk about it in Discord → #dev channel  
-  → Describe what you're trying to solve  
-  → Share rough ideas / approach
-- Once there's rough agreement, build it
-- In your PR include:
-  - Before / After screenshots (or short video if UI/behavior change)
-  - Clear description of what & why
-  - Proof it works (manual testing notes)
-  - All tests passing
-  - All Greptile + other PR comments addressed
+```bash
+pnpm dev
+```
 
-PRs that follow this path are **much** more likely to be accepted, even when they're large.
+This launches the API server and React UI with file watching. An embedded PostgreSQL database is provisioned automatically — no external setup needed.
 
-## General Rules (both paths)
-- Write clear commit messages
-- Keep PR title + description meaningful
-- One PR = one logical change (unless it's a small related group)
-- Run tests locally first
-- Be kind in discussions 😄
+## Making Changes
 
-Questions? Just ask in #dev — we're happy to help.
+- Create a feature branch from `master`
+- Keep commits focused and descriptive
+- Run `pnpm typecheck` and `pnpm test:run` before opening a PR
+- If you've changed API behavior, update the corresponding documentation
 
-Happy hacking!
+## Code Organization
+
+| Directory | Purpose |
+| --- | --- |
+| `server/` | Express API, orchestration services, database layer |
+| `ui/` | React front-end (Vite, TypeScript, Tailwind) |
+| `cli/` | Command-line tools for setup and administration |
+| `packages/` | Shared libraries, runtime adapters, plugin SDK |
+| `doc/` | Architecture specs, development guides |
+| `skills/` | Agent skill definitions |
+
+## Guidelines
+
+- Every domain entity must be scoped to a company. Enforce company boundaries in routes and services.
+- Keep schema changes, API updates, and UI changes in sync across all layers.
+- Don't bypass control-plane invariants (budget enforcement, task atomicity, governance gates).
+- Prefer additive updates to strategic documents like `doc/SPEC.md`.
+
+## Reporting Issues
+
+Use [GitHub Issues](https://github.com/hixaigroup/hixai/issues) for bugs and feature requests. Include reproduction steps when possible.
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the project's MIT license.

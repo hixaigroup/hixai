@@ -1,4 +1,4 @@
-import type { HixAIConfig } from "../config/schema.js";
+import type { HIxAIConfig } from "../config/schema.js";
 import type { CheckResult } from "./index.js";
 
 function isLoopbackHost(host: string) {
@@ -6,7 +6,7 @@ function isLoopbackHost(host: string) {
   return normalized === "127.0.0.1" || normalized === "localhost" || normalized === "::1";
 }
 
-export function deploymentAuthCheck(config: HixAIConfig): CheckResult {
+export function deploymentAuthCheck(config: HIxAIConfig): CheckResult {
   const mode = config.server.deploymentMode;
   const exposure = config.server.exposure;
   const auth = config.auth;
@@ -37,7 +37,7 @@ export function deploymentAuthCheck(config: HixAIConfig): CheckResult {
       status: "fail",
       message: "authenticated mode requires BETTER_AUTH_SECRET (or HIXAI_AGENT_JWT_SECRET)",
       canRepair: false,
-      repairHint: "Set BETTER_AUTH_SECRET before starting HixAI",
+      repairHint: "Set BETTER_AUTH_SECRET before starting HIxAI",
     };
   }
 
