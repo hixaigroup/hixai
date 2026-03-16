@@ -8,6 +8,24 @@ export interface CostDateRange {
   to?: Date;
 }
 
+export function shouldAutoPauseAgent(agent: {
+  budgetMonthlyCents: number;
+  spentMonthlyCents: number;
+  status: string;
+}): boolean {
+  return (
+    agent.budgetMonthlyCents > 0 &&
+    agent.spentMonthlyCents >= agent.budgetMonthlyCents &&
+    agent.status !== "paused" &&
+    agent.status !== "terminated"
+  );
+}
+
+export function computeBudgetUtilizationPercent(spendCents: number, budgetCents: number): number {
+  if (budgetCents <= 0) return 0;
+  return Number(((spendCents / budgetCents) * 100).toFixed(2));
+}
+
 export function costService(db: Db) {
   return {
     createEvent: async (companyId: string, data: Omit<typeof costEvents.$inferInsert, "companyId">) => {
@@ -50,13 +68,7 @@ export function costService(db: Db) {
         .where(eq(agents.id, event.agentId))
         .then((rows) => rows[0] ?? null);
 
-      if (
-        updatedAgent &&
-        updatedAgent.budgetMonthlyCents > 0 &&
-        updatedAgent.spentMonthlyCents >= updatedAgent.budgetMonthlyCents &&
-        updatedAgent.status !== "paused" &&
-        updatedAgent.status !== "terminated"
-      ) {
+      if (updatedAgent && shouldAutoPauseAgent(updatedAgent)) {
         await db
           .update(agents)
           .set({ status: "paused", updatedAt: new Date() })
@@ -87,16 +99,12 @@ export function costService(db: Db) {
         .where(and(...conditions));
 
       const spendCents = Number(total);
-      const utilization =
-        company.budgetMonthlyCents > 0
-          ? (spendCents / company.budgetMonthlyCents) * 100
-          : 0;
 
       return {
         companyId,
         spendCents,
         budgetCents: company.budgetMonthlyCents,
-        utilizationPercent: Number(utilization.toFixed(2)),
+        utilizationPercent: computeBudgetUtilizationPercent(spendCents, company.budgetMonthlyCents),
       };
     },
 

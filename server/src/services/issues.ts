@@ -101,7 +101,7 @@ function redactIssueComment<T extends { body: string }>(comment: T): T {
   };
 }
 
-function sameRunLock(checkoutRunId: string | null, actorRunId: string | null) {
+export function sameRunLock(checkoutRunId: string | null, actorRunId: string | null) {
   if (actorRunId) return checkoutRunId === actorRunId;
   return checkoutRunId == null;
 }
