@@ -170,7 +170,7 @@ npx hixai@canary onboard
 Run:
 
 ```bash
-PAPERCLIPAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
+HIXAI_VERSION=canary ./scripts/docker-onboard-smoke.sh
 ```
 
 Confirm:
